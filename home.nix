@@ -7,6 +7,16 @@
   home.homeDirectory = "/home/eduardo";
 
   programs.fish.enable = true;
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      hostname = {
+        ssh_only = false;
+        format =  "[$hostname](bold blue) ";
+      };
+    };
+  };
 
   programs.neovim = {
     enable = true;

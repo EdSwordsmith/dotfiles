@@ -109,6 +109,10 @@
   #   enableSSHSupport = true;
   # };
 
+  programs.fish.enable = true;
+  environment.shells = with pkgs; [ fish ];
+  users.users.eduardo.shell = pkgs.fish;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

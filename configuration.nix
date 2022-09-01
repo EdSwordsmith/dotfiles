@@ -84,10 +84,6 @@
     isNormalUser = true;
     description = "Eduardo Espadeiro";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      discord
-    ];
   };
 
   # Allow unfree packages

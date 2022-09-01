@@ -5,6 +5,12 @@
   # paths it should manage.
   home.username = "eduardo";
   home.homeDirectory = "/home/eduardo";
+  
+  home.packages = [
+    pkgs.spotify
+    pkgs.firefox
+    pkgs.discord
+  ];
 
   programs.fish.enable = true;
   programs.starship = {

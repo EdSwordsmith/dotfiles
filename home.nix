@@ -6,10 +6,10 @@
   home.username = "eduardo";
   home.homeDirectory = "/home/eduardo";
   
-  home.packages = [
-    pkgs.spotify
-    pkgs.firefox
-    pkgs.discord
+  home.packages = with pkgs; [
+    spotify
+    firefox
+    discord
   ];
 
   programs.fish.enable = true;

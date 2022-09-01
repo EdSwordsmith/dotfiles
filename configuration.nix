@@ -22,6 +22,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable docker
+  virtualisation.docker.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
 
@@ -95,6 +98,7 @@
     git
     neovim
     wget
+    docker-compose
   ];
 
   environment.variables = { EDITOR = "nvim"; };

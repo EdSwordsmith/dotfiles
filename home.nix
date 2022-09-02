@@ -10,6 +10,7 @@
     spotify
     firefox
     discord
+    steam
   ];
 
   programs.fish.enable = true;

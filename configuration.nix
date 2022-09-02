@@ -111,6 +111,8 @@
   #   enableSSHSupport = true;
   # };
 
+  programs.steam.enable = true;
+
   programs.fish.enable = true;
   environment.shells = with pkgs; [ fish ];
   users.users.eduardo.shell = pkgs.fish;

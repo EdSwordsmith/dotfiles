@@ -10,6 +10,7 @@
     spotify
     firefox
     discord
+    vscode
     jetbrains.idea-ultimate
   ];
 

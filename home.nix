@@ -13,7 +13,13 @@
     jetbrains.idea-ultimate
   ];
 
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    shellAbbrs = {
+      rebuild = "sudo nixos-rebuild switch --flake '/home/eduardo/.config/nix#minastirith'";
+    };
+  };
+
   programs.starship = {
     enable = true;
     enableFishIntegration = true;

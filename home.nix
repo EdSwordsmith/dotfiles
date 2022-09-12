@@ -10,6 +10,7 @@
     spotify
     firefox
     discord
+    jetbrains.idea-ultimate
   ];
 
   programs.fish.enable = true;

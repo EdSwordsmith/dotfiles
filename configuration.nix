@@ -99,7 +99,6 @@
       neovim
       wget
       docker-compose
-      gnomeExtensions.pop-shell
     ];
 
     environment.variables = { EDITOR = "nvim"; };

@@ -7,12 +7,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pombobot.url = "/home/eduardo/dev/pombo_bot";
   };
 
   outputs = inputs @ { self, ... }:
     let
       inherit (inputs.home.nixosModules) home-manager;
       inherit (inputs.nixpkgs.lib) nixosSystem;
+      inherit (inputs.nixosModules.pombobot) pomboBot;
 
       system = "x86_64-linux";
       user = "eduardo";
@@ -27,6 +29,8 @@
         inherit system pkgs;
         specialArgs = { inherit user; };
         modules = [
+          pomboBot
+
           (import ./configuration.nix)
           (import ./hardware-configuration.nix)
 

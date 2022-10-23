@@ -1,5 +1,24 @@
 {
   "nodes": {
+    "djtobis": {
+      "inputs": {
+        "jmusicbot": "jmusicbot",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1666535799,
+        "narHash": "sha256-qp4tbR4pFAo1JmtHn6exYmSmK90gqPtFcNJFNC6Tdjg=",
+        "ref": "refs/heads/main",
+        "rev": "b02301a961ee5a64c24f9876de74207d9b062054",
+        "revCount": 2,
+        "type": "git",
+        "url": "file:///home/eduardo/dev/flakes/djtobis"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/eduardo/dev/flakes/djtobis"
+      }
+    },
     "home": {
       "inputs": {
         "nixpkgs": [
@@ -36,7 +55,34 @@
         "type": "github"
       }
     },
+    "jmusicbot": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-k8gM0a+Ah8+73j6ZScJtWA6jtPx8yAQ2O2jBa5xlpA8=",
+        "type": "file",
+        "url": "https://github.com/jagrosh/MusicBot/releases/download/0.3.8/JMusicBot-0.3.8.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/jagrosh/MusicBot/releases/download/0.3.8/JMusicBot-0.3.8.jar"
+      }
+    },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1666535304,
+        "narHash": "sha256-tIBT79ZYzIC5CeUvOsUdflOYaOA+py9FooEXsBOTAwg=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e60beee3ac707c6fe6ddc17cdbe0253ae6edc6dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1666377499,
         "narHash": "sha256-dZZCGvWcxc7oGnUgFVf0UeNHsJ4VhkTM0v5JRe8EwR8=",
@@ -52,7 +98,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1666531917,
         "narHash": "sha256-33Rkbab79UavCbsK0rOv1JhpbZ9v2i5M5ng25bg9tts=",
@@ -70,7 +116,7 @@
     "pombobot": {
       "inputs": {
         "import-cargo": "import-cargo",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1666534634,
@@ -88,8 +134,9 @@
     },
     "root": {
       "inputs": {
+        "djtobis": "djtobis",
         "home": "home",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "pombobot": "pombobot"
       }
     },

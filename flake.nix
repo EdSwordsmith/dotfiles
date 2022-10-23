@@ -21,7 +21,7 @@
 
       pkgs = import inputs.nixpkgs {
         inherit system;
-        # overlays = [ inputs.pombobot.overlay ];
+        overlays = [ inputs.pombobot.overlay ];
         config.allowUnfree = true;
       };
 

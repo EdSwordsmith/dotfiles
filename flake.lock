@@ -21,6 +21,21 @@
         "type": "github"
       }
     },
+    "import-cargo": {
+      "locked": {
+        "lastModified": 1594305518,
+        "narHash": "sha256-frtArgN42rSaEcEOYWg8sVPMUK+Zgch3c+wejcpX3DY=",
+        "owner": "edolstra",
+        "repo": "import-cargo",
+        "rev": "25d40be4a73d40a2572e0cc233b83253554f06c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "import-cargo",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1666377499,
@@ -37,10 +52,42 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1666530729,
+        "narHash": "sha256-pFFzhsP2S3OQ7rdt1r9zGzz+nqwtHWCHbx2somYIjAE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "73ef0cc88cf3690dcd4029549a63509e76dbea11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pombobot": {
+      "inputs": {
+        "import-cargo": "import-cargo",
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1666531351,
+        "narHash": "sha256-eQVceO8wuh5TA36Ew1Mc8Pgy5VqZozeXkrx2Lkjd33o=",
+        "type": "git",
+        "url": "file:///home/eduardo/dev/pombo_bot"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/eduardo/dev/pombo_bot"
+      }
+    },
     "root": {
       "inputs": {
         "home": "home",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "pombobot": "pombobot"
       }
     },
     "utils": {

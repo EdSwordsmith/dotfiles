@@ -73,11 +73,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1666532813,
-        "narHash": "sha256-Lj8OeYcDI7ni05LjioqcKqc9vMfwoeXWm8Nn6g/HU1w=",
+        "lastModified": 1666534404,
+        "narHash": "sha256-DQzjI2IzeuBfhDUAKRqxfQusKTFXn6rXsCF1g05z7JE=",
         "ref": "refs/heads/main",
-        "rev": "7d32ba2a348284cf3d017105bf98c6a56cfd6393",
-        "revCount": 30,
+        "rev": "0c36dd30b760bea2e150c3261a28cc5f5e1a20c1",
+        "revCount": 32,
         "type": "git",
         "url": "file:///home/eduardo/dev/pombo_bot"
       },

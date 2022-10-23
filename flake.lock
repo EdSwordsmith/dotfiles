@@ -54,11 +54,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1666530729,
-        "narHash": "sha256-pFFzhsP2S3OQ7rdt1r9zGzz+nqwtHWCHbx2somYIjAE=",
+        "lastModified": 1666531917,
+        "narHash": "sha256-33Rkbab79UavCbsK0rOv1JhpbZ9v2i5M5ng25bg9tts=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "73ef0cc88cf3690dcd4029549a63509e76dbea11",
+        "rev": "da8838990f72af07bde7509f788d8c6c2a962ed0",
         "type": "github"
       },
       "original": {
@@ -73,8 +73,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1666531351,
-        "narHash": "sha256-eQVceO8wuh5TA36Ew1Mc8Pgy5VqZozeXkrx2Lkjd33o=",
+        "lastModified": 1666532813,
+        "narHash": "sha256-Lj8OeYcDI7ni05LjioqcKqc9vMfwoeXWm8Nn6g/HU1w=",
+        "ref": "refs/heads/main",
+        "rev": "7d32ba2a348284cf3d017105bf98c6a56cfd6393",
+        "revCount": 30,
         "type": "git",
         "url": "file:///home/eduardo/dev/pombo_bot"
       },

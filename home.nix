@@ -18,7 +18,6 @@
     enable = true;
     shellAbbrs = {
       rebuild = "sudo nixos-rebuild switch --flake '/home/eduardo/.config/nix#minastirith'";
-      nfish = "nix-shell --run fish";
     };
   };
 

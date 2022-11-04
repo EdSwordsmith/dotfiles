@@ -23,11 +23,12 @@
 
       pkgs = import inputs.nixpkgs {
         inherit system;
-        overlays = [ inputs.pombobot.overlay inputs.djtobis.overlay ];
+        overlays = [ inputs.pombobot.overlay ];
         config.allowUnfree = true;
       };
 
-    in {
+    in
+    {
       nixosConfigurations.minastirith = nixosSystem {
         inherit system pkgs;
         specialArgs = { inherit user; };
@@ -38,11 +39,12 @@
           (import ./configuration.nix)
           (import ./hardware-configuration.nix)
 
-          home-manager {
+          home-manager
+          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.eduardo = import ./home.nix;
-	  }
+          }
         ];
       };
     };

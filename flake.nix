@@ -7,8 +7,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    pombobot.url = "/home/eduardo/dev/pombo_bot";
-    djtobis.url = "/home/eduardo/dev/flakes/djtobis";
+    pombobot = {
+      url = "/home/eduardo/dev/pombo_bot";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    djtobis = {
+      url = "/home/eduardo/dev/flakes/djtobis";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ { self, ... }:

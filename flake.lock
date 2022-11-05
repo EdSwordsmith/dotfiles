@@ -3,7 +3,9 @@
     "djtobis": {
       "inputs": {
         "jmusicbot": "jmusicbot",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1667593279,
@@ -27,11 +29,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1667574732,
-        "narHash": "sha256-73TVk3uSQOja6Q/5OuNcpcqwo6+SMzJPRtYAjU0rBx4=",
+        "lastModified": 1667618048,
+        "narHash": "sha256-pKgavGAXBiugdKd93Z3A8hGpUmc3wkTSHlzqXd1cTo0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b764068a506c6f70dba998efa0e7fcb99cb4deb2",
+        "rev": "c728307482dacc9b2720b8036292b166c7865fa9",
         "type": "github"
       },
       "original": {
@@ -69,21 +71,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1666535304,
-        "narHash": "sha256-tIBT79ZYzIC5CeUvOsUdflOYaOA+py9FooEXsBOTAwg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "e60beee3ac707c6fe6ddc17cdbe0253ae6edc6dd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1667482890,
         "narHash": "sha256-pua0jp87iwN7NBY5/ypx0s9L9CG49Ju/NI4wGwurHc4=",
         "owner": "nixos",
@@ -98,25 +85,12 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1666531917,
-        "narHash": "sha256-33Rkbab79UavCbsK0rOv1JhpbZ9v2i5M5ng25bg9tts=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "da8838990f72af07bde7509f788d8c6c2a962ed0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "pombobot": {
       "inputs": {
         "import-cargo": "import-cargo",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1667603770,
@@ -136,7 +110,7 @@
       "inputs": {
         "djtobis": "djtobis",
         "home": "home",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "pombobot": "pombobot"
       }
     },

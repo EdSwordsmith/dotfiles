@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1667739858,
-        "narHash": "sha256-11XO72l1cjKAADz9/ZdtmaVCBobWdFiWyoqmFWEzPKM=",
+        "lastModified": 1667742054,
+        "narHash": "sha256-GnDvdbGpKIYqWTNcNeuJ2Dw+XwBUMeLh+VzrXKn/2Hw=",
         "ref": "refs/heads/main",
-        "rev": "23925a658cb4c7839bd0705494817df0d0a6eb61",
-        "revCount": 11,
+        "rev": "6b297185e655d2b1cb1667fbf5f0e581d47192ba",
+        "revCount": 12,
         "type": "git",
         "url": "file:///home/eduardo/dev/flakes/dms"
       },
@@ -91,16 +91,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1667629849,
-        "narHash": "sha256-P+v+nDOFWicM4wziFK9S/ajF2lc0N2Rg9p6Y35uMoZI=",
+        "lastModified": 1667653703,
+        "narHash": "sha256-Xow4vx52/g5zkhlgZnMEm/TEXsj+13jTPCc2jIhW1xU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3bacde6273b09a21a8ccfba15586fb165078fb62",
+        "rev": "f09ad462c5a121d0239fde645aacb2221553a217",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
+        "ref": "nixos-22.05",
         "repo": "nixpkgs",
         "type": "github"
       }

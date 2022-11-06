@@ -12,6 +12,7 @@
     discord
     vscode
     jetbrains.idea-ultimate
+    update-dms
   ];
 
   programs.fish = {

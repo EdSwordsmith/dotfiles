@@ -125,12 +125,12 @@
       passwordAuthentication = false;
     };
     
-    services.cron = {
-      enable = true;
-      systemCronJobs = [
-        "0 * * * *      root    ${pkgs.update-dms}/bin/update-dms"
-      ];
-    };
+    # services.cron = {
+    #   enable = true;
+    #   systemCronJobs = [
+    #     "0 * * * *      root    ${pkgs.update-dms}/bin/update-dms"
+    #   ];
+    # };
     
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];

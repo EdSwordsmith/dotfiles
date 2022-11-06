@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1667742054,
-        "narHash": "sha256-GnDvdbGpKIYqWTNcNeuJ2Dw+XwBUMeLh+VzrXKn/2Hw=",
+        "lastModified": 1667742463,
+        "narHash": "sha256-y+6Jiv4CnhbfNUrfkSiDYor+TKS43Ui+YxuiyosVcWA=",
         "ref": "refs/heads/main",
-        "rev": "6b297185e655d2b1cb1667fbf5f0e581d47192ba",
-        "revCount": 12,
+        "rev": "b43216e1f96a4f911587bfd91fb620f5000f430b",
+        "revCount": 13,
         "type": "git",
         "url": "file:///home/eduardo/dev/flakes/dms"
       },

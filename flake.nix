@@ -15,6 +15,10 @@
       url = "/home/eduardo/dev/flakes/djtobis";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dms = {
+      url = "/home/eduardo/dev/flakes/dms";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ { self, ... }:
@@ -29,7 +33,7 @@
 
       pkgs = import inputs.nixpkgs {
         inherit system;
-        # overlays = [ inputs.pombobot.overlay ];
+        overlays = [ inputs.dms.overlay ];
         config.allowUnfree = true;
       };
 

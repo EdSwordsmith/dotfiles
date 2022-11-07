@@ -97,6 +97,8 @@
       wget
       docker-compose
       htop
+      ripgrep
+      fd
     ];
 
     environment.variables = { EDITOR = "nvim"; };

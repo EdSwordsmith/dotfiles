@@ -11,6 +11,7 @@
     firefox
     discord
     vscode
+    emacs28NativeComp
     jetbrains.idea-ultimate
   ];
 

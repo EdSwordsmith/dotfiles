@@ -29,7 +29,7 @@
 
       pkgs = import inputs.nixpkgs {
         inherit system;
-        # overlays = [ inputs.dms.overlay ];
+        #overlays = [ inputs.emacs-overlay.overlay ];
         config.allowUnfree = true;
       };
 
@@ -37,7 +37,7 @@
     {
       nixosConfigurations.minastirith = nixosSystem {
         inherit system pkgs;
-        specialArgs = { inherit user; };
+        specialArgs = { inherit user inputs; };
         modules = [
           pombobot
           djtobis

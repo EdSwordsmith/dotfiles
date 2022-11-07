@@ -13,6 +13,7 @@
     vscode
     emacs28NativeComp
     jetbrains.idea-ultimate
+    jetbrains-mono
   ];
 
   programs.fish = {

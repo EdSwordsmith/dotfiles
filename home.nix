@@ -8,6 +8,7 @@
   
   home.packages = with pkgs; [
     spotify
+    brave
     firefox
     discord
     vscode
@@ -44,6 +45,9 @@
     ];
   };
 
+  services.gpg-agent.enable = true;
+  programs.gpg.enable = true;
+
   programs.git = {
     enable = true;
     userName = "Eduardo Espadeiro";
@@ -53,6 +57,10 @@
       pull.rebase = true;
       init.defaultBranch = "main";
       url."git@github.com".pushinsteadOf = "https://github.com/";
+    };
+    signing = {
+      signByDefault = true;
+      key = "0CF1C5EAF76639CE034D9A5E686B41F974804CC1";
     };
   };
 

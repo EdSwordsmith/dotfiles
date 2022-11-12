@@ -5,7 +5,9 @@
   { config, inputs, pkgs, ... }:
 
   {
-    imports = [ ];
+    modules = {
+      noautosuspend.enable = true;
+    };
 
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
@@ -112,8 +114,7 @@
     # };
 
     programs.steam.enable = true;
-
-    programs.fish.enable = true;
+    
     environment.shells = with pkgs; [ fish ];
     users.users.eduardo.shell = pkgs.fish;
 
@@ -130,12 +131,6 @@
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
-
-    # Disable auto suspend
-    systemd.targets.sleep.enable = false;
-    systemd.targets.suspend.enable = false;
-    systemd.targets.hibernate.enable = false;
-    systemd.targets.hybrid-sleep.enable = false;
 
     # This value determines the NixOS release from which the default
     # settings for stateful data, like file locations and database versions

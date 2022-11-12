@@ -44,6 +44,7 @@
         (readDir dir)));
 
       homeModules = mkModules ./modules/home;
+      systemModules = mkModules ./modules/system;
     in
     {
       nixosConfigurations.minastirith = nixosSystem {
@@ -65,7 +66,7 @@
               sharedModules = homeModules;
             };
           }
-        ];
+        ] ++ systemModules;
       };
     };
 }

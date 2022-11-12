@@ -17,14 +17,12 @@ in
         init.defaultBranch = "main";
         url."git@github.com".pushinsteadOf = "https://github.com/";
       };
-    };
 
-    # Enable signing if the gpg module is enabled
-    (mkIf config.modules.gpg.enable {
-      programs.git.signing = {
+      # Enable signing if the gpg module is enabled
+      signing = mkIf config.modules.gpg.enable {
         signByDefault = true;
         key = "0CF1C5EAF76639CE034D9A5E686B41F974804CC1";
       };
-    });
+    };
   };
 }

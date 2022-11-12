@@ -17,35 +17,11 @@
     jetbrains-mono
   ];
 
-  modules.fish.enable = true;
-
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-
-    plugins = with pkgs.vimPlugins; [
-      vim-nix
-    ];
-  };
-
-  services.gpg-agent.enable = true;
-  programs.gpg.enable = true;
-
-  programs.git = {
-    enable = true;
-    userName = "Eduardo Espadeiro";
-    userEmail = "eduardo.espadeiro@tecnico.ulisboa.pt";
-    extraConfig = {
-      color.ui = true;
-      pull.rebase = true;
-      init.defaultBranch = "main";
-      url."git@github.com".pushinsteadOf = "https://github.com/";
-    };
-    signing = {
-      signByDefault = true;
-      key = "0CF1C5EAF76639CE034D9A5E686B41F974804CC1";
-    };
+  modules = {
+    fish.enable = true;
+    neovim.enable = true;
+    gpg.enable = true;
+    git.enable = true;
   };
 
   programs.exa = {

@@ -19,7 +19,6 @@
 
   outputs = inputs @ { self, ... }:
     let
-      inherit (inputs.home.nixosModules) home-manager;
       inherit (inputs.nixpkgs.lib) nixosSystem mapAttrs hasSuffix;
       inherit (inputs.pombobot.nixosModules) pombobot;
       inherit (inputs.djtobis.nixosModules) djtobis;
@@ -57,12 +56,14 @@
           (import ./configuration.nix)
           (import ./hardware-configuration.nix)
 
-          home-manager
+          inputs.home.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.eduardo = import ./home.nix;
-            sharedModules = homeModules;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.eduardo = import ./home.nix;
+              sharedModules = homeModules;
+            };
           }
         ];
       };

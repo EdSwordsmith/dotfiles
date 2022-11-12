@@ -17,35 +17,7 @@
     jetbrains-mono
   ];
 
-  programs.fish = {
-    enable = true;
-    shellAbbrs = {
-      rebuild = "sudo nixos-rebuild switch --flake '/home/eduardo/.config/nix#minastirith'";
-    };
-  };
-
-  programs.starship = {
-    enable = true;
-    enableFishIntegration = true;
-    settings = {
-      format = "$username@$hostname$directory$all";
-
-      username = {
-        show_always = true;
-        format = "\\[[$user]($style)";
-      };
-
-      hostname = {
-        ssh_only = false;
-        format =  "[$hostname]($style) ";
-        style = "bold blue";
-      };
-
-      directory = {
-        format = "[$path]($style)[$read_only]($read_only_style)\\] ";
-      };
-    };
-  };
+  modules.fish.enable = true;
 
   programs.neovim = {
     enable = true;

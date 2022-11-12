@@ -20,9 +20,10 @@
   outputs = inputs @ { self, ... }:
     let
       inherit (inputs.home.nixosModules) home-manager;
-      inherit (inputs.nixpkgs.lib) nixosSystem;
+      inherit (inputs.nixpkgs.lib) nixosSystem mapAttrs hasSuffix;
       inherit (inputs.pombobot.nixosModules) pombobot;
       inherit (inputs.djtobis.nixosModules) djtobis;
+      inherit (builtins) concatLists attrValues readDir;
 
       system = "x86_64-linux";
       user = "eduardo";
@@ -33,6 +34,17 @@
         config.allowUnfree = true;
       };
 
+      # Imports every nix module from a directory, recursively.
+      mkModules = dir: concatLists (attrValues (mapAttrs
+        (name: value:
+          if value == "directory"
+          then mkModules "${dir}/${name}"
+          else if value == "regular" && hasSuffix ".nix" name
+          then [ (import "${dir}/${name}") ]
+          else [])
+        (readDir dir)));
+
+      homeModules = mkModules ./modules/home;
     in
     {
       nixosConfigurations.minastirith = nixosSystem {
@@ -50,6 +62,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.eduardo = import ./home.nix;
+            sharedModules = homeModules;
           }
         ];
       };

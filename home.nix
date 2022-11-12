@@ -28,7 +28,7 @@
     enable = true;
     enableFishIntegration = true;
     settings = {
-      format = "$username$hostname$directory$all";
+      format = "$username@$hostname$directory$all";
 
       username = {
         show_always = true;

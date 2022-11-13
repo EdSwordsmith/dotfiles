@@ -19,11 +19,11 @@ in
       enable = true;
       enableFishIntegration = true;
       settings = {
-        format = "$username@$hostname$directory$all";
+        format = "$username[@](bold green)$hostname$directory$all";
 
         username = {
           show_always = true;
-          format = "\\[[$user]($style)";
+          format = "[\\[](bold bright-red)[$user]($style)";
         };
 
         hostname = {
@@ -33,7 +33,7 @@ in
         };
 
         directory = {
-          format = "[$path]($style)[$read_only]($read_only_style)\\] ";
+          format = "[$path]($style)[$read_only]($read_only_style)[\\]](bold bright-red) ";
         };
       };
     };

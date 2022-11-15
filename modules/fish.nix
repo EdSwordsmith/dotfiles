@@ -7,11 +7,14 @@ in
   options.modules.fish.enable = mkEnableOption "fish";
 
   config = mkIf cfg.enable {
+    hm.programs.zoxide.enable = true;
+
     hm.programs.fish = {
       enable = true;
       shellAbbrs = {
         rebuild = "sudo nixos-rebuild switch --flake '/home/eduardo/.config/nix#minastirith'";
         pfetch = "nix run nixpkgs#pfetch";
+        cd = "z";
       };
     };
 

@@ -95,18 +95,6 @@
       extraGroups = [ "networkmanager" "wheel" ];
     };
 
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
-    environment.systemPackages = with pkgs; [
-      git
-      neovim
-      wget
-      docker-compose
-      htop
-      ripgrep
-      fd
-    ];
-
     environment.variables = { EDITOR = "nvim"; };
 
     # Some programs need SUID wrappers, can be configured further or are

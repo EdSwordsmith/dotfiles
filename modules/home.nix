@@ -12,24 +12,6 @@ with lib;
       hm.home.username = user;
       hm.home.homeDirectory = "/home/${user}";
 
-      hm.home.packages = with pkgs; [
-        spotify
-        brave
-        firefox
-        discord
-        vscode
-        emacs28NativeComp
-        jetbrains.idea-ultimate
-        jetbrains-mono
-      ];
-
-      hm.programs.exa = {
-        enable = true;
-        enableAliases = true;
-      };
-
-      hm.programs.bat.enable = true;
-
       # This value determines the Home Manager release that your
       # configuration is compatible with. This helps avoid breakage
       # when a new Home Manager release introduces backwards

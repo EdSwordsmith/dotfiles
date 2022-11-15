@@ -1,8 +1,9 @@
-{ config, pkgs, lib, user, ... }:
+{ config, options, pkgs, lib, user, ... }:
 
 with lib;
 {
     options.hm = mkOption { type = types.attrs; };
+
     config = {
       home-manager.users.${user} = mkAliasDefinitions options.hm;
 

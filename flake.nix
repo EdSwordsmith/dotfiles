@@ -22,7 +22,7 @@
       inherit (inputs.nixpkgs.lib) nixosSystem mapAttrs hasSuffix;
       inherit (inputs.pombobot.nixosModules) pombobot;
       inherit (inputs.djtobis.nixosModules) djtobis;
-      inherit (builtins) concatLists attrValues readDir;
+      inherit (builtins) concatLists attrValues readDir listToAttrs attrNames;
 
       system = "x86_64-linux";
       user = "eduardo";
@@ -42,26 +42,35 @@
           then [ (import "${dir}/${name}") ]
           else [])
         (readDir dir)));
+
+        # Imports every host defined in a directory.
+        mkHosts = dir: listToAttrs (map
+          (name: {
+            inherit name;
+            value = inputs.nixpkgs.lib.nixosSystem {
+              inherit system pkgs;
+              specialArgs = { inherit user inputs; };
+              modules = [
+                # TODO: These should be optional.
+                pombobot
+                djtobis
+
+                { networking.hostName = name; }
+                (dir + "/${name}/hardware.nix")
+                (dir + "/${name}/system.nix")
+
+                inputs.home.nixosModules.home-manager {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                  };
+                }
+              ] ++ mkModules ./modules;
+            };
+          })
+          (attrNames (readDir dir)));
     in
     {
-      nixosConfigurations.minastirith = nixosSystem {
-        inherit system pkgs;
-        specialArgs = { inherit user inputs; };
-        modules = [
-          pombobot
-          djtobis
-
-          (import ./configuration.nix)
-          (import ./hardware-configuration.nix)
-
-          inputs.home.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-            };
-          }
-        ] ++ mkModules ./modules;
-      };
+      nixosConfigurations = mkHosts ./hosts;
     };
 }

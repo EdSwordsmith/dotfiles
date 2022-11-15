@@ -3,7 +3,7 @@
   # and in the NixOS manual (accessible by running ‘nixos-help’).
 
   { config, inputs, pkgs, ... }:
-
+  
   {
     modules = {
       noautosuspend.enable = true;
@@ -18,12 +18,7 @@
     boot.loader.efi.canTouchEfiVariables = true;
     boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-    networking.hostName = "minastirith"; # Define your hostname.
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    networking.hostName = "minastirith";
 
     # Enable networking
     networking.networkmanager.enable = true;
@@ -77,12 +72,6 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      #jack.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
     };
 
     # Enable touchpad support (enabled default in most desktopManager).
@@ -96,16 +85,6 @@
     };
 
     environment.variables = { EDITOR = "nvim"; };
-
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # programs.mtr.enable = true;
-    # programs.gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
-
-    programs.steam.enable = true;
     
     environment.shells = with pkgs; [ fish ];
     users.users.eduardo.shell = pkgs.fish;
@@ -131,6 +110,16 @@
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     system.stateVersion = "22.05"; # Did you read the comment?
+
+    # This value determines the Home Manager release that your
+    # configuration is compatible with. This helps avoid breakage
+    # when a new Home Manager release introduces backwards
+    # incompatible changes.
+    #
+    # You can update Home Manager without changing this value. See
+    # the Home Manager release notes for a list of state version
+    # changes in each release.
+    hm.home.stateVersion = "22.05";
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
   }

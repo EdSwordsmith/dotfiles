@@ -57,7 +57,7 @@
 
                 { networking.hostName = name; }
                 (dir + "/${name}/hardware.nix")
-                (dir + "/${name}/system.nix")
+                (dir + "/${name}/configuration.nix")
 
                 inputs.home.nixosModules.home-manager {
                   home-manager = {

@@ -4,7 +4,7 @@ with lib;
 {
     options.hm = mkOption { type = types.attrs; };
     config = {
-      home-manager.users.${user} = mkAliasDefinition options.hm;
+      home-manager.users.${user} = mkAliasDefinitions options.hm;
 
       # Home Manager needs a bit of information about you and the
       # paths it should manage.

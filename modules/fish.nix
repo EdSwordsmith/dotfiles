@@ -7,7 +7,7 @@ in
   options.modules.fish.enable = mkEnableOption "fish";
 
   config = mkIf cfg.enable {
-    programs.fish = {
+    hm.programs.fish = {
       enable = true;
       shellAbbrs = {
         rebuild = "sudo nixos-rebuild switch --flake '/home/eduardo/.config/nix#minastirith'";
@@ -15,7 +15,7 @@ in
       };
     };
 
-    programs.starship = {
+    hm.programs.starship = {
       enable = true;
       enableFishIntegration = true;
       settings = {

@@ -42,9 +42,6 @@
           then [ (import "${dir}/${name}") ]
           else [])
         (readDir dir)));
-
-      homeModules = mkModules ./modules/home;
-      systemModules = mkModules ./modules/system;
     in
     {
       nixosConfigurations.minastirith = nixosSystem {
@@ -62,11 +59,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.eduardo = import ./home.nix;
-              sharedModules = homeModules;
             };
           }
-        ] ++ systemModules;
+        ] ++ mkModules ./modules;
       };
     };
 }

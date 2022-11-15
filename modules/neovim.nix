@@ -7,7 +7,7 @@ in
   options.modules.neovim.enable = mkEnableOption "neovim";
 
   config = mkIf cfg.enable {
-    programs.neovim = {
+    hm.programs.neovim = {
       enable = true;
       viAlias = true;
       vimAlias = true;

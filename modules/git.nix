@@ -7,7 +7,7 @@ in
   options.modules.git.enable = mkEnableOption "git";
 
   config = mkIf cfg.enable {
-    programs.git = {
+    hm.programs.git = {
       enable = true;
       userName = "Eduardo Espadeiro";
       userEmail = "eduardo.espadeiro@tecnico.ulisboa.pt";

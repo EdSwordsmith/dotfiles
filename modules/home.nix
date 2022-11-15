@@ -2,7 +2,7 @@
 
 with lib;
 {
-    options.hm = mkOption { type = attrs; };
+    options.hm = mkOption { type = types.attrs; };
     config = {
       home-manager.users.${user} = mkAliasDefinition options.hm;
 

@@ -32,4 +32,6 @@
   hm.programs.bat.enable = true;
 
   programs.steam.enable = true;
+
+  environment.variables = { EDITOR = "nvim"; };
 }

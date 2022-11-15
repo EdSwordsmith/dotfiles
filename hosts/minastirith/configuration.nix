@@ -18,8 +18,6 @@
     boot.loader.efi.canTouchEfiVariables = true;
     boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-    networking.hostName = "minastirith";
-
     # Enable networking
     networking.networkmanager.enable = true;
 
@@ -74,21 +72,6 @@
       pulse.enable = true;
     };
 
-    # Enable touchpad support (enabled default in most desktopManager).
-    # services.xserver.libinput.enable = true;
-
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users.eduardo = {
-      isNormalUser = true;
-      description = "Eduardo Espadeiro";
-      extraGroups = [ "networkmanager" "wheel" ];
-    };
-
-    environment.variables = { EDITOR = "nvim"; };
-    
-    environment.shells = with pkgs; [ fish ];
-    users.users.eduardo.shell = pkgs.fish;
-
     # List services that you want to enable:
 
     # Enable the OpenSSH daemon.
@@ -110,16 +93,6 @@
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     system.stateVersion = "22.05"; # Did you read the comment?
-
-    # This value determines the Home Manager release that your
-    # configuration is compatible with. This helps avoid breakage
-    # when a new Home Manager release introduces backwards
-    # incompatible changes.
-    #
-    # You can update Home Manager without changing this value. See
-    # the Home Manager release notes for a list of state version
-    # changes in each release.
-    hm.home.stateVersion = "22.05";
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
   }

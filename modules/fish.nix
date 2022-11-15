@@ -1,4 +1,4 @@
-{ config, options, pkgs, lib, ... }:
+{ config, options, pkgs, lib, user, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.modules.fish;
@@ -8,11 +8,13 @@ in
 
   config = mkIf cfg.enable {
     hm.programs.zoxide.enable = true;
+    environment.shells = with pkgs; [ fish ];
+    usr.shell = pkgs.fish;
 
     hm.programs.fish = {
       enable = true;
       shellAbbrs = {
-        rebuild = "sudo nixos-rebuild switch --flake '/home/eduardo/.config/nix#minastirith'";
+        rebuild = "sudo nixos-rebuild switch --flake '/home/${user}/.config/nix#${config.networking.hostName}'";
         pfetch = "nix run nixpkgs#pfetch";
         cd = "z";
       };

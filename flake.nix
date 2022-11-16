@@ -27,7 +27,7 @@
 
       system = "x86_64-linux";
       user = "eduardo";
-      configDir = ./config;
+      configDir = "/home/eduardo/.config/nix/config";
 
       pkgs = import inputs.nixpkgs {
         inherit system;
@@ -51,7 +51,7 @@
             inherit name;
             value = inputs.nixpkgs.lib.nixosSystem {
               inherit system pkgs;
-              specialArgs = { inherit user inputs; };
+              specialArgs = { inherit user inputs configDir; };
               modules = [
                 # TODO: These should be optional.
                 djtobis

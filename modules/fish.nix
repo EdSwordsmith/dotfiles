@@ -15,7 +15,6 @@ in
       enable = true;
       shellAbbrs = {
         rebuild = "sudo nixos-rebuild switch --flake '/home/${user}/.config/nix#${config.networking.hostName}'";
-        pfetch = "nix run nixpkgs#pfetch";
         cd = "z";
       };
     };

@@ -13,9 +13,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    djtobis = {
-      url = "/home/eduardo/dev/flakes/djtobis";
-      inputs.nixpkgs.follows = "nixpkgs";
+    jmusicbot = {
+      url = "https://github.com/jagrosh/MusicBot/releases/download/0.3.8/JMusicBot-0.3.8.jar";
+      flake = false;
     };
   };
 
@@ -53,9 +53,6 @@
               inherit system pkgs;
               specialArgs = { inherit user inputs configDir; };
               modules = [
-                # TODO: These should be optional.
-                djtobis
-
                 { networking.hostName = name; }
                 (dir + "/${name}/hardware.nix")
                 (dir + "/${name}/configuration.nix")

@@ -7,10 +7,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     pombobot = {
-      url = "/home/eduardo/dev/pombo_bot";
+      url = "git+ssh://git@github.com/PombosMalvados/pombo_bot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     djtobis = {
       url = "/home/eduardo/dev/flakes/djtobis";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,12 +22,12 @@
   outputs = inputs @ { self, ... }:
     let
       inherit (inputs.nixpkgs.lib) nixosSystem mapAttrs hasSuffix;
-      inherit (inputs.pombobot.nixosModules) pombobot;
       inherit (inputs.djtobis.nixosModules) djtobis;
       inherit (builtins) concatLists attrValues readDir listToAttrs attrNames;
 
       system = "x86_64-linux";
       user = "eduardo";
+      configDir = ./config;
 
       pkgs = import inputs.nixpkgs {
         inherit system;
@@ -52,7 +54,6 @@
               specialArgs = { inherit user inputs; };
               modules = [
                 # TODO: These should be optional.
-                pombobot
                 djtobis
 
                 { networking.hostName = name; }

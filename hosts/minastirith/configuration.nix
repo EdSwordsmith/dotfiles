@@ -6,6 +6,7 @@
   
   {
     modules = {
+      pombobot.enable = true;
       noautosuspend.enable = true;
       fish.enable = true;
       neovim.enable = true;

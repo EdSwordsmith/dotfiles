@@ -21,6 +21,21 @@
         "url": "file:///home/eduardo/dev/flakes/djtobis"
       }
     },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home": {
       "inputs": {
         "nixpkgs": [
@@ -87,23 +102,24 @@
     },
     "pombobot": {
       "inputs": {
+        "flake-utils": "flake-utils",
         "import-cargo": "import-cargo",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1667603770,
-        "narHash": "sha256-oSxZ2tGV8j4JDDC8CXURbFJ7kYbhqRwqgGRoEhwBArE=",
+        "lastModified": 1668615013,
+        "narHash": "sha256-d1CJO8Pd8dIqRwX72trXhqwkTZePs0y6x/1QS+I+pDA=",
         "ref": "refs/heads/main",
-        "rev": "be3fbdc63e39ef2e4943f322ed7f289dea1922a6",
-        "revCount": 34,
+        "rev": "354a52335fc84a7120a3af3e8340e8467b512a2a",
+        "revCount": 37,
         "type": "git",
-        "url": "file:///home/eduardo/dev/pombo_bot"
+        "url": "ssh://git@github.com/PombosMalvados/pombo_bot"
       },
       "original": {
         "type": "git",
-        "url": "file:///home/eduardo/dev/pombo_bot"
+        "url": "ssh://git@github.com/PombosMalvados/pombo_bot"
       }
     },
     "root": {

@@ -11,6 +11,9 @@
     htop
     ripgrep
     fd
+    tmux
+    zip
+    unzip
   ];
 
   hm.home.packages = with pkgs; [

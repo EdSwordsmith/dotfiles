@@ -2,7 +2,7 @@
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.modules.pombobot;
-  inherit (inputs.pombobot.${pkgs.system}) pombobot;
+  inherit (inputs.pombobot.packages.${pkgs.system}) pombobot;
 in
 {
   options.modules.pombobot.enable = mkEnableOption "Pombo Bot";

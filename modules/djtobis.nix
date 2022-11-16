@@ -1,7 +1,7 @@
 { config, options, pkgs, lib, inputs, configDir, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.modules.pombobot;
+  cfg = config.modules.djtobis;
   inherit (inputs) jmusicbot;
 in
 {

@@ -6,6 +6,7 @@
   
   {
     modules = {
+      djtobis.enable = true;
       pombobot.enable = true;
       noautosuspend.enable = true;
       fish.enable = true;

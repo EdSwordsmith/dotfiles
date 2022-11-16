@@ -1,26 +1,5 @@
 {
   "nodes": {
-    "djtobis": {
-      "inputs": {
-        "jmusicbot": "jmusicbot",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1667988449,
-        "narHash": "sha256-EbQ5nSR6nUJuVwXd8qiqc7yspfW9/QMWmyH4d1ZtWg4=",
-        "ref": "refs/heads/main",
-        "rev": "a81e960439af31be68641f4c0b7599e3509f8a31",
-        "revCount": 6,
-        "type": "git",
-        "url": "file:///home/eduardo/dev/flakes/djtobis"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:///home/eduardo/dev/flakes/djtobis"
-      }
-    },
     "flake-utils": {
       "locked": {
         "lastModified": 1667395993,
@@ -124,8 +103,8 @@
     },
     "root": {
       "inputs": {
-        "djtobis": "djtobis",
         "home": "home",
+        "jmusicbot": "jmusicbot",
         "nixpkgs": "nixpkgs",
         "pombobot": "pombobot"
       }

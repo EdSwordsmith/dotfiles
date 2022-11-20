@@ -19,7 +19,6 @@
   hm.home.packages = with pkgs; [
     spotify
     brave
-    firefox
     discord
     vscode
     emacs28NativeComp

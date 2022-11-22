@@ -14,6 +14,7 @@
       gpg.enable = true;
       git.enable = true;
       emacs.enable = true;
+      intellij.enable = true;
     };
 
     # Bootloader.

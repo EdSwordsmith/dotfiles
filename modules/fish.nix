@@ -41,5 +41,13 @@ in
         };
       };
     };
+
+
+    hm.programs.exa = {
+      enable = true;
+      enableAliases = true;
+    };
+
+    hm.programs.bat.enable = true;
   };
 }

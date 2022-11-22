@@ -9,7 +9,6 @@
       fish.enable = true;
       neovim.enable = true;
       git.enable = true;
-      emacs.enable = true;
     };
 
     # Bootloader.

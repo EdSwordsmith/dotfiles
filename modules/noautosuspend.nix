@@ -1,10 +1,10 @@
 { config, options, pkgs, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.modules.noautosuspend;
+  cfg = config.edu.noautosuspend;
 in
 {
-  options.modules.noautosuspend.enable = mkEnableOption "noautosuspend";
+  options.edu.noautosuspend.enable = mkEnableOption "noautosuspend";
 
   config = mkIf cfg.enable {
     # Disable auto suspend

@@ -1,10 +1,10 @@
 { config, options, pkgs, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.modules.git;
+  cfg = config.edu.git;
 in
 {
-  options.modules.git.enable = mkEnableOption "git";
+  options.edu.git.enable = mkEnableOption "git";
 
   config = mkIf cfg.enable {
     hm.programs.git = {
@@ -19,7 +19,7 @@ in
       };
 
       # Enable signing if the gpg module is enabled
-      signing = mkIf config.modules.gpg.enable {
+      signing = mkIf config.edu.gpg.enable {
         signByDefault = true;
         key = "0CF1C5EAF76639CE034D9A5E686B41F974804CC1";
       };

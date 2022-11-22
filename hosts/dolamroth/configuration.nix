@@ -5,10 +5,11 @@
   { config, inputs, pkgs, ... }:
   
   {
-    modules = {
+    edu = {
       fish.enable = true;
       neovim.enable = true;
       git.enable = true;
+      emacs.enable = true;
     };
 
     # Bootloader.

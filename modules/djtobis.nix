@@ -1,11 +1,11 @@
 { config, options, pkgs, lib, inputs, configDir, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.modules.djtobis;
+  cfg = config.edu.djtobis;
   inherit (inputs) jmusicbot;
 in
 {
-  options.modules.djtobis.enable = mkEnableOption "DJ Tóbis";
+  options.edu.djtobis.enable = mkEnableOption "DJ Tóbis";
 
   config = mkIf cfg.enable {
     systemd.services.djtobis = {

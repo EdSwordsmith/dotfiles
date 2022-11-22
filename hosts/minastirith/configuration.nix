@@ -5,7 +5,7 @@
   { config, inputs, pkgs, ... }:
   
   {
-    modules = {
+    edu = {
       djtobis.enable = true;
       pombobot.enable = true;
       noautosuspend.enable = true;
@@ -13,6 +13,7 @@
       neovim.enable = true;
       gpg.enable = true;
       git.enable = true;
+      emacs.enable = true;
     };
 
     # Bootloader.

@@ -21,7 +21,6 @@
     brave
     discord
     vscode
-    emacs28NativeComp
     jetbrains.idea-ultimate
     jetbrains-mono
   ];

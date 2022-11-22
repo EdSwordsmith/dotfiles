@@ -1,10 +1,10 @@
 { config, options, pkgs, lib, user, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.modules.fish;
+  cfg = config.edu.fish;
 in
 {
-  options.modules.fish.enable = mkEnableOption "fish";
+  options.edu.fish.enable = mkEnableOption "fish";
 
   config = mkIf cfg.enable {
     hm.programs.zoxide.enable = true;

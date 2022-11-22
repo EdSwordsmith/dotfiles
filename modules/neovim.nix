@@ -1,10 +1,10 @@
 { config, options, pkgs, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.modules.neovim;
+  cfg = config.edu.neovim;
 in
 {
-  options.modules.neovim.enable = mkEnableOption "neovim";
+  options.edu.neovim.enable = mkEnableOption "neovim";
 
   config = mkIf cfg.enable {
     hm.programs.neovim = {

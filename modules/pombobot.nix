@@ -1,11 +1,11 @@
 { config, options, pkgs, lib, inputs, configDir, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.modules.pombobot;
+  cfg = config.edu.pombobot;
   inherit (inputs.pombobot.packages.${pkgs.system}) pombobot;
 in
 {
-  options.modules.pombobot.enable = mkEnableOption "Pombo Bot";
+  options.edu.pombobot.enable = mkEnableOption "Pombo Bot";
 
   config = mkIf cfg.enable {
     systemd.services.pombobot = {

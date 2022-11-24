@@ -1,7 +1,7 @@
 { config, options, pkgs, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.edu.services.emacs;
+  cfg = config.edu.editors.emacs;
 in
 {
   options.edu.editors.emacs.enable = mkEnableOption "emacs";

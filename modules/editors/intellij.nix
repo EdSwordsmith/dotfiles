@@ -1,10 +1,10 @@
 { config, options, pkgs, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.edu.services.intellij;
+  cfg = config.edu.editors.intellij;
 in
 {
-  options.edu.services.intellij.enable = mkEnableOption "intellij";
+  options.edu.editors.intellij.enable = mkEnableOption "intellij";
 
   config = mkIf cfg.enable {
     hm.home.packages = with pkgs; [

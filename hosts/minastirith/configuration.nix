@@ -10,13 +10,17 @@
         djtobis.enable = true;
         pombobot.enable = true;
       };
+
+      editors = {
+        neovim.enable = true;
+        emacs.enable = true;
+        intellij.enable = true;
+      };
+
       noautosuspend.enable = true;
       fish.enable = true;
-      neovim.enable = true;
       gpg.enable = true;
       git.enable = true;
-      emacs.enable = true;
-      intellij.enable = true;
     };
 
     # Bootloader.

@@ -6,8 +6,8 @@
   
   {
     edu = {
+      editors.neovim.enable = true;
       fish.enable = true;
-      neovim.enable = true;
       git.enable = true;
     };
 

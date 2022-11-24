@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     git
-    neovim
     wget
     docker-compose
     htop
@@ -24,5 +23,8 @@
 
   programs.steam.enable = true;
 
-  environment.variables = { EDITOR = "nvim"; };
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
 }

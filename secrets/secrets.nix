@@ -7,4 +7,6 @@ let
   system_minastirith = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDfbvWDl4L5QsmfWGWwHmqzL3H8765Xd8bu3x4JNCSBq";
   systems = [ system_minastirith ];
 in
-{}
+  {
+    "pombobot.age".publicKeys = users ++ systems;  
+  }

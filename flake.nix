@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     pombobot = {
       url = "git+ssh://git@github.com/PombosMalvados/pombo_bot";
@@ -31,7 +35,7 @@
 
       pkgs = import inputs.nixpkgs {
         inherit system;
-        #overlays = [ inputs.emacs-overlay.overlay ];
+        overlays = [ inputs.agenix.overlay ];
         config.allowUnfree = true;
       };
 
@@ -63,6 +67,8 @@
                     useUserPackages = true;
                   };
                 }
+
+                inputs.agenix.nixosModule
               ] ++ mkModules ./modules;
             };
           })

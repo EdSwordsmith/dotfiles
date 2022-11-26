@@ -11,6 +11,7 @@
     tmux
     zip
     unzip
+    agenix
   ];
 
   hm.home.packages = with pkgs; [

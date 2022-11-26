@@ -1,9 +1,0 @@
-token =
-owner = 132132131135553536 
-prefix = "$"
-
-success = "<:cenoura:817883963959935017>"
-warning = "<:tobis:861652531456901131>"
-error = "<:kermit:868069351146799144>"
-loading = "<:dm:834847052491915355>"
-searching = "<:wtfisthiscrl:856658831361966130>"

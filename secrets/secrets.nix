@@ -9,4 +9,5 @@ let
 in
   {
     "pombobot.age".publicKeys = users ++ systems;  
+    "djtobis.age".publicKeys = users ++ systems;
   }

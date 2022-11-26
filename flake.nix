@@ -31,7 +31,7 @@
 
       system = "x86_64-linux";
       user = "eduardo";
-      configDir = "/home/eduardo/.config/nix/config";
+      configDir = ./config;
       secretsDir = ./secrets;
 
       pkgs = import inputs.nixpkgs {

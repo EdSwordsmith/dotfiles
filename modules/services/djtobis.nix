@@ -11,6 +11,8 @@ in
   config = mkIf cfg.enable {
     age.secrets.djtobis.file = "${secretsDir}/djtobis.age"; 
     age.secrets.djtobis.path = "${botDir}/config.txt";
+    age.secrets."NUNO.mp4".file = "${secretsDir}/NUNO.mp4.age"; 
+    age.secrets."NUNO.mp4".path = "${botDir}/NUNO.mp4";
 
     environment.etc = {
       "djtobis/Playlists".source = "${configDir}/djtobis/Playlists";

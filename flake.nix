@@ -32,6 +32,7 @@
       system = "x86_64-linux";
       user = "eduardo";
       configDir = "/home/eduardo/.config/nix/config";
+      secretsDir = ./secrets;
 
       pkgs = import inputs.nixpkgs {
         inherit system;
@@ -55,7 +56,7 @@
             inherit name;
             value = inputs.nixpkgs.lib.nixosSystem {
               inherit system pkgs;
-              specialArgs = { inherit user inputs configDir; };
+              specialArgs = { inherit user inputs configDir secretsDir; };
               modules = [
                 { networking.hostName = name; }
                 (dir + "/${name}/hardware.nix")

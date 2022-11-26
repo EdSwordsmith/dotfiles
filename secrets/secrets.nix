@@ -4,7 +4,7 @@ let
   user_dolamroth = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP0/hgrBsENtRhS2KxIsZrXiW5vVlkwxGCCQ14TUtGVd";
   users = [ user_annuminas user_minastirith user_dolamroth ];
 
-  system_minastirith = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDfbvWDl4L5QsmfWGWwHmqzL3H8765Xd8bu3x4JNCSBq";
+  system_minastirith = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICqqMgK+dTe40QHWrUfRZgBNtBMYUU/4KBt9Lk4iT3aY";
   systems = [ system_minastirith ];
 in
   {

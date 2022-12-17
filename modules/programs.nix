@@ -5,7 +5,7 @@
     git
     wget
     docker-compose
-    btop
+    htop
     ripgrep
     fd
     tmux

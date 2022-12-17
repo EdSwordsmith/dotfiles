@@ -12,6 +12,7 @@
     zip
     unzip
     agenix
+    nixpkgs-fmt
   ];
 
   hm.home.packages = with pkgs; [

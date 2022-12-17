@@ -3,7 +3,7 @@ let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.edu.services.pombobot;
   inherit (inputs.pombobot.packages.${pkgs.system}) pombobot;
-  botDir = "/etc/pombobot"; 
+  botDir = "/etc/pombobot";
 in
 {
   options.edu.services.pombobot.enable = mkEnableOption "Pombo Bot";

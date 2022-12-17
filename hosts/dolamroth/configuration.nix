@@ -1,93 +1,93 @@
-  # Edit this configuration file to define what should be installed on
-  # your system.  Help is available in the configuration.nix(5) man page
-  # and in the NixOS manual (accessible by running ‘nixos-help’).
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
 
-  { config, inputs, pkgs, ... }:
-  
-  {
-    edu = {
-      editors.neovim.enable = true;
-      fish.enable = true;
-      git.enable = true;
-    };
+{ config, inputs, pkgs, ... }:
 
-    # Bootloader.
-    boot.loader.grub.enable = true;
-    boot.loader.grub.device = "/dev/sda";
-    boot.loader.grub.useOSProber = true;
+{
+  edu = {
+    editors.neovim.enable = true;
+    fish.enable = true;
+    git.enable = true;
+  };
 
-    # Enable networking
-    networking.networkmanager.enable = true;
+  # Bootloader.
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
 
-    # Set your time zone.
-    time.timeZone = "Europe/Lisbon";
+  # Enable networking
+  networking.networkmanager.enable = true;
 
-    # Select internationalisation properties.
-    i18n.defaultLocale = "en_US.utf8";
+  # Set your time zone.
+  time.timeZone = "Europe/Lisbon";
 
-    i18n.extraLocaleSettings = {
-      LC_ADDRESS = "pt_PT.utf8";
-      LC_IDENTIFICATION = "pt_PT.utf8";
-      LC_MEASUREMENT = "pt_PT.utf8";
-      LC_MONETARY = "pt_PT.utf8";
-      LC_NAME = "pt_PT.utf8";
-      LC_NUMERIC = "pt_PT.utf8";
-      LC_PAPER = "pt_PT.utf8";
-      LC_TELEPHONE = "pt_PT.utf8";
-      LC_TIME = "pt_PT.utf8";
-    };
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.utf8";
 
-    # Enable the X11 windowing system.
-    services.xserver.enable = true;
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "pt_PT.utf8";
+    LC_IDENTIFICATION = "pt_PT.utf8";
+    LC_MEASUREMENT = "pt_PT.utf8";
+    LC_MONETARY = "pt_PT.utf8";
+    LC_NAME = "pt_PT.utf8";
+    LC_NUMERIC = "pt_PT.utf8";
+    LC_PAPER = "pt_PT.utf8";
+    LC_TELEPHONE = "pt_PT.utf8";
+    LC_TIME = "pt_PT.utf8";
+  };
 
-    # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
 
-    # Configure keymap in X11
-    services.xserver = {
-      layout = "pt";
-      xkbVariant = "";
-    };
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
-    # Configure console keymap
-    console.keyMap = "pt-latin1";
+  # Configure keymap in X11
+  services.xserver = {
+    layout = "pt";
+    xkbVariant = "";
+  };
 
-    # Enable CUPS to print documents.
-    services.printing.enable = true;
+  # Configure console keymap
+  console.keyMap = "pt-latin1";
 
-    # Enable sound with pipewire.
-    sound.enable = true;
-    hardware.pulseaudio.enable = false;
-    security.rtkit.enable = true;
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
 
-    # List services that you want to enable:
+  # Enable sound with pipewire.
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
-    # Enable the OpenSSH daemon.
-    services.openssh = {
-      enable = true;
-      passwordAuthentication = false;
-    };
-    
-    # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
+  # List services that you want to enable:
 
-    # This value determines the NixOS release from which the default
-    # settings for stateful data, like file locations and database versions
-    # on your system were taken. It‘s perfectly fine and recommended to leave
-    # this value at the release version of the first install of this system.
-    # Before changing this value read the documentation for this option
-    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-    system.stateVersion = "22.05"; # Did you read the comment?
+  # Enable the OpenSSH daemon.
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+  };
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  }
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "22.05"; # Did you read the comment?
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+}

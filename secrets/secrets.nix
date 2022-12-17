@@ -7,8 +7,8 @@ let
   system_minastirith = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICqqMgK+dTe40QHWrUfRZgBNtBMYUU/4KBt9Lk4iT3aY";
   systems = [ system_minastirith ];
 in
-  {
-    "pombobot.age".publicKeys = users ++ systems;  
-    "djtobis.age".publicKeys = users ++ systems;
-    "NUNO.mp4.age".publicKeys = users ++ systems;
-  }
+{
+  "pombobot.age".publicKeys = users ++ systems;
+  "djtobis.age".publicKeys = users ++ systems;
+  "NUNO.mp4.age".publicKeys = users ++ systems;
+}

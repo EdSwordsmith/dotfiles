@@ -47,33 +47,34 @@
           then mkModules "${dir}/${name}"
           else if value == "regular" && hasSuffix ".nix" name
           then [ (import "${dir}/${name}") ]
-          else [])
+          else [ ])
         (readDir dir)));
 
-        # Imports every host defined in a directory.
-        mkHosts = dir: listToAttrs (map
-          (name: {
-            inherit name;
-            value = inputs.nixpkgs.lib.nixosSystem {
-              inherit system pkgs;
-              specialArgs = { inherit user inputs configDir secretsDir; };
-              modules = [
-                { networking.hostName = name; }
-                (dir + "/${name}/hardware.nix")
-                (dir + "/${name}/configuration.nix")
+      # Imports every host defined in a directory.
+      mkHosts = dir: listToAttrs (map
+        (name: {
+          inherit name;
+          value = inputs.nixpkgs.lib.nixosSystem {
+            inherit system pkgs;
+            specialArgs = { inherit user inputs configDir secretsDir; };
+            modules = [
+              { networking.hostName = name; }
+              (dir + "/${name}/hardware.nix")
+              (dir + "/${name}/configuration.nix")
 
-                inputs.home.nixosModules.home-manager {
-                  home-manager = {
-                    useGlobalPkgs = true;
-                    useUserPackages = true;
-                  };
-                }
+              inputs.home.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                };
+              }
 
-                inputs.agenix.nixosModule
-              ] ++ mkModules ./modules;
-            };
-          })
-          (attrNames (readDir dir)));
+              inputs.agenix.nixosModule
+            ] ++ mkModules ./modules;
+          };
+        })
+        (attrNames (readDir dir)));
     in
     {
       nixosConfigurations = mkHosts ./hosts;

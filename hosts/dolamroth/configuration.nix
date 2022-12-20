@@ -6,7 +6,6 @@
 
 {
   edu = {
-    editors.neovim.enable = true;
     fish.enable = true;
     git.enable = true;
   };

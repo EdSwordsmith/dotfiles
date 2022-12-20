@@ -19,12 +19,7 @@
     spotify
     brave
     discord
-    vscode
     jetbrains-mono
   ];
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
 }

@@ -12,7 +12,6 @@
     };
 
     editors = {
-      neovim.enable = true;
       emacs.enable = true;
       intellij.enable = true;
     };

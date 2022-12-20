@@ -11,10 +11,7 @@
       pombobot.enable = true;
     };
 
-    editors = {
-      emacs.enable = true;
-      intellij.enable = true;
-    };
+    editors.intellij.enable = true;
 
     noautosuspend.enable = true;
     fish.enable = true;

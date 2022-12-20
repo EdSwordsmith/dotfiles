@@ -5,12 +5,13 @@
     enable = true;
 
     extensions = with pkgs.vscode-extensions; [
-      bbenoist.nix
+      jnoortheen.nix-ide
+      arrterian.nix-env-selector
       ms-python.python
       ms-python.vscode-pylance
       github.copilot
       ms-toolsai.jupyter
-      matklad.rust-analyzer
+      rust-lang.rust-analyzer
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "ayu";
@@ -30,6 +31,9 @@
 
       "terminal.integrated.fontFamily" = "JetBrains Mono";
       "terminal.integrated.fontSize" = 20;
+
+      "nix.serverPath" = "${pkgs.rnix-lsp}/bin/rnix-lsp";
+      "nix.enableLanguageServer" = true;
     };
   };
 }

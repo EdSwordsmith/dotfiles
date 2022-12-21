@@ -32,7 +32,7 @@
       "terminal.integrated.fontFamily" = "JetBrains Mono";
       "terminal.integrated.fontSize" = 20;
 
-      "nix.serverPath" = "${pkgs.rnix-lsp}/bin/rnix-lsp";
+      "nix.serverPath" = "${pkgs.nil}/bin/nil";
       "nix.enableLanguageServer" = true;
     };
   };

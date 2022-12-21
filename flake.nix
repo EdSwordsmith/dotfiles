@@ -26,7 +26,6 @@
   outputs = inputs @ { self, ... }:
     let
       inherit (inputs.nixpkgs.lib) nixosSystem mapAttrs hasSuffix;
-      inherit (inputs.djtobis.nixosModules) djtobis;
       inherit (builtins) concatLists attrValues readDir listToAttrs attrNames;
 
       system = "x86_64-linux";
@@ -54,7 +53,7 @@
       mkHosts = dir: listToAttrs (map
         (name: {
           inherit name;
-          value = inputs.nixpkgs.lib.nixosSystem {
+          value = nixosSystem {
             inherit system pkgs;
             specialArgs = { inherit user inputs configDir secretsDir; };
             modules = [

@@ -24,6 +24,7 @@
     brave
     discord
     jetbrains-mono
+    thunderbird
   ];
 
   hm.programs.direnv = {

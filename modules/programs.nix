@@ -13,6 +13,10 @@
     unzip
     agenix
     nixpkgs-fmt
+
+    # Gnome extensions
+    gnomeExtensions.tiling-assistant
+    gnomeExtensions.blur-my-shell
   ];
 
   hm.home.packages = with pkgs; [

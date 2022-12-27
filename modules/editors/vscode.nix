@@ -34,6 +34,7 @@
 
       "nix.serverPath" = "${pkgs.nil}/bin/nil";
       "nix.enableLanguageServer" = true;
+      "window.menuBarVisibility" = "hidden";
     };
   };
 }

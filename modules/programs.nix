@@ -17,6 +17,7 @@
     # Gnome extensions
     gnomeExtensions.tiling-assistant
     gnomeExtensions.blur-my-shell
+    gnomeExtensions.dash-to-dock
   ];
 
   hm.home.packages = with pkgs; [

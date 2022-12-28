@@ -21,7 +21,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   programs.steam.enable = true;
-
+  virtualisation.podman.enable = true;
   services.fprintd.enable = true;
 
   # Enable networking

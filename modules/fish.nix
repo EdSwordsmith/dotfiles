@@ -17,6 +17,10 @@ in
         rebuild = "sudo nixos-rebuild switch --flake '/home/${user}/.config/nix#${config.networking.hostName}'";
         cd = "z";
       };
+
+      functions = mkIf config.edu.editors.intellij.enable {
+        idea = "nohup idea-ultimate $argv >/dev/null 2>&1 &";
+      };
     };
 
     hm.programs.starship = {

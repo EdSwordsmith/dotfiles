@@ -13,7 +13,7 @@ in
   config = mkIf cfg.enable {
     hm.gtk = {
       enable = true;
-      
+
       theme = {
         package = pkgs.gnome-themes-extra;
         name = "Adwaita-dark";

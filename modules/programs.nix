@@ -14,7 +14,7 @@
     agenix
     nixpkgs-fmt
 
-    
+
     # Gnome apps & extensions
     gnome.gnome-tweaks
     gnomeExtensions.tiling-assistant
@@ -24,7 +24,7 @@
 
   fonts = {
     enableDefaultFonts = true;
-    
+
     fonts = with pkgs; [
       jetbrains-mono
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })

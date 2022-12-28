@@ -14,17 +14,27 @@
     agenix
     nixpkgs-fmt
 
-    # Gnome extensions
+    
+    # Gnome apps & extensions
+    gnome.gnome-tweaks
     gnomeExtensions.tiling-assistant
     gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
   ];
 
+  fonts = {
+    enableDefaultFonts = true;
+    
+    fonts = with pkgs; [
+      jetbrains-mono
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    ];
+  };
+
   hm.home.packages = with pkgs; [
     spotify
     brave
     discord
-    jetbrains-mono
     thunderbird
   ];
 

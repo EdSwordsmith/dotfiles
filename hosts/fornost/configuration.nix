@@ -6,6 +6,7 @@
 
 {
   edu = {
+    gtk.enable = true;
     editors.intellij.enable = true;
     gpg.enable = true;
     fish.enable = true;
@@ -82,9 +83,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

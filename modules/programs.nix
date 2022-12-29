@@ -42,7 +42,15 @@
     discord-pwa = {
       name = "Discord PWA";
       icon = "discord";
-      exec = "${pkgs.brave}/bin/brave --new-window --app=\"https://discord.com/app\"";
+      exec = "${pkgs.chromium}/bin/chromium --new-window --app=\"https://discord.com/app\"";
+      terminal = false;
+      categories = [ "Application" ];
+    };
+
+    notion = {
+      name = "Notion";
+      icon = "${configDir}/icons/notion.png";
+      exec = "${pkgs.chromium}/bin/chromium --new-window --app=\"https://www.notion.so\"";
       terminal = false;
       categories = [ "Application" ];
     };

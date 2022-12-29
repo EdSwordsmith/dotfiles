@@ -1,6 +1,8 @@
 { config, options, pkgs, lib, configDir, ... }:
 
 {
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   environment.systemPackages = with pkgs; [
     git
     wget
@@ -14,6 +16,7 @@
     agenix
     nixpkgs-fmt
     blackbox-terminal
+    postman
 
     # Gnome apps & extensions
     gnome.gnome-tweaks
@@ -42,7 +45,7 @@
     discord-pwa = {
       name = "Discord PWA";
       icon = "discord";
-      exec = "${pkgs.chromium}/bin/chromium --new-window --app=\"https://discord.com/app\"";
+      exec = "${pkgs.brave}/bin/brave --new-window --app=\"https://discord.com/app\"";
       terminal = false;
       categories = [ "Application" ];
     };
@@ -50,7 +53,7 @@
     notion = {
       name = "Notion";
       icon = "${configDir}/icons/notion.png";
-      exec = "${pkgs.chromium}/bin/chromium --new-window --app=\"https://www.notion.so\"";
+      exec = "${pkgs.brave}/bin/brave --new-window --app=\"https://www.notion.so\"";
       terminal = false;
       categories = [ "Application" ];
     };

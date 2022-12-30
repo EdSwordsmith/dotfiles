@@ -3,10 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+
     home = {
       url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,8 +27,9 @@
 
   outputs = inputs @ { self, ... }:
     let
-      inherit (inputs.nixpkgs.lib) nixosSystem mapAttrs hasSuffix;
-      inherit (builtins) concatLists attrValues readDir listToAttrs attrNames;
+      inherit (inputs.nixpkgs.lib) nixosSystem hasSuffix;
+      inherit (inputs.nixpkgs.lib.filesystem) listFilesRecursive;
+      inherit (builtins) readDir listToAttrs attrNames filter;
 
       system = "x86_64-linux";
       user = "eduardo";
@@ -35,19 +38,11 @@
 
       pkgs = import inputs.nixpkgs {
         inherit system;
-        overlays = [ inputs.agenix.overlay ];
         config.allowUnfree = true;
+        overlays = [ inputs.agenix.overlay ];
       };
 
-      # Imports every nix module from a directory, recursively.
-      mkModules = dir: concatLists (attrValues (mapAttrs
-        (name: value:
-          if value == "directory"
-          then mkModules "${dir}/${name}"
-          else if value == "regular" && hasSuffix ".nix" name
-          then [ (import "${dir}/${name}") ]
-          else [ ])
-        (readDir dir)));
+      mkModules = path: filter (hasSuffix ".nix") (listFilesRecursive path);
 
       # Imports every host defined in a directory.
       mkHosts = dir: listToAttrs (map

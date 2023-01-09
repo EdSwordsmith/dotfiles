@@ -37,7 +37,7 @@
   hm.home.packages = with pkgs; [
     spotify
     brave
-    discord
+    unstable.discord
     thunderbird
   ];
 

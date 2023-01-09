@@ -3,12 +3,12 @@
 {
   hm.programs.vscode = {
     enable = true;
+    package = pkgs.unstable.vscode;
 
-    extensions = with pkgs.vscode-extensions; [
+    extensions = with pkgs.unstable.vscode-extensions; [
       jnoortheen.nix-ide
       arrterian.nix-env-selector
       ms-python.python
-      ms-python.vscode-pylance
       github.copilot
       ms-toolsai.jupyter
       rust-lang.rust-analyzer

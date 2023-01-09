@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home = {
       url = "github:nix-community/home-manager/release-22.11";
@@ -36,11 +37,15 @@
       configDir = ./config;
       secretsDir = ./secrets;
 
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [ inputs.agenix.overlay ];
-      };
+      pkgs = let args = { inherit system; config.allowUnfree = true; }; in
+        import inputs.nixpkgs (args // {
+          overlays = [
+            inputs.agenix.overlay
+            (final: prev: {
+              unstable = import inputs.nixpkgs-unstable args;
+            })
+          ];
+        });
 
       mkModules = path: filter (hasSuffix ".nix") (listFilesRecursive path);
 

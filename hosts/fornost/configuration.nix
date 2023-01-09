@@ -18,6 +18,20 @@
     git.enable = true;
   };
 
+  # Virtualbox
+  virtualisation.virtualbox = {
+    host = {
+      enable = true;
+      enableExtensionPack = true;
+    };
+
+    guest = {
+      enable = true;
+      x11 = true;
+    };
+  };
+  users.extraGroups.vboxusers.members = [ "eduardo" ];
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Bootloader.

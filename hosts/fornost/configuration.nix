@@ -25,10 +25,10 @@
       enableExtensionPack = true;
     };
 
-    guest = {
-      enable = true;
-      x11 = true;
-    };
+    #guest = {
+    #  enable = true;
+    #  x11 = true;
+    #};
   };
   users.extraGroups.vboxusers.members = [ "eduardo" ];
 

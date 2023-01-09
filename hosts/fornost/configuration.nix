@@ -6,6 +6,11 @@
 
 {
   edu = {
+    services.wgrnl = {
+      enable = true;
+      privateKeyFile = "/etc/wireguard/privkey";
+    };
+
     gtk.enable = true;
     editors.intellij.enable = true;
     gpg.enable = true;

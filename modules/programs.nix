@@ -40,6 +40,7 @@
     brave
     unstable.discord
     thunderbird
+    prismlauncher
   ];
 
   hm.xdg.desktopEntries = {

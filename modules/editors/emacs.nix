@@ -11,7 +11,7 @@ in
       enable = true;
       package = pkgs.emacs28NativeComp;
       extraPackages = epkgs: [
-        pkgs.emacsPackages.vterm
+        epkgs.vterm
       ];
     };
   };

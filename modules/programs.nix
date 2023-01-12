@@ -17,6 +17,7 @@
     nixpkgs-fmt
     blackbox-terminal
     postman
+    keepassxc
 
     # Gnome apps & extensions
     gnome.gnome-tweaks

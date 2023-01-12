@@ -13,6 +13,7 @@
 
     gtk.enable = true;
     editors.intellij.enable = true;
+
     gpg.enable = true;
     fish.enable = true;
     git.enable = true;

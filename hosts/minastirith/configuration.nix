@@ -13,7 +13,11 @@
       minecraft = {
         enable = true;
         servers = {
-          mthcraft.memory = "3G";
+          #mthcraft.memory = "3G";
+          bteam = {
+            memory = "5G";
+            jre = pkgs.jre8;
+          };
         };
       };
     };

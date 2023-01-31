@@ -38,7 +38,7 @@
   hm.home.packages = with pkgs; [
     spotify
     brave
-    unstable.discord
+    discord
     thunderbird
     prismlauncher
   ];
@@ -52,10 +52,9 @@
       categories = [ "Application" ];
     };
 
-    notion = {
-      name = "Notion";
-      icon = "${configDir}/icons/notion.png";
-      exec = "${pkgs.brave}/bin/brave --new-window --app=\"https://www.notion.so\"";
+    zoom = {
+      name = "ZOOM";
+      exec = "${pkgs.brave}/bin/brave --new-window --app=\"https://pwa.zoom.us/wc\"";
       terminal = false;
       categories = [ "Application" ];
     };

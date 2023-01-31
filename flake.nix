@@ -28,7 +28,7 @@
 
   outputs = inputs @ { self, ... }:
     let
-      inherit (inputs.nixpkgs.lib) nixosSystem hasSuffix;
+      inherit (inputs.nixpkgs.lib) nixosSystem hasSuffix removeSuffix;
       inherit (inputs.nixpkgs.lib.filesystem) listFilesRecursive;
       inherit (builtins) readDir listToAttrs attrNames filter;
 
@@ -37,17 +37,21 @@
       configDir = ./config;
       secretsDir = ./secrets;
 
+      mkModules = path: filter (hasSuffix ".nix") (listFilesRecursive path);
+
+      mkOverlays = path: map
+        (m: import m { inherit inputs; })
+        (mkModules path);
+
       pkgs = let args = { inherit system; config.allowUnfree = true; }; in
         import inputs.nixpkgs (args // {
           overlays = [
-            inputs.agenix.overlay
+            inputs.agenix.overlays.default
             (final: prev: {
               unstable = import inputs.nixpkgs-unstable args;
             })
-          ];
+          ] ++ mkOverlays ./overlays;
         });
-
-      mkModules = path: filter (hasSuffix ".nix") (listFilesRecursive path);
 
       # Imports every host defined in a directory.
       mkHosts = dir: listToAttrs (map
@@ -69,7 +73,7 @@
                 };
               }
 
-              inputs.agenix.nixosModule
+              inputs.agenix.nixosModules.default
             ] ++ mkModules ./modules;
           };
         })

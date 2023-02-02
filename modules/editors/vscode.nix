@@ -12,6 +12,7 @@
       github.copilot
       ms-toolsai.jupyter
       rust-lang.rust-analyzer
+      ms-dotnettools.csharp
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "ayu";

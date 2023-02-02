@@ -39,6 +39,8 @@
     spotify
     brave
     discord
+    mattermost-desktop
+    slack
     thunderbird
     prismlauncher
   ];

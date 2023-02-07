@@ -12,6 +12,7 @@
     };
 
     gtk.enable = true;
+    sway.enable = true;
     editors.intellij.enable = true;
 
     gpg.enable = true;

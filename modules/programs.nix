@@ -18,6 +18,7 @@
     blackbox-terminal
     postman
     keepassxc
+    pavucontrol
 
     # Gnome apps & extensions
     gnome.gnome-tweaks
@@ -30,6 +31,8 @@
     enableDefaultFonts = true;
 
     fonts = with pkgs; [
+      font-awesome
+      roboto
       jetbrains-mono
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];

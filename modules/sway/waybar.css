@@ -1,0 +1,162 @@
+@keyframes blink-critical {
+    0% {
+        color: rgb(237, 237, 237);
+        text-shadow: 0em 0em 0.5em rgba(255, 48, 48, 1),
+        0em 0em 0.5em rgba(255, 48, 48, 1),
+        0em 0em 0.5em rgba(255, 48, 48, 1),
+        0em 0em 0.5em rgba(255, 48, 48, 1);
+    }
+    50% {
+        color: rgba(255, 48, 48, 1);
+        text-shadow: 0em 0em 0.5em rgba(255, 48, 48, 0),
+        0em 0em 0.5em rgba(255, 48, 48, 0);
+    }
+    100% {
+        color: rgb(237, 237, 237);
+        text-shadow: 0em 0em 0.5em rgba(255, 48, 48, 1),
+        0em 0em 0.5em rgba(255, 48, 48, 1),
+        0em 0em 0.5em rgba(255, 48, 48, 1),
+        0em 0em 0.5em rgba(255, 48, 48, 1);
+}
+}
+
+/* COLORS */
+@define-color bg #000000;
+@define-color fg #EDEDED;
+@define-color green_accent #41CC4A;
+@define-color blue_accent #1E66F5;
+@define-color warning #FFB23F;
+@define-color critical #FF3030;
+
+/* Reset all styles */
+* {
+    border: none;
+    min-height: 0;
+    margin: 0em 0.3em 0em 0.3em;
+}
+
+/* The whole bar */
+#waybar {
+    background: @bg;
+    color: @fg;
+    font-family: "JetBrains Mono", "Font Awesome 6 Free Solid";
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 0;
+}
+
+/* Each module */
+#clock,
+#cpu,
+#memory,
+#mode,
+#pulseaudio,
+#temperature,
+#tray {
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+}
+
+/* Each warning */
+#memory.warning,
+#cpu.warning,
+#temperature.warning {
+    background-color: @bg;
+    color: @warning;
+}
+
+/* Each critical module */
+#memory.critical,
+#cpu.critical,
+#temperature.critical {
+    background-color: @bg;
+    color: @critical;
+}
+
+
+/* And now modules themselves in their respective order */
+#mode {
+    color: @critical;
+    background: @bg;
+    text-shadow: 0em 0em 0.5em @critical,
+    0em 0em 0.5em @critical;
+    animation: blink-critical 2.5s infinite;
+}
+
+button.flat {
+    transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Workspaces stuff */
+#workspaces button {
+    font-weight: bold;
+    padding: 0;
+    opacity: 0.3;
+    background: none;
+    font-size: 1em;
+}
+
+#workspaces button.focused {
+    background: @bg;
+    color: @fg;
+    opacity: 1;
+    padding: 0 0;
+    text-shadow: 0em 0em 0.5em @fg,
+    0em 0em 0.5em @fg;
+}
+
+#workspaces #sway-workspace-1 {
+    text-shadow: 0em 0em 0.5em @fg,
+    0em 0em 0.5em @fg,
+    0em 0em 0.5em @fg;
+}
+
+#workspaces #sway-workspace-2, #workspaces #sway-workspace-3, #workspaces #sway-workspace-4 {
+    text-shadow: 0em 0em 0.5em @fg;
+}
+
+#workspaces button.urgent {
+    border-color: @critical;
+    color: @critical;
+    opacity: 1;
+}
+
+#window {
+    margin-right: 40px;
+    margin-left: 40px;
+    font-weight: bold;
+}
+
+#memory {
+    background: @bg;
+    color: @fg;
+}
+
+#idle_inhibitor {
+    background: @bg;
+    padding: 0em 0.4em 0em 0.6em;
+}
+
+#pulseaudio {
+    background: @bg;
+    color: @fg;
+}
+
+#pulseaudio.muted {
+    background-color: @critical;
+    color: @bg;
+}
+
+#pulseaudio.source-muted {
+    background-color: @warning;
+    color: @bg;
+}
+
+#tray {
+    background-color: @bg;
+    color: @fg;
+}
+
+#custom-power {
+    padding: 0 0.6em;
+}

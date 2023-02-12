@@ -7,14 +7,19 @@ in
   options.edu.sway.enable = mkEnableOption "sway";
 
   config = mkIf cfg.enable {
+    edu.foot.enable = true;
+
     hm.programs.mako.enable = true;
+
+    programs.light.enable = true;
+    usr.extraGroups = [ "video" ]; # For rootless light.
 
     programs.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
         swaybg
-        swaylock
+        swaylock-effects
         swayidle
         foot
 
@@ -47,7 +52,7 @@ in
 
     hm.programs.waybar = {
       enable = true;
-      systemd.enable = true;
+      #systemd.enable = true;
       style = ./waybar.css;
 
       settings = [{
@@ -65,6 +70,7 @@ in
 
         modules-right = [
           "pulseaudio"
+          "backlight"
           "network"
           "battery"
           "battery#bat2"
@@ -124,6 +130,11 @@ in
           format-alt = "{ifname}: {ipaddr}/{cidr}";
         };
 
+        backlight = {
+          format = "{percent}% {icon}";
+          format-icons = [ "" "" ];
+        };
+
         pulseaudio = {
           format = "{volume}% {icon}";
           format-muted = "";
@@ -174,7 +185,7 @@ in
               config.hm.wayland.windowManager.sway.config.modifier;
           in
           lib.mkOptionDefault {
-            "${modifier}+Escape" = "exec swaylock -f";
+            "${modifier}+Escape" = "exec swaylock -f --effect-blur 7x5";
 
             # Screenshots
             "Print" =

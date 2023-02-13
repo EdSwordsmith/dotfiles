@@ -2,6 +2,7 @@
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.edu.sway;
+  lockCommand = "${pkgs.swaylock-effects}/bin/swaylock -f --effect-blur 7x5";
 in
 {
   options.edu.sway.enable = mkEnableOption "sway";
@@ -61,7 +62,6 @@ in
 
         modules-left = [
           "sway/workspaces"
-          "sway/scratchpad"
         ];
 
         modules-center = [
@@ -79,17 +79,6 @@ in
         ];
 
         "sway/workspaces".disable-scroll = true;
-
-        "sway/scratchpad" = {
-          format = "{icon} {count}";
-          "show-empty" = false;
-          "format-icons" = [
-            ""
-            "\uf2d2"
-          ];
-          tooltip = true;
-          "tooltip-format" = "{app}: {title}";
-        };
 
         tray.spacing = 10;
 
@@ -163,7 +152,7 @@ in
       config = rec {
         modifier = "Mod4";
         terminal = "foot";
-        menu = "${terminal} --app-id=launcher -e ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
+        menu = "TERMINAL_COMMAND=${terminal} ${terminal} --app-id=launcher -e ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
 
         bars = [{ command = "waybar"; }];
 
@@ -185,7 +174,7 @@ in
               config.hm.wayland.windowManager.sway.config.modifier;
           in
           lib.mkOptionDefault {
-            "${modifier}+Escape" = "exec swaylock -f --effect-blur 7x5";
+            "${modifier}+Escape" = "exec ${lockCommand}";
 
             # Screenshots
             "Print" =
@@ -216,6 +205,23 @@ in
         for_window [app_id="^brave-(?!browser).*"] shortcuts_inhibitor disable
         exec_always ${pkgs.autotiling}/bin/autotiling
       '';
+    };
+
+    hm.services.swayidle = {
+      enable = true;
+      events = [
+        { event = "before-sleep"; command = lockCommand; }
+        { event = "lock"; command = lockCommand; }
+      ];
+      timeouts = [
+        { timeout = 300; command = lockCommand; }
+        { 
+          timeout = 60; 
+          command = ''
+            if ${pkgs.procps}/bin/pgrep swaylock; then ${pkgs.sway}/bin/swaymsg "output * dpms off"; fi'';
+          resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * dpms on"'';
+        }
+      ];
     };
   };
 }

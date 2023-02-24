@@ -1,4 +1,4 @@
-{ config, options, pkgs, lib, ... }:
+{ config, options, pkgs, lib, configDir, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.edu.git;

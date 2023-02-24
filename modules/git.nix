@@ -16,6 +16,8 @@ in
         pull.rebase = true;
         init.defaultBranch = "main";
         url."git@github.com".pushinsteadOf = "https://github.com/";
+        commit.template = "${configDir}/gitmessage.txt";
+        commit.verbose = true;
       };
 
       # Enable signing if the gpg module is enabled

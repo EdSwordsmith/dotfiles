@@ -13,7 +13,6 @@
       minecraft = {
         enable = true;
         servers = {
-          #mthcraft.memory = "3G";
           bteam = {
             memory = "5G";
             jre = pkgs.jre8;
@@ -23,11 +22,13 @@
     };
 
     editors.intellij.enable = true;
-
     noautosuspend.enable = true;
-    fish.enable = true;
-    gpg.enable = true;
-    git.enable = true;
+    
+    shell = {
+      fish.enable = true;
+      gpg.enable = true;
+      git.enable = true;
+    };  
   };
 
   programs.steam.enable = true;

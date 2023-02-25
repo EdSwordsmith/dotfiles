@@ -6,8 +6,10 @@
 
 {
   edu = {
-    fish.enable = true;
-    git.enable = true;
+    shell = {
+      fish.enable = true;
+      git.enable = true;
+    };
   };
 
   # Bootloader.

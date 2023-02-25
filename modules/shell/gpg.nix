@@ -1,7 +1,7 @@
 { config, options, pkgs, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.edu.gpg;
+  cfg = config.edu.shell.gpg;
 in
 {
   options.edu.gpg.enable = mkEnableOption "gpg";

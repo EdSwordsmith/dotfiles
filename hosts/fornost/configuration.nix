@@ -15,9 +15,11 @@
     sway.enable = true;
     editors.intellij.enable = true;
 
-    gpg.enable = true;
-    fish.enable = true;
-    git.enable = true;
+    shell = {
+      gpg.enable = true;
+      fish.enable = true;
+      git.enable = true;
+    };
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;

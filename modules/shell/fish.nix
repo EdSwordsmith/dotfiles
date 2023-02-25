@@ -1,7 +1,7 @@
 { config, options, pkgs, lib, user, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.edu.fish;
+  cfg = config.edu.shell.fish;
 in
 {
   options.edu.fish.enable = mkEnableOption "fish";

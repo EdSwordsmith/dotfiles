@@ -1,7 +1,7 @@
 { config, options, pkgs, lib, configDir, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.edu.git;
+  cfg = config.edu.shell.git;
 in
 {
   options.edu.git.enable = mkEnableOption "git";

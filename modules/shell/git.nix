@@ -21,7 +21,7 @@ in
       };
 
       # Enable signing if the gpg module is enabled
-      signing = mkIf config.edu.gpg.enable {
+      signing = mkIf config.edu.shell.gpg.enable {
         signByDefault = true;
         key = "0CF1C5EAF76639CE034D9A5E686B41F974804CC1";
       };

@@ -4,7 +4,7 @@ let
   cfg = config.edu.shell.gpg;
 in
 {
-  options.edu.gpg.enable = mkEnableOption "gpg";
+  options.edu.shell.gpg.enable = mkEnableOption "gpg";
 
   config = mkIf cfg.enable {
     hm.services.gpg-agent = {

@@ -4,7 +4,7 @@ let
   cfg = config.edu.shell.fish;
 in
 {
-  options.edu.fish.enable = mkEnableOption "fish";
+  options.edu.shell.fish.enable = mkEnableOption "fish";
 
   config = mkIf cfg.enable {
     hm.programs.zoxide.enable = true;

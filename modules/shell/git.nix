@@ -4,7 +4,7 @@ let
   cfg = config.edu.shell.git;
 in
 {
-  options.edu.git.enable = mkEnableOption "git";
+  options.edu.shell.git.enable = mkEnableOption "git";
 
   config = mkIf cfg.enable {
     hm.programs.git = {

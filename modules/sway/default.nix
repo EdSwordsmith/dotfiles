@@ -23,11 +23,8 @@ in
         swaylock-effects
         swayidle
         foot
-
+        wdisplays
         wl-clipboard
-        flameshot
-        # bemenu
-        # j4-dmenu-desktop
       ];
     };
 

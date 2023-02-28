@@ -222,11 +222,11 @@ in
     hm.services.swayidle = {
       enable = true;
       events = [
-        { event = "before-sleep"; command = "swaylock"; }
-        { event = "lock"; command = "swaylock"; }
+        { event = "before-sleep"; command = "${lockCommand}/bin/swaylock"; }
+        { event = "lock"; command = "${lockCommand}/bin/swaylock"; }
       ];
       timeouts = [
-        { timeout = 300; command = "swaylock"; }
+        { timeout = 300; command = "${lockCommand}/bin/swaylock"; }
         {
           timeout = 60;
           command = ''

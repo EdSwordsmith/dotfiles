@@ -5,6 +5,7 @@
 
   environment.systemPackages = with pkgs; [
     git
+    fzf
     wget
     docker-compose
     htop

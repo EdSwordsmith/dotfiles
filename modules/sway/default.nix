@@ -151,7 +151,7 @@ in
         terminal = "foot";
         menu = "TERMINAL_COMMAND=${terminal} ${terminal} --app-id=launcher -e ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
 
-        bars = [];
+        bars = [ ];
 
         input = {
           "type:keyboard" = {
@@ -212,8 +212,8 @@ in
       ];
       timeouts = [
         { timeout = 300; command = lockCommand; }
-        { 
-          timeout = 60; 
+        {
+          timeout = 60;
           command = ''
             if ${pkgs.procps}/bin/pgrep swaylock; then ${pkgs.sway}/bin/swaymsg "output * dpms off"; fi'';
           resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * dpms on"'';

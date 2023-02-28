@@ -21,6 +21,8 @@ in
       functions = mkIf config.edu.editors.intellij.enable {
         idea = "nohup idea-ultimate $argv >/dev/null 2>&1 &";
       };
+
+      plugins = [{ name = "fzf.fish"; src = pkgs.fishPlugins.fzf-fish.src; }];
     };
 
     hm.programs.starship = {

@@ -23,12 +23,12 @@
 
     editors.intellij.enable = true;
     noautosuspend.enable = true;
-    
+
     shell = {
       fish.enable = true;
       gpg.enable = true;
       git.enable = true;
-    };  
+    };
   };
 
   programs.steam.enable = true;

@@ -2,7 +2,23 @@
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.edu.sway;
-  lockCommand = "${pkgs.swaylock-effects}/bin/swaylock -f --effect-blur 7x5";
+  lockCommand = pkgs.writeShellScriptBin "swaylock" ''
+    ${pkgs.swaylock-effects}/bin/swaylock -f \
+      --screenshots \
+      --clock \
+      --indicator \
+      --indicator-radius 100 \
+      --indicator-thickness 7 \
+      --effect-blur 7x5 \
+      --effect-vignette 0.5:0.5 \
+      --ring-color bb00cc \
+      --key-hl-color 880033 \
+      --line-color 00000000 \
+      --inside-color 00000088 \
+      --separator-color 00000000 \
+      --grace 2 \
+      --fade-in 0.2
+  '';
 in
 {
   options.edu.sway.enable = mkEnableOption "sway";
@@ -20,12 +36,11 @@ in
       wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
         swaybg
-        swaylock-effects
         swayidle
         foot
         wdisplays
         wl-clipboard
-      ];
+      ] ++ [ lockCommand ];
     };
 
     security.polkit.enable = true;
@@ -171,7 +186,7 @@ in
               config.hm.wayland.windowManager.sway.config.modifier;
           in
           lib.mkOptionDefault {
-            "${modifier}+Escape" = "exec ${lockCommand}";
+            "${modifier}+Escape" = "exec swaylock";
 
             # Screenshots
             "Print" =
@@ -207,11 +222,11 @@ in
     hm.services.swayidle = {
       enable = true;
       events = [
-        { event = "before-sleep"; command = lockCommand; }
-        { event = "lock"; command = lockCommand; }
+        { event = "before-sleep"; command = "swaylock"; }
+        { event = "lock"; command = "swaylock"; }
       ];
       timeouts = [
-        { timeout = 300; command = lockCommand; }
+        { timeout = 300; command = "swaylock"; }
         {
           timeout = 60;
           command = ''

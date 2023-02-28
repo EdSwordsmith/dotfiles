@@ -50,7 +50,7 @@ in
 
     hm.programs.waybar = {
       enable = true;
-      #systemd.enable = true;
+      systemd.enable = true;
       style = ./waybar.css;
 
       settings = [{
@@ -151,7 +151,7 @@ in
         terminal = "foot";
         menu = "TERMINAL_COMMAND=${terminal} ${terminal} --app-id=launcher -e ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
 
-        bars = [{ command = "waybar"; }];
+        bars = [];
 
         input = {
           "type:keyboard" = {

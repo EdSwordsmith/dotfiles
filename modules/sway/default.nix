@@ -3,27 +3,6 @@ let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.edu.sway;
 
-  # currently, there is some friction between sway and gtk:
-  # https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
-  # the suggested way to set gtk settings is with gsettings
-  # for gsettings to work, we need to tell it where the schemas are
-  # using the XDG_DATA_DIR environment variable
-  # run at the end of sway config
-  configure-gtk = pkgs.writeTextFile {
-    name = "configure-gtk";
-    destination = "/bin/configure-gtk";
-    executable = true;
-    text =
-      let
-        schema = pkgs.gsettings-desktop-schemas;
-        datadir = "${schema}/share/gsettings-schemas/${schema.name}";
-      in
-      ''
-        export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
-        gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' && gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-      '';
-  };
-
   lockCommand = pkgs.writeShellScriptBin "swaylock" ''
     ${pkgs.swaylock-effects}/bin/swaylock -f \
       --screenshots \
@@ -57,7 +36,6 @@ in
       enable = true;
       wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
-        configure-gtk
         lockCommand
 
         swaybg
@@ -241,10 +219,6 @@ in
         for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 6
         for_window [app_id="^brave-(?!browser).*"] shortcuts_inhibitor disable
         exec_always ${pkgs.autotiling}/bin/autotiling
-      '';
-
-      extraConfig = ''
-        exec configure-gtk
       '';
     };
 

@@ -21,7 +21,7 @@
     };
 
     jmusicbot = {
-      url = "https://github.com/jagrosh/MusicBot/releases/download/0.3.8/JMusicBot-0.3.8.jar";
+      url = "https://github.com/jagrosh/MusicBot/releases/download/0.3.9/JMusicBot-0.3.9.jar";
       flake = false;
     };
   };

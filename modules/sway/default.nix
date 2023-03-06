@@ -181,6 +181,12 @@ in
             click_method = "clickfinger";
             natural_scroll = "enabled";
           };
+
+          "type:touch" = {
+            drag = "enabled";
+            drag_lock = "enabled";
+            map_to_output = "eDP-1";
+          };
         };
 
         keybindings =

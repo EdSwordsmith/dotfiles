@@ -43,6 +43,7 @@ in
         foot
         wdisplays
         wl-clipboard
+        sway-contrib.grimshot
       ];
     };
 
@@ -150,7 +151,7 @@ in
             ];
           };
 
-          on-click = "pavucontrol";
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           tooltip = false;
         };
       }];
@@ -198,10 +199,14 @@ in
             "${modifier}+Escape" = "exec swaylock";
 
             # Screenshots
-            "Print" =
+            "Print+a" =
               "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
-            "Shift+Print" =
+            "Shift+Print+a" =
               "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
+            "Print+w" =
+              "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy window";
+            "Shift+Print+w" =
+              "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save window";
 
             # Brightness
             "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -T 0.72";

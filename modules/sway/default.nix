@@ -25,7 +25,7 @@ in
   options.edu.sway.enable = mkEnableOption "sway";
 
   config = mkIf cfg.enable {
-    edu.foot.enable = true;
+    edu.alacritty.enable = true;
 
     hm.programs.mako.enable = true;
 
@@ -40,7 +40,6 @@ in
 
         swaybg
         swayidle
-        foot
         wdisplays
         wl-clipboard
         sway-contrib.grimshot
@@ -167,8 +166,8 @@ in
 
       config = rec {
         modifier = "Mod4";
-        terminal = "foot";
-        menu = "TERMINAL_COMMAND=${terminal} ${terminal} --app-id=launcher -e ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
+        terminal = "alacritty";
+        menu = "TERMINAL_COMMAND=${terminal} ${terminal} --class launcher -e ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
 
         bars = [ ];
 

@@ -29,9 +29,9 @@ in
       }
 
       {
-        plugin = gruvbox-nvim;
+        plugin = neovim-ayu;
         type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/gruvbox-nvim.lua";
+        config = builtins.readFile "${configDir}/nvim/lua/ayu.lua";
       }
       {
         plugin = telescope-nvim;

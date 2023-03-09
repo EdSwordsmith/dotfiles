@@ -255,8 +255,8 @@ in
       latitude = 38.7;
       longitude = -9.14;
       temperature = {
-        day = 6500;
-        night = 2000;
+        day = 5700;
+        night = 2700;
       };
     };
   };

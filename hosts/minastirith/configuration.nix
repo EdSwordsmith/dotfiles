@@ -21,6 +21,12 @@
       };
     };
 
+    graphical = {
+      sound.enable = true;
+      gtk.enable = true;
+      games.enable = true;
+    };
+
     editors.intellij.enable = true;
     noautosuspend.enable = true;
 
@@ -30,8 +36,6 @@
       git.enable = true;
     };
   };
-
-  programs.steam.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -47,21 +51,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.utf8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pt_PT.utf8";
-    LC_IDENTIFICATION = "pt_PT.utf8";
-    LC_MEASUREMENT = "pt_PT.utf8";
-    LC_MONETARY = "pt_PT.utf8";
-    LC_NAME = "pt_PT.utf8";
-    LC_NUMERIC = "pt_PT.utf8";
-    LC_PAPER = "pt_PT.utf8";
-    LC_TELEPHONE = "pt_PT.utf8";
-    LC_TIME = "pt_PT.utf8";
-  };
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -69,30 +58,15 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  # Configure keymap in X11
+  # Configure keymap 
+  console.keyMap = "pt-latin1";
   services.xserver = {
     layout = "pt";
     xkbVariant = "";
   };
 
-  # Configure console keymap
-  console.keyMap = "pt-latin1";
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh = {
@@ -111,8 +85,6 @@
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 31001 ];
   networking.firewall.allowedUDPPorts = [ 31001 ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

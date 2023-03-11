@@ -46,8 +46,6 @@
     mattermost-desktop
     slack
     thunderbird
-    prismlauncher
-    superTux
   ];
 
   hm.xdg.desktopEntries = {

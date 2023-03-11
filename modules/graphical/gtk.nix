@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.edu.gtk;
+  cfg = config.edu.graphical.gtk;
 in
 {
-  options.edu.gtk = {
+  options.edu.graphical.gtk = {
     enable = mkEnableOption "Gtk";
   };
 

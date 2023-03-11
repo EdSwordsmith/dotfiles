@@ -11,7 +11,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    hm.home.packages = [
+    hm.home.packages = with pkgs; [
       prismlauncher
       superTux
     ];

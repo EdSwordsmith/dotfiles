@@ -62,8 +62,6 @@
             specialArgs = { inherit user inputs configDir secretsDir; };
             modules = [
               { networking.hostName = name; }
-              (dir + "/${name}/hardware.nix")
-              (dir + "/${name}/configuration.nix")
 
               inputs.home.nixosModules.home-manager
               {
@@ -74,7 +72,7 @@
               }
 
               inputs.agenix.nixosModules.default
-            ] ++ mkModules ./modules;
+            ] ++ mkModules ./modules ++ mkModules "${dir}/${name}";
           };
         })
         (attrNames (readDir dir)));

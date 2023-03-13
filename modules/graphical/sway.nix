@@ -26,8 +26,11 @@ in
 
   config = mkIf cfg.enable {
     edu.alacritty.enable = true;
-    edu.graphical.gtk.enable = true;
-    edu.graphical.sound.enable = true;
+    edu.graphical = {
+      gtk.enable = true;
+      sound.enable = true;
+      waybar.enable = true;
+    };
 
     hm.programs.mako.enable = true;
 

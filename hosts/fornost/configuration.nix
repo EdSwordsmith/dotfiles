@@ -53,14 +53,12 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  # Configure keymap in X11
+  # Configure keymap 
+  console.keyMap = "pt-latin1";
   services.xserver = {
     layout = "pt";
     xkbVariant = "";
   };
-
-  # Configure console keymap
-  console.keyMap = "pt-latin1";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

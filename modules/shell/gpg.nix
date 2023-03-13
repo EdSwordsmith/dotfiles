@@ -9,7 +9,7 @@ in
   config = mkIf cfg.enable {
     hm.services.gpg-agent = {
       enable = true;
-      pinentryFlavor = "gnome3";
+      pinentryFlavor = "tty";
     };
 
     hm.programs.gpg.enable = true;

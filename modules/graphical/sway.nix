@@ -25,11 +25,12 @@ in
   options.edu.graphical.sway.enable = mkEnableOption "sway";
 
   config = mkIf cfg.enable {
-    edu.alacritty.enable = true;
-    edu.graphical = {
-      gtk.enable = true;
-      sound.enable = true;
-      waybar.enable = true;
+    edu = {
+      alacritty.enable = true;
+      graphical = {
+        enable = true;
+        waybar.enable = true;
+      };
     };
 
     hm.programs.mako.enable = true;

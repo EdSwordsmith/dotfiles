@@ -39,43 +39,29 @@
 #waybar {
     background: @bg;
     color: @fg;
-    font-family: "JetBrains Mono", "Font Awesome 6 Free Solid";
+    font-family: "JetBrains Mono", "Material Design Icons";
     font-size: 15px;
     font-weight: bold;
     border-radius: 0;
 }
 
 /* Each module */
+#backlight,
+#battery,
 #clock,
-#cpu,
-#memory,
-#mode,
+#network,
 #pulseaudio,
-#temperature,
 #tray {
-    padding-left: 0.6em;
-    padding-right: 0.6em;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
 }
 
-/* Each warning */
-#memory.warning,
-#cpu.warning,
-#temperature.warning {
+#battery.warning {
     background-color: @bg;
     color: @warning;
 }
 
-/* Each critical module */
-#memory.critical,
-#cpu.critical,
-#temperature.critical {
-    background-color: @bg;
-    color: @critical;
-}
-
-
-/* And now modules themselves in their respective order */
-#mode {
+#battery.critical {
     color: @critical;
     background: @bg;
     text-shadow: 0em 0em 0.5em @critical,
@@ -87,7 +73,6 @@ button.flat {
     transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Workspaces stuff */
 #workspaces button {
     font-weight: bold;
     padding: 0;
@@ -127,16 +112,6 @@ button.flat {
     font-weight: bold;
 }
 
-#memory {
-    background: @bg;
-    color: @fg;
-}
-
-#idle_inhibitor {
-    background: @bg;
-    padding: 0em 0.4em 0em 0.6em;
-}
-
 #pulseaudio {
     background: @bg;
     color: @fg;
@@ -155,8 +130,4 @@ button.flat {
 #tray {
     background-color: @bg;
     color: @fg;
-}
-
-#custom-power {
-    padding: 0 0.6em;
 }

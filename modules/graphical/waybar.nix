@@ -44,7 +44,7 @@ in
 
         clock = {
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format = "{:%Y-%m-%d %H:%M} ";
+          format = "{:%Y-%m-%d %H:%M} 󱑒";
         };
 
         battery = {
@@ -54,16 +54,21 @@ in
           };
 
           format = "{capacity}% {icon}";
-          format-charging = "{capacity}% ";
-          format-plugged = "{capacity}% ";
+          format-charging = "{capacity}% 󰂉";
+          format-plugged = "{capacity}% 󰚥";
           format-alt = "{time} {icon}";
 
           format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
           ];
         };
 
@@ -72,8 +77,8 @@ in
         };
 
         network = {
-          format-wifi = "{essid} ({signalStrength}%) ";
-          format-ethernet = "{ipaddr}/{cidr} ";
+          format-wifi = "{essid} ({signalStrength}%) 󰖩";
+          format-ethernet = "{ipaddr}/{cidr} 󰈀";
           format-linked = "{ifname} (No IP)";
           format-disconnected = "Disconnected";
           format-alt = "{ifname}: {ipaddr}/{cidr}";
@@ -81,17 +86,17 @@ in
 
         backlight = {
           format = "{percent}% {icon}";
-          format-icons = [ "" "" ];
+          format-icons = [ "󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠" ];
         };
 
         pulseaudio = {
           format = "{volume}% {icon}";
-          format-muted = "";
+          format-muted = "󰖁";
           format-icons = {
             default = [
-              ""
-              ""
-              ""
+              "󰕿"
+              "󰖀"
+              "󰕾"
             ];
           };
 

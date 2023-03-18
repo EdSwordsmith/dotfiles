@@ -44,6 +44,7 @@ in
       extraPackages = with pkgs; [
         lockCommand
 
+        blueberry
         swaybg
         swayidle
         wdisplays

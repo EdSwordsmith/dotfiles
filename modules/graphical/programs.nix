@@ -16,6 +16,7 @@ in
 
       fonts = with pkgs; [
         font-awesome
+        material-design-icons
         roboto
         jetbrains-mono
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })

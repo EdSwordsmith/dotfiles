@@ -6,13 +6,20 @@
     package = pkgs.unstable.vscode;
 
     extensions = with pkgs.unstable.vscode-extensions; [
-      jnoortheen.nix-ide
       arrterian.nix-env-selector
-      ms-python.python
       github.copilot
+      ms-vsliveshare.vsliveshare
+
+      # Python
+      ms-python.python
       ms-toolsai.jupyter
+
+      # Rust
       rust-lang.rust-analyzer
-      ms-dotnettools.csharp
+
+      # JavaScript
+      dbaeumer.vscode-eslint
+      esbenp.prettier-vscode
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "ayu";
@@ -22,20 +29,20 @@
       }
     ];
 
-    userSettings = {
-      "editor.fontSize" = 20;
-      "editor.fontFamily" = "JetBrains Mono, Menlo, monospace";
-      "editor.fontLigatures" = true;
+    # Got annoyed at the errors you get from the settings.json file being read only
+    # This gives more headaches than it solves
+    #userSettings = {
+    #  "editor.fontSize" = 20;
+    #  "editor.fontFamily" = "JetBrains Mono, Menlo, monospace";
+    #  "editor.fontLigatures" = true;
+    #
+    #  "workbench.colorTheme" = "Ayu Dark";
+    #  "workbench.iconTheme" = "ayu";
 
-      "workbench.colorTheme" = "Ayu Dark";
-      "workbench.iconTheme" = "ayu";
+    #  "terminal.integrated.fontFamily" = "JetBrains Mono";
+    #  "terminal.integrated.fontSize" = 20;
 
-      "terminal.integrated.fontFamily" = "JetBrains Mono";
-      "terminal.integrated.fontSize" = 20;
-
-      "nix.serverPath" = "${pkgs.nil}/bin/nil";
-      "nix.enableLanguageServer" = true;
-      "window.menuBarVisibility" = "hidden";
-    };
+    #  "window.menuBarVisibility" = "hidden";
+    #};
   };
 }

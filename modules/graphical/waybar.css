@@ -61,7 +61,7 @@
     color: @warning;
 }
 
-#battery.critical {
+#battery.critical:not(.charging) {
     color: @critical;
     background: @bg;
     text-shadow: 0em 0em 0.5em @critical,

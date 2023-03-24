@@ -8,7 +8,7 @@ in
 
   config = mkIf cfg.enable {
     hm.home.packages = with pkgs; [
-      unstable.jetbrains.idea-ultimate
+      latest.jetbrains.idea-ultimate
     ];
   };
 }

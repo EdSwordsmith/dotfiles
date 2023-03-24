@@ -29,10 +29,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  virtualisation.podman = {
-    enable = true;
-    defaultNetwork.dnsname.enable = true;
-  };
+  virtualisation.docker.enable = true;
 
   services.fprintd.enable = true;
 
@@ -48,6 +45,10 @@
     layout = "pt";
     xkbVariant = "";
   };
+
+  usr.extraGroups = [ "dialout" ];
+
+  networking.firewall.allowedTCPPortRanges = [{ from = 8000; to = 8999; }];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

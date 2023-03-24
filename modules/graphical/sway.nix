@@ -107,6 +107,13 @@ in
           lib.mkOptionDefault {
             "${modifier}+Escape" = "exec swaylock";
 
+            # Move to different monitor
+            "${modifier}+Ctrl+Up" = "move workspace to output up";
+            "${modifier}+Ctrl+Down" = "move workspace to output down";
+            "${modifier}+Ctrl+Left" = "move workspace to output left";
+            "${modifier}+Ctrl+Right" = "move workspace to output right";
+
+
             # Screenshots
             "Print+a" =
               "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";

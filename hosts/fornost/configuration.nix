@@ -46,7 +46,7 @@
     xkbVariant = "";
   };
 
-  usr.extraGroups = [ "dialout" ];
+  usr.extraGroups = [ "dialout" "docker" ];
 
   networking.firewall.allowedTCPPortRanges = [{ from = 8000; to = 8999; }];
 

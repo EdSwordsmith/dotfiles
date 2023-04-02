@@ -49,7 +49,7 @@ in
 
         battery = {
           states = {
-            warning = 30;
+            warning = 25;
             critical = 15;
           };
 

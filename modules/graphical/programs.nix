@@ -33,6 +33,7 @@ in
       postman
       keepassxc
       pavucontrol
+      gimp
     ];
 
     hm.xdg.desktopEntries = {

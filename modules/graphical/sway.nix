@@ -1,4 +1,4 @@
-{ config, options, pkgs, lib, ... }:
+{ config, options, pkgs, lib, configDir, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.edu.graphical.sway;
@@ -67,6 +67,13 @@ in
       };
     };
 
+    hm.programs.rofi = {
+      enable = true;
+      package = pkgs.rofi-wayland;
+      terminal = "${pkgs.alacritty}/bin/alacritty";
+      theme = ./theme.rasi;
+    };
+
     hm.wayland.windowManager.sway = {
       enable = true;
       systemdIntegration = true;
@@ -78,7 +85,8 @@ in
       config = rec {
         modifier = "Mod4";
         terminal = "alacritty";
-        menu = "TERMINAL_COMMAND=${terminal} ${terminal} --class launcher -e ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
+        #menu = "TERMINAL_COMMAND=${terminal} ${terminal} --class launcher -e ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
+        menu = "rofi -show drun -show-icons";
         bars = [ ];
 
         input = {

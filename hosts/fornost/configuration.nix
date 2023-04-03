@@ -13,7 +13,10 @@
       games.enable = true;
     };
 
-    editors.intellij.enable = true;
+    editors = {
+      emacs.enable = true;
+      intellij.enable = true;
+    };
 
     shell = {
       gpg.enable = true;

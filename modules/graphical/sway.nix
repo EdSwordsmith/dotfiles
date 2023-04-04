@@ -49,6 +49,7 @@ in
         swayidle
         wdisplays
         wl-clipboard
+        wlogout
         sway-contrib.grimshot
       ];
     };
@@ -114,12 +115,17 @@ in
           in
           lib.mkOptionDefault {
             "${modifier}+Escape" = "exec swaylock";
+            "${modifier}+Shift+Escape" = "exec wlogout";
 
             # Move to different monitor
-            "${modifier}+Ctrl+Up" = "move workspace to output up";
-            "${modifier}+Ctrl+Down" = "move workspace to output down";
             "${modifier}+Ctrl+Left" = "move workspace to output left";
+            "${modifier}+Ctrl+Down" = "move workspace to output down";
+            "${modifier}+Ctrl+Up" = "move workspace to output up";
             "${modifier}+Ctrl+Right" = "move workspace to output right";
+            "${modifier}+Ctrl+h" = "move workspace to output left";
+            "${modifier}+Ctrl+j" = "move workspace to output down";
+            "${modifier}+Ctrl+k" = "move workspace to output up";
+            "${modifier}+Ctrl+l" = "move workspace to output right";
 
 
             # Screenshots

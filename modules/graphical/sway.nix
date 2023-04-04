@@ -57,6 +57,8 @@ in
     security.polkit.enable = true;
     services.gnome.gnome-keyring.enable = true;
 
+    programs.nm-applet.enable = true;
+
     # Solves small cursor on HiDPI.
     hm.home.pointerCursor = {
       name = "Adwaita";
@@ -182,6 +184,7 @@ in
 
     hm.services.gammastep = {
       enable = true;
+      tray = true;
       provider = "manual";
       latitude = 38.7;
       longitude = -9.14;

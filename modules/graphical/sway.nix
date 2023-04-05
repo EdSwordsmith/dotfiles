@@ -33,6 +33,8 @@ in
       };
     };
 
+    hm.xdg.configFile.wlogout.source = ./wlogout;
+
     hm.programs.mako.enable = true;
 
     programs.light.enable = true;
@@ -117,7 +119,7 @@ in
           in
           lib.mkOptionDefault {
             "${modifier}+Escape" = "exec swaylock";
-            "${modifier}+Shift+Escape" = "exec wlogout";
+            "${modifier}+Shift+Escape" = "exec wlogout -p layer-shell";
 
             # Move to different monitor
             "${modifier}+Ctrl+Left" = "move workspace to output left";

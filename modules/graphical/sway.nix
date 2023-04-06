@@ -20,8 +20,7 @@ let
       --grace 2 \
       --fade-in 0.2
   '';
-in
-{
+in {
   options.edu.graphical.sway.enable = mkEnableOption "sway";
 
   config = mkIf cfg.enable {
@@ -95,9 +94,7 @@ in
         bars = [ ];
 
         input = {
-          "type:keyboard" = {
-            xkb_layout = "pt";
-          };
+          "type:keyboard" = { xkb_layout = "pt"; };
 
           "type:touchpad" = {
             tap = "enabled";
@@ -113,11 +110,8 @@ in
         };
 
         keybindings =
-          let
-            modifier =
-              config.hm.wayland.windowManager.sway.config.modifier;
-          in
-          lib.mkOptionDefault {
+          let modifier = config.hm.wayland.windowManager.sway.config.modifier;
+          in lib.mkOptionDefault {
             "${modifier}+Escape" = "exec swaylock";
             "${modifier}+Shift+Escape" = "exec wlogout -p layer-shell";
 
@@ -130,7 +124,6 @@ in
             "${modifier}+Ctrl+j" = "move workspace to output down";
             "${modifier}+Ctrl+k" = "move workspace to output up";
             "${modifier}+Ctrl+l" = "move workspace to output right";
-
 
             # Screenshots
             "Print+a" =
@@ -170,11 +163,20 @@ in
     hm.services.swayidle = {
       enable = true;
       events = [
-        { event = "before-sleep"; command = "${lockCommand}/bin/swaylock"; }
-        { event = "lock"; command = "${lockCommand}/bin/swaylock"; }
+        {
+          event = "before-sleep";
+          command = "${lockCommand}/bin/swaylock";
+        }
+        {
+          event = "lock";
+          command = "${lockCommand}/bin/swaylock";
+        }
       ];
       timeouts = [
-        { timeout = 300; command = "${lockCommand}/bin/swaylock"; }
+        {
+          timeout = 300;
+          command = "${lockCommand}/bin/swaylock";
+        }
         {
           timeout = 60;
           command = ''

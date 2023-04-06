@@ -35,6 +35,7 @@ in
       nodePackages.typescript-language-server
       isort
       black
+      sqlite # org-roam
     ];
   };
 }

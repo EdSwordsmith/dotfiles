@@ -34,6 +34,7 @@ in
       keepassxc
       pavucontrol
       gimp
+      unstable.zoom-us
     ];
 
     hm.xdg.desktopEntries = {

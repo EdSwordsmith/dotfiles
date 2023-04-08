@@ -2,8 +2,7 @@
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.edu.editors.emacs;
-in
-{
+in {
   options.edu.editors.emacs.enable = mkEnableOption "emacs";
 
   config = mkIf cfg.enable {
@@ -22,7 +21,7 @@ in
       clang
 
       # Module dependencies
-      nodePackages.npm
+      nodejs
       editorconfig-core-c
       shfmt
       shellcheck
@@ -36,6 +35,8 @@ in
       isort
       black
       sqlite # org-roam
+      pandoc
+      graphviz
     ];
   };
 }

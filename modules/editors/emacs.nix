@@ -37,6 +37,7 @@ in {
       sqlite # org-roam
       pandoc
       graphviz
+      texlive.combined.scheme-full
     ];
   };
 }

@@ -43,9 +43,9 @@ in {
       enable = true;
       wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
-        lockCommand
-
+        lockCommand # swaylock with effects
         blueberry
+        xfce.thunar
         swaybg
         swayidle
         wdisplays
@@ -89,7 +89,6 @@ in {
       config = rec {
         modifier = "Mod4";
         terminal = "alacritty";
-        #menu = "TERMINAL_COMMAND=${terminal} ${terminal} --class launcher -e ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
         menu = "rofi -show drun -show-icons";
         bars = [ ];
 

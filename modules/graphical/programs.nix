@@ -2,10 +2,8 @@
 
 with lib;
 
-let
-  cfg = config.edu.graphical.programs;
-in
-{
+let cfg = config.edu.graphical.programs;
+in {
   options.edu.graphical.programs = {
     enable = mkEnableOption "graphical programs";
   };
@@ -29,6 +27,7 @@ in
       discord
       mattermost-desktop
       slack
+      evince
       thunderbird
       postman
       keepassxc
@@ -41,14 +40,16 @@ in
       discord-pwa = {
         name = "Discord PWA";
         icon = "discord";
-        exec = "${pkgs.brave}/bin/brave --new-window --app=\"https://discord.com/app\"";
+        exec = ''
+          ${pkgs.brave}/bin/brave --new-window --app="https://discord.com/app"'';
         terminal = false;
         categories = [ "Application" ];
       };
 
       zoom = {
         name = "ZOOM";
-        exec = "${pkgs.brave}/bin/brave --new-window --app=\"https://pwa.zoom.us/wc\"";
+        exec = ''
+          ${pkgs.brave}/bin/brave --new-window --app="https://pwa.zoom.us/wc"'';
         terminal = false;
         categories = [ "Application" ];
       };

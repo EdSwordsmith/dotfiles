@@ -5,7 +5,10 @@
     enable = true;
     profiles = {
       normal = {
-        outputs = [{ criteria = "eDP-1"; }];
+        outputs = [{
+          criteria = "eDP-1";
+          position = "0,0";
+        }];
       };
 
       dei = {

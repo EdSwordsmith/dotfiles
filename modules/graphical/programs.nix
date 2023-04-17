@@ -36,6 +36,8 @@ in {
       unstable.zoom-us
     ];
 
+    services.flatpak.enable = true;
+
     hm.xdg.desktopEntries = {
       discord-pwa = {
         name = "Discord PWA";

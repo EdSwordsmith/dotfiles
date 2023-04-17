@@ -29,10 +29,9 @@ in {
       graphical = {
         enable = true;
         waybar.enable = true;
+        wlogout.enable = true;
       };
     };
-
-    hm.xdg.configFile.wlogout.source = ./wlogout;
 
     hm.programs.mako.enable = true;
 
@@ -50,7 +49,6 @@ in {
         swayidle
         wdisplays
         wl-clipboard
-        wlogout
         sway-contrib.grimshot
       ];
     };

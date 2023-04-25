@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-latest.url = "github:nixos/nixpkgs";
+    #nixpkgs-latest.url = "github:nixos/nixpkgs";
 
     home = {
       url = "github:nix-community/home-manager/release-22.11";
@@ -50,7 +50,7 @@
             inputs.agenix.overlays.default
             (final: prev: {
               unstable = import inputs.nixpkgs-unstable args;
-              latest = import inputs.nixpkgs-latest args;
+              #latest = import inputs.nixpkgs-latest args;
             })
           ] ++ mkOverlays ./overlays;
         });

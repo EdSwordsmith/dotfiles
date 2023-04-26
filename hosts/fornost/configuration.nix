@@ -22,6 +22,7 @@
       gpg.enable = true;
       fish.enable = true;
       git.enable = true;
+      joshuto.enable = true;
     };
   };
 

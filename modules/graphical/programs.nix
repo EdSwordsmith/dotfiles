@@ -3,7 +3,8 @@
 with lib;
 
 let cfg = config.edu.graphical.programs;
-in {
+in
+{
   options.edu.graphical.programs = {
     enable = mkEnableOption "graphical programs";
   };
@@ -13,6 +14,7 @@ in {
       enableDefaultFonts = true;
 
       fonts = with pkgs; [
+        symbola
         font-awesome
         material-design-icons
         roboto
@@ -24,6 +26,7 @@ in {
     hm.home.packages = with pkgs; [
       spotify
       brave
+      firefox
       discord
       mattermost-desktop
       slack

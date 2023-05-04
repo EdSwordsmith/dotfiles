@@ -20,6 +20,9 @@
       # JavaScript
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
+
+      # Lua
+      sumneko.lua
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "ayu";

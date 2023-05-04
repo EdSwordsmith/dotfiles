@@ -14,6 +14,7 @@
     unzip
     agenix
     nixpkgs-fmt
+    tldr
   ];
 
   hm.programs.direnv = {

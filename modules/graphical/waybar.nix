@@ -2,13 +2,9 @@
 
 with lib;
 
-let
-  cfg = config.edu.graphical.waybar;
-in
-{
-  options.edu.graphical.waybar = {
-    enable = mkEnableOption "waybar";
-  };
+let cfg = config.edu.graphical.waybar;
+in {
+  options.edu.graphical.waybar = { enable = mkEnableOption "waybar"; };
 
   config = mkIf cfg.enable {
     hm.programs.waybar = {
@@ -20,30 +16,21 @@ in
         height = 30;
         spacing = 6;
 
-        modules-left = [
-          "sway/workspaces"
-        ];
+        modules-left = [ "sway/workspaces" ];
 
-        modules-center = [
-          "sway/window"
-        ];
+        modules-center = [ "sway/window" ];
 
-        modules-right = [
-          "pulseaudio"
-          "backlight"
-          "network"
-          "battery"
-          "battery#bat2"
-          "clock"
-          "tray"
-        ];
+        modules-right =
+          [ "pulseaudio" "backlight" "network" "battery" "clock" "tray" ];
 
         "sway/workspaces".disable-scroll = true;
 
         tray.spacing = 10;
 
         clock = {
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          tooltip-format = ''
+            <big>{:%Y %B}</big>
+            <tt><small>{calendar}</small></tt>'';
           format = "{:%Y-%m-%d %H:%M} 󱑒";
         };
 
@@ -58,22 +45,7 @@ in
           format-plugged = "{capacity}% 󰚥";
           format-alt = "{time} {icon}";
 
-          format-icons = [
-            "󰁺"
-            "󰁻"
-            "󰁼"
-            "󰁽"
-            "󰁾"
-            "󰁿"
-            "󰂀"
-            "󰂁"
-            "󰂂"
-            "󰁹"
-          ];
-        };
-
-        "battery#bat2" = {
-          bat = "BAT2";
+          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
         };
 
         network = {
@@ -92,14 +64,7 @@ in
         pulseaudio = {
           format = "{volume}% {icon}";
           format-muted = "󰖁";
-          format-icons = {
-            default = [
-              "󰕿"
-              "󰖀"
-              "󰕾"
-            ];
-          };
-
+          format-icons = { default = [ "󰕿" "󰖀" "󰕾" ]; };
           on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           tooltip = false;
         };

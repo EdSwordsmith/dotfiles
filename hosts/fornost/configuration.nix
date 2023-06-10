@@ -9,7 +9,6 @@
 
     graphical = {
       sway.enable = true;
-      gnome.enable = true;
       games.enable = true;
     };
 
@@ -52,7 +51,10 @@
 
   usr.extraGroups = [ "dialout" "docker" ];
 
-  networking.firewall.allowedTCPPortRanges = [{ from = 8000; to = 8999; }];
+  networking.firewall.allowedTCPPortRanges = [{
+    from = 8000;
+    to = 8999;
+  }];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -2,8 +2,7 @@
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.edu.shell.fish;
-in
-{
+in {
   options.edu.shell.fish.enable = mkEnableOption "fish";
 
   config = mkIf cfg.enable {
@@ -11,10 +10,13 @@ in
     environment.shells = with pkgs; [ fish ];
     usr.shell = pkgs.fish;
 
+    programs.fish.enable = true;
+
     hm.programs.fish = {
       enable = true;
       shellAbbrs = {
-        rebuild = "sudo nixos-rebuild switch --flake '/home/${user}/.config/nix#${config.networking.hostName}'";
+        rebuild =
+          "sudo nixos-rebuild switch --flake '/home/${user}/.config/nix#${config.networking.hostName}'";
         cd = "z";
       };
 
@@ -22,7 +24,10 @@ in
         idea = "nohup idea-ultimate $argv >/dev/null 2>&1 &";
       };
 
-      plugins = [{ name = "fzf.fish"; src = pkgs.fishPlugins.fzf-fish.src; }];
+      plugins = [{
+        name = "fzf.fish";
+        src = pkgs.fishPlugins.fzf-fish.src;
+      }];
     };
 
     hm.programs.starship = {
@@ -43,11 +48,11 @@ in
         };
 
         directory = {
-          format = "[$path]($style)[$read_only]($read_only_style)[\\]](bold bright-red) ";
+          format =
+            "[$path]($style)[$read_only]($read_only_style)[\\]](bold bright-red) ";
         };
       };
     };
-
 
     hm.programs.exa = {
       enable = true;

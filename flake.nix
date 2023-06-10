@@ -2,12 +2,11 @@
   description = "My NixOS Config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    #nixpkgs-latest.url = "github:nixos/nixpkgs";
 
     home = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,12 +21,13 @@
     };
 
     jmusicbot = {
-      url = "https://github.com/jagrosh/MusicBot/releases/download/0.3.9/JMusicBot-0.3.9.jar";
+      url =
+        "https://github.com/jagrosh/MusicBot/releases/download/0.3.9/JMusicBot-0.3.9.jar";
       flake = false;
     };
   };
 
-  outputs = inputs @ { self, ... }:
+  outputs = inputs@{ self, ... }:
     let
       inherit (inputs.nixpkgs.lib) nixosSystem hasSuffix removeSuffix;
       inherit (inputs.nixpkgs.lib.filesystem) listFilesRecursive;
@@ -40,24 +40,23 @@
 
       mkModules = path: filter (hasSuffix ".nix") (listFilesRecursive path);
 
-      mkOverlays = path: map
-        (m: import m { inherit inputs; })
-        (mkModules path);
+      mkOverlays = path: map (m: import m { inherit inputs; }) (mkModules path);
 
-      pkgs = let args = { inherit system; config.allowUnfree = true; }; in
-        import inputs.nixpkgs (args // {
-          overlays = [
-            inputs.agenix.overlays.default
-            (final: prev: {
-              unstable = import inputs.nixpkgs-unstable args;
-              #latest = import inputs.nixpkgs-latest args;
-            })
-          ] ++ mkOverlays ./overlays;
-        });
+      pkgs = let
+        args = {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      in import inputs.nixpkgs (args // {
+        overlays = [
+          inputs.agenix.overlays.default
+          (final: prev: { unstable = import inputs.nixpkgs-unstable args; })
+        ] ++ mkOverlays ./overlays;
+      });
 
       # Imports every host defined in a directory.
-      mkHosts = dir: listToAttrs (map
-        (name: {
+      mkHosts = dir:
+        listToAttrs (map (name: {
           inherit name;
           value = nixosSystem {
             inherit system pkgs;
@@ -76,10 +75,6 @@
               inputs.agenix.nixosModules.default
             ] ++ mkModules ./modules ++ mkModules "${dir}/${name}";
           };
-        })
-        (attrNames (readDir dir)));
-    in
-    {
-      nixosConfigurations = mkHosts ./hosts;
-    };
+        }) (attrNames (readDir dir)));
+    in { nixosConfigurations = mkHosts ./hosts; };
 }

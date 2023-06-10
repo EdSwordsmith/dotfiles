@@ -33,7 +33,7 @@ in {
       };
     };
 
-    hm.programs.mako.enable = true;
+    hm.services.mako.enable = true;
 
     programs.light.enable = true;
     usr.extraGroups = [ "video" ]; # For rootless light.

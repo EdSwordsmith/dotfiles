@@ -5,6 +5,15 @@
     services = {
       djtobis.enable = true;
       pombobot.enable = true;
+      minecraft = {
+        enable = true;
+        servers = {
+          bteam = {
+            memory = "5G";
+            jre = pkgs.jre8;
+          };
+        };
+      };
     };
 
     graphical = {

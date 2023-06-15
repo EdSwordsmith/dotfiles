@@ -75,8 +75,9 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 31001 ];
-  networking.firewall.allowedUDPPorts = [ 31001 ];
+  # FIXME: Use allowed range
+  networking.firewall.allowedTCPPorts = [ 31001 31002 31003 31004 ];
+  networking.firewall.allowedUDPPorts = [ 31001 31002 31003 31004 ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

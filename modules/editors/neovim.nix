@@ -1,57 +1,114 @@
-{ config, options, pkgs, lib, configDir, ... }:
+{ config, configDir, lib, pkgs, user, ... }:
+
+with lib;
+
 let
-
-in
-{
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-
+  nodePkgs = with pkgs.nodePackages; [
+    eslint
+    vscode-langservers-extracted
+    typescript-language-server
+  ];
+in {
+  hm.home.packages = with pkgs; [ nodePackages.typescript ];
   hm.programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-
-    withPython3 = true;
     withNodeJs = true;
-
+    withPython3 = true;
     plugins = with pkgs.vimPlugins; [
+      plenary-nvim
+      nvim-treesitter
+      markdown-preview-nvim
       vim-nix
-      cmp-nvim-lsp
-      nvim-lspconfig
       lspkind-nvim
+      cmp-nvim-lsp
+      cmp-treesitter
+      cmp-git
+      nvim-lspconfig
+      molokai
       {
-        plugin = nvim-cmp;
+        plugin = Navigator-nvim;
         type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/cmp.lua";
+        config = builtins.readFile "${configDir}/nvim/lua/navigator.lua";
       }
-
       {
-        plugin = neovim-ayu;
+        plugin = pkgs.edu.tokyo-night-nvim;
         type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/ayu.lua";
+        config = ''
+          vim.cmd[[colorscheme tokyonight-night]]
+        '';
+      }
+      Coqtail
+      {
+        plugin = hop-nvim;
+        type = "lua";
+        config = builtins.readFile "${configDir}/nvim/lua/hop-nvim.lua";
+      }
+      {
+        plugin = orgmode;
+        type = "lua";
+        config = builtins.readFile "${configDir}/nvim/lua/orgmode.lua";
+      }
+      {
+        plugin = harpoon;
+        type = "lua";
+        config = builtins.readFile "${configDir}/nvim/lua/harpoon.lua";
       }
       {
         plugin = telescope-nvim;
         type = "lua";
         config = builtins.readFile "${configDir}/nvim/lua/telescope.lua";
       }
-    ] ++ [ pkgs.vim-pio ];
-
-    extraPackages = with pkgs; [
-      pyright
-      rnix-lsp
-      sumneko-lua-language-server
-      rust-analyzer
-      clang-tools_15
+      {
+        plugin = luasnip;
+        type = "lua";
+        config = builtins.readFile "${configDir}/nvim/lua/luasnip.lua";
+      }
+      {
+        plugin = nvim-surround;
+        type = "lua";
+        config = builtins.readFile "${configDir}/nvim/lua/surround.lua";
+      }
+      {
+        plugin = nvim-cmp;
+        type = "lua";
+        config = builtins.readFile "${configDir}/nvim/lua/cmp.lua";
+      }
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        type = "lua";
+        config = builtins.readFile "${configDir}/nvim/lua/treesitter.lua";
+      }
+      {
+        plugin = lualine-nvim;
+        type = "lua";
+        config = builtins.readFile "${configDir}/nvim/lua/lualine.lua";
+      }
     ];
 
+    extraPackages = with pkgs;
+      [
+        pyright
+        rnix-lsp
+        sumneko-lua-language-server
+        rust-analyzer
+        clang-tools_15
+        gopls
+      ] ++ nodePkgs;
+
+    extraLuaPackages = (ps: with ps; [ lua-lsp ]);
+
+    extraPython3Packages = (ps: with ps; [ ]);
+
     extraConfig = builtins.readFile "${configDir}/nvim/init.vim";
+
   };
 
-  hm.home.file."${config.home-manager.users.eduardo.home.homeDirectory}/.config/nvim/lua/generic_lsp.lua".text = ''
+  hm.home.file."${
+    config.home-manager.users.${user}.home.homeDirectory
+  }/.config/nvim/lua/generic_lsp.lua".text = ''
           return function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
       -- Mappings.
@@ -70,8 +127,9 @@ in
       vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
       vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+      vim.keymap.set('n', '<space>se', vim.diagnostic.setloclist, bufopts)
+      vim.keymap.set('n', '<space>Se', vim.diagnostic.setqflist, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
       vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
     end    '';
-
 }

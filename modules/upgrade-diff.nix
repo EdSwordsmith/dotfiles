@@ -1,8 +1,11 @@
-# By Mic92:
-# https://github.com/Mic92/dotfiles/blob/c83bcecc32bfd9bc96ba97f518a7e4ccd63393ec/nixos/modules/upgrade-diff.nix
+# By luishfonseca:
+# https://gist.github.com/luishfonseca/f183952a77e46ccd6ef7c907ca424517
 
 { pkgs, ... }: {
-  system.activationScripts.diff = ''
-    ${pkgs.nix}/bin/nix store diff-closures /run/current-system "$systemConfig"
-  '';
+  system.activationScripts.diff = {
+    supportsDryActivation = true;
+    text = ''
+      ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
+    '';
+  };
 }

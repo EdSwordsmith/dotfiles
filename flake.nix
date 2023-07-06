@@ -29,8 +29,9 @@
 
   outputs = inputs@{ self, ... }:
     let
-      inherit (inputs.nixpkgs.lib) nixosSystem hasSuffix removeSuffix;
-      inherit (inputs.nixpkgs.lib.filesystem) listFilesRecursive;
+      inherit (inputs.nixpkgs) lib;
+      inherit (lib) nixosSystem hasSuffix removeSuffix;
+      inherit (lib.filesystem) listFilesRecursive;
       inherit (builtins) readDir listToAttrs attrNames filter;
 
       system = "x86_64-linux";
@@ -40,7 +41,8 @@
 
       mkModules = path: filter (hasSuffix ".nix") (listFilesRecursive path);
 
-      mkOverlays = path: map (m: import m { inherit inputs; }) (mkModules path);
+      mkOverlays = path:
+        map (m: import m { inherit inputs lib; }) (mkModules path);
 
       pkgs = let
         args = {

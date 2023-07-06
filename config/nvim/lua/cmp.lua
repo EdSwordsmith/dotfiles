@@ -1,4 +1,5 @@
 local nvim_lsp = require('lspconfig')
+local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 local cmp = require 'cmp'
 local function has_words_before()
@@ -84,6 +85,10 @@ cmp.setup({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
+      elseif luasnip.expandable() then
+        luasnip.expand()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
       else
@@ -96,6 +101,8 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -109,11 +116,12 @@ cmp.setup({
     { name = 'nvim_lsp' },
     -- { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'orgmode' },
-    -- { name = 'luasnip' }, -- For luasnip users.
+    { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
   }, {
     { name = 'buffer' },
+    { name = 'orgmode' },
   })
 })
 
@@ -144,19 +152,10 @@ cmp.setup.cmdline(':', {
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['rnix'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['pyright'].setup {
-  capabilities = capabilities
-}
 
-require('lspconfig')['clangd'].setup {
-  capabilities = capabilities
-}
-
-require('lspconfig')['sumneko_lua'].setup {
-  capabilities = capabilities
+require('lspconfig')['lua_ls'].setup {
+  capabilities = capabilities,
+  on_attach = require 'generic_lsp'
 }
 
 
@@ -171,21 +170,27 @@ require('lspconfig')['eslint'].setup {
     "jsx",
     "html"
   },
+  on_attach = require 'generic_lsp'
 }
 require('lspconfig')['clangd'].setup {
-  capabilities = capabilities
+  capabilities = capabilities,
+  on_attach = require 'generic_lsp'
 }
 
-require('lspconfig')['jdtls'].setup {
-  capabilities = capabilities
+require('lspconfig')['java_language_server'].setup {
+  capabilities = capabilities,
+  on_attach = require 'generic_lsp',
+  cmd = { 'java-language-server' }
 }
 
-require 'lspconfig'.java_language_server.setup {}
-
-require 'lspconfig'.kotlin_language_server.setup {}
+require 'lspconfig'.kotlin_language_server.setup {
+  capabilities = capabilities,
+  on_attach = require 'generic_lsp'
+}
 
 require 'lspconfig'.tsserver.setup {
-  capabilities = capabilities
+  capabilities = capabilities,
+  on_attach = require 'generic_lsp'
 }
 
 require('lspconfig')['pyright'].setup {
@@ -194,6 +199,16 @@ require('lspconfig')['pyright'].setup {
 }
 
 require('lspconfig')['rnix'].setup {
+  capabilities = capabilities,
+  on_attach = require 'generic_lsp'
+}
+
+require('lspconfig')['gopls'].setup {
+  capabilities = capabilities,
+  on_attach = require 'generic_lsp'
+}
+
+require('lspconfig')['rust_analyzer'].setup {
   capabilities = capabilities,
   on_attach = require 'generic_lsp'
 }

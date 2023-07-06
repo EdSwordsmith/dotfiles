@@ -3,8 +3,7 @@
 with lib;
 
 let cfg = config.edu.graphical.programs;
-in
-{
+in {
   options.edu.graphical.programs = {
     enable = mkEnableOption "graphical programs";
   };
@@ -26,7 +25,6 @@ in
     hm.home.packages = with pkgs; [
       spotify
       brave
-      firefox
       discord
       mattermost-desktop
       slack

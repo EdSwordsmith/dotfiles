@@ -29,12 +29,13 @@ in {
       mattermost-desktop
       slack
       evince
-      thunderbird
+      unstable.thunderbird
       postman
       keepassxc
       pavucontrol
       gimp
       unstable.zoom-us
+      obsidian
     ];
 
     services.flatpak.enable = true;

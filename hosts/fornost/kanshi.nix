@@ -29,6 +29,7 @@
           {
             criteria = "Ancor Communications Inc ASUS VS247 F9LMTF092353";
             position = "0,360";
+            mode = "1920x1080";
           }
           {
             criteria = "Samsung Electric Company LS32A600U HNTR600083";

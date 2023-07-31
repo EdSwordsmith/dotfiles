@@ -15,10 +15,14 @@
     agenix
     nixpkgs-fmt
     tldr
+    man-pages
+    man-pages-posix
   ];
 
   hm.programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
   };
+
+  documentation.dev.enable = true;
 }

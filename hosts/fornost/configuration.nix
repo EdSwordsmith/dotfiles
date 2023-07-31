@@ -1,27 +1,28 @@
-{ config, pkgs, ... }:
+{ config, pkgs, profiles, ... }:
 
 {
+  imports = with profiles; [
+    shell.fish
+    shell.joshuto
+
+    graphical.games
+    graphical.sway
+
+    editors.emacs
+    editors.intellij
+    editors.neovim
+    editors.vscode
+  ];
+
   edu = {
     services.wgrnl = {
       enable = true;
       privateKeyFile = "/etc/wireguard/privkey";
     };
 
-    graphical = {
-      sway.enable = true;
-      games.enable = true;
-    };
-
-    editors = {
-      emacs.enable = true;
-      intellij.enable = true;
-    };
-
     shell = {
       gpg.enable = true;
-      fish.enable = true;
       git.enable = true;
-      joshuto.enable = true;
     };
   };
 

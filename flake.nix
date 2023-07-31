@@ -41,6 +41,21 @@
 
       mkModules = path: filter (hasSuffix ".nix") (listFilesRecursive path);
 
+      mkProfiles = dir:
+        let
+          mkLevel = entry: type:
+            if (lib.hasSuffix ".nix" entry && type == "regular") then
+              (import "${dir}/${entry}")
+            else if type == "directory" then
+              mkProfiles "${dir}/${entry}"
+            else
+              { };
+
+          doMagic = key: value:
+            lib.attrsets.nameValuePair (lib.removeSuffix ".nix" key)
+            (mkLevel key value);
+        in lib.attrsets.mapAttrs' doMagic (builtins.readDir dir);
+
       mkOverlays = path:
         map (m: import m { inherit inputs lib; }) (mkModules path);
 
@@ -62,7 +77,12 @@
           inherit name;
           value = nixosSystem {
             inherit system pkgs;
-            specialArgs = { inherit user inputs configDir secretsDir; };
+
+            specialArgs = {
+              inherit user inputs configDir secretsDir;
+              profiles = mkProfiles ./profiles;
+            };
+
             modules = [
               { networking.hostName = name; }
 

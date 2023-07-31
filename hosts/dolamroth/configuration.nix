@@ -1,14 +1,9 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, pkgs, profiles, ... }:
 
 {
-  edu = {
-    shell = {
-      fish.enable = true;
-      git.enable = true;
-    };
+  imports = with profiles; [ editors.neovim graphical.gnome shell.fish ];
 
-    graphical.gnome.enable = true;
-  };
+  edu.shell.git.enable = true;
 
   # Bootloader.
   boot.loader.grub.enable = true;

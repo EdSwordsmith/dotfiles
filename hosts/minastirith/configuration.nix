@@ -1,6 +1,17 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, pkgs, profiles, ... }:
 
 {
+  imports = with profiles; [
+    shell.fish
+
+    editors.intellij
+    editors.neovim
+    editors.vscode
+
+    graphical.gnome
+    graphical.games
+  ];
+
   edu = {
     services = {
       djtobis.enable = true;
@@ -16,16 +27,9 @@
       };
     };
 
-    graphical = {
-      gnome.enable = true;
-      games.enable = true;
-    };
-
-    editors.intellij.enable = true;
     noautosuspend.enable = true;
 
     shell = {
-      fish.enable = true;
       gpg.enable = true;
       git.enable = true;
     };

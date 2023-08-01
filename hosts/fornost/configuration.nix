@@ -2,6 +2,7 @@
 
 {
   imports = with profiles; [
+    dev
     shell.fish
     shell.joshuto
 

@@ -5,7 +5,7 @@
       env = { "TERM" = "xterm-256color"; };
 
       window = {
-        opacity = 0.95;
+        opacity = 0.97;
         padding.x = 10;
         padding.y = 10;
         decorations = "None";
@@ -21,32 +21,32 @@
       colors = {
         # Default colors
         primary = {
-          background = "0x0A0E14";
-          foreground = "0xB3B1AD";
+          background = "0x191E24";
+          foreground = "0xCBCCC6";
         };
 
         # Normal colors
         normal = {
-          black = "0x0A0E14";
+          black = "0x191E2A";
           red = "0xFF3333";
-          green = "0xC2D94C";
-          yellow = "0xFF8F40";
-          blue = "0x59C2FF";
-          magenta = "0xFFEE99";
+          green = "0xBAE67E";
+          yellow = "0xFFA759";
+          blue = "0x73D0FF";
+          magenta = "0xFFD580";
           cyan = "0x95E6CB";
-          white = "0xB3B1AD";
+          white = "0xC7C7C7";
         };
 
         # bright colors
         bright = {
-          black = "0x4D5566";
-          red = "0xFF3333";
-          green = "0xC2D94C";
-          yellow = "0xFF8F40";
-          blue = "0x59C2FF";
+          black = "0x686868";
+          red = "0xF27983";
+          green = "0xA6CC70";
+          yellow = "0xFFCC66";
+          blue = "0x5CCFE6";
           magenta = "0xFFEE99";
           cyan = "0x95E6CB";
-          white = "0xB3B1AD";
+          white = "0xFFFFFF";
         };
       };
     };

@@ -2,7 +2,7 @@
   services.emacs = {
     enable = true;
     package = ((pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages
-      (epkgs: [ epkgs.vterm epkgs.org-roam ]));
+      (epkgs: with epkgs; [ vterm org-roam ]));
   };
 
   environment.systemPackages = with pkgs; [

@@ -26,7 +26,6 @@
     pavucontrol
     gimp
     unstable.zoom-us
-    obsidian
   ];
 
   services.flatpak.enable = true;

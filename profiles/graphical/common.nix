@@ -8,7 +8,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
+  # Enable the GNOME Display Manager.
   services.xserver.displayManager.gdm.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

@@ -19,6 +19,14 @@
     man-pages-posix
   ];
 
+  hm.programs.bat.enable = true;
+  hm.programs.zoxide.enable = true;
+
+  hm.programs.exa = {
+    enable = true;
+    enableAliases = true;
+  };
+
   hm.programs.direnv = {
     enable = true;
     nix-direnv.enable = true;

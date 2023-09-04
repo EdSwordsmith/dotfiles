@@ -3,21 +3,14 @@
 {
   imports = with profiles.shell; [ starship ];
 
-  environment.shells = with pkgs; [ fish ];
+  environment.shells = with pkgs; [ nushell ];
 
-  programs.fish.enable = true;
-
-  hm.programs.fish = {
+  hm.programs.nushell = {
     enable = true;
-    shellAbbrs = {
+    shellAliases = {
       rebuild =
         "sudo nixos-rebuild switch --flake '/home/${user}/.config/nix#${config.networking.hostName}'";
       cd = "z";
     };
-
-    plugins = [{
-      name = "fzf.fish";
-      src = pkgs.fishPlugins.fzf-fish.src;
-    }];
   };
 }

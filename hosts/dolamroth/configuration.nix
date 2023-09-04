@@ -23,6 +23,8 @@
     xkbVariant = "";
   };
 
+  usr.shell = pkgs.fish;
+
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;

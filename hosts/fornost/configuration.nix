@@ -4,6 +4,7 @@
   imports = with profiles; [
     dev
     shell.fish
+    shell.nushell
     shell.joshuto
 
     graphical.games
@@ -51,6 +52,7 @@
     xkbVariant = "";
   };
 
+  usr.shell = pkgs.fish;
   usr.extraGroups = [ "dialout" "docker" ];
 
   networking.firewall.allowedTCPPortRanges = [{

@@ -157,10 +157,10 @@ in {
       }
     ];
     timeouts = [
-      {
-        timeout = 300;
-        command = "${lockCommand}/bin/swaylock";
-      }
+      # {
+      #   timeout = 300;
+      #   command = "${lockCommand}/bin/swaylock";
+      # }
       {
         timeout = 60;
         command = ''

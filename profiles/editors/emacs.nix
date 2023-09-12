@@ -1,7 +1,7 @@
 { config, options, pkgs, lib, ... }: {
   services.emacs = {
     enable = true;
-    package = ((pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages
+    package = ((pkgs.emacsPackagesFor pkgs.emacs29-pgtk).emacsWithPackages
       (epkgs: with epkgs; [ vterm org-roam ]));
   };
 

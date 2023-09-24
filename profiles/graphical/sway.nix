@@ -31,13 +31,17 @@ in {
     extraPackages = with pkgs; [
       lockCommand # swaylock with effects
       blueberry
-      xfce.thunar
       swaybg
       swayidle
       wdisplays
       wl-clipboard
       sway-contrib.grimshot
     ];
+  };
+
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
   };
 
   security.polkit.enable = true;

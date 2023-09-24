@@ -36,6 +36,9 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
+  environment.systemPackages = with pkgs; [ virt-manager vagrant ];
 
   services.fprintd.enable = true;
 
@@ -53,7 +56,7 @@
   };
 
   usr.shell = pkgs.fish;
-  usr.extraGroups = [ "dialout" "docker" ];
+  usr.extraGroups = [ "dialout" "docker" "libvirtd" ];
 
   networking.firewall.allowedTCPPortRanges = [{
     from = 8000;

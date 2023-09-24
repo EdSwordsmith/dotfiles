@@ -18,6 +18,7 @@ in
         url."git@github.com".pushinsteadOf = "https://github.com/";
         commit.template = "${configDir}/gitmessage.txt";
         commit.verbose = true;
+        core.editor = "nvim";
       };
 
       # Enable signing if the gpg module is enabled

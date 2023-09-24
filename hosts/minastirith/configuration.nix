@@ -19,10 +19,10 @@
       minecraft = {
         enable = true;
         servers = {
-          bteam = {
-            memory = "5G";
-            jre = pkgs.jre8;
-          };
+          # bteam = {
+          #   memory = "5G";
+          #   jre = pkgs.jre8;
+          # };
         };
       };
     };

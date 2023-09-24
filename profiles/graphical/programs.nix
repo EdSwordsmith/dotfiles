@@ -28,6 +28,8 @@
     unstable.zoom-us
   ];
 
+  hm.programs.mpv.enable = true;
+
   services.flatpak.enable = true;
 
   hm.xdg.desktopEntries = {

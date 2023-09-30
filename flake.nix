@@ -25,6 +25,11 @@
         "https://github.com/jagrosh/MusicBot/releases/download/0.3.9/JMusicBot-0.3.9.jar";
       flake = false;
     };
+
+    wallpapers = {
+      url = "git+ssh://git@github.com/EdSwordsmith/wallpapers";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, ... }:
@@ -32,12 +37,19 @@
       inherit (inputs.nixpkgs) lib;
       inherit (lib) nixosSystem hasSuffix removeSuffix;
       inherit (lib.filesystem) listFilesRecursive;
-      inherit (builtins) readDir listToAttrs attrNames filter;
+      inherit (builtins) readDir listToAttrs attrNames filter map;
 
       system = "x86_64-linux";
       user = "eduardo";
       configDir = ./config;
       secretsDir = ./secrets;
+
+      wallpapers = let
+        extensions = [ ".jpg" ".jpeg" ".png" ];
+        isImage = name: builtins.any (ext: lib.hasSuffix ext name) extensions;
+        removeExts = name: builtins.foldl' (file: ext: lib.removeSuffix ext file) name extensions;
+        files = filter isImage (attrNames (readDir inputs.wallpapers));
+      in listToAttrs (map (file: { name = removeExts file; value = "${inputs.wallpapers}/${file}"; }) files);
 
       mkModules = path: filter (hasSuffix ".nix") (listFilesRecursive path);
 
@@ -81,6 +93,7 @@
             specialArgs = {
               inherit user inputs configDir secretsDir;
               profiles = mkProfiles ./profiles;
+              wallpaper = wallpapers."${name}";
             };
 
             modules = [

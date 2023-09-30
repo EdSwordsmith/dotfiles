@@ -1,4 +1,4 @@
-{ config, options, pkgs, lib, configDir, profiles, ... }:
+{ config, options, pkgs, lib, configDir, profiles, wallpaper, ... }:
 let
   lockCommand = pkgs.writeShellScriptBin "swaylock" ''
     ${pkgs.swaylock-effects}/bin/swaylock -f \
@@ -137,8 +137,7 @@ in {
             "exec ${pkgs.pamixer}/bin/pamixer --default-source -t";
         };
 
-      # TODO: Wallpaper variable
-      output."*" = { bg = "/home/eduardo/Imagens/fornost.jpg fill"; };
+      output."*" = { bg = "${wallpaper} fill"; };
     };
 
     extraConfigEarly = ''

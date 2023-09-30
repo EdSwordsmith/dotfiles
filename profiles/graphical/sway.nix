@@ -80,6 +80,7 @@ in {
       terminal = "alacritty";
       menu = "rofi -show drun -show-icons";
       bars = [ ];
+      window.titlebar = false;
 
       input = {
         "type:keyboard" = { xkb_layout = "pt"; };

@@ -26,6 +26,7 @@
     pavucontrol
     gimp
     unstable.zoom-us
+    libreoffice
   ];
 
   hm.programs.mpv.enable = true;

@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -75,15 +77,18 @@
       mkOverlays = path:
         map (m: import m { inherit inputs lib; }) (mkModules path);
 
-      mkPackages = path: final: prev:
+      mkPkgs = path: pkgs:
+        mapAttrs'
+          (name: value:
+            nameValuePair (lib.removeSuffix ".nix" name) (if value == "directory" then
+              pkgs.callPackage "${path}/${name}/default.nix" { }
+            else
+              pkgs.callPackage "${path}/${name}" { }))
+          (readDir path);
+
+      mkPkgsOverlay = path: final: prev:
         {
-          edu = mapAttrs'
-            (name: value:
-              nameValuePair (lib.removeSuffix ".nix" name) (if value == "directory" then
-                prev.callPackage "${path}/${name}/default.nix" { }
-              else
-                prev.callPackage "${path}/${name}" { }))
-            (readDir path);
+          edu = mkPkgs path prev;
         };
 
       pkgs =
@@ -97,7 +102,7 @@
           overlays = [
             inputs.agenix.overlays.default
             (final: prev: { unstable = import inputs.nixpkgs-unstable args; })
-            (mkPackages ./pkgs)
+            (mkPkgsOverlay ./pkgs)
           ];
         });
 
@@ -132,5 +137,15 @@
           })
           (attrNames (readDir dir)));
     in
-    { nixosConfigurations = mkHosts ./hosts; };
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
+
+      perSystem = { config, self', inputs', pkgs, system, ... }: {
+        packages = mkPkgs ./pkgs pkgs;
+      };
+
+      flake = {
+        nixosConfigurations = mkHosts ./hosts;
+      };
+    };
 }

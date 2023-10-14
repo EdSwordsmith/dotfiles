@@ -4,6 +4,7 @@ let
     plugins.addPlugins idea-ultimate [ "164" "17718" ];
   idea = pkgs.writeShellScriptBin "idea"
     "nohup ${intellij}/bin/idea-ultimate $@ >/dev/null 2>&1 &";
-in {
-    hm.home.packages = [ intellij idea ];
+in
+{
+  hm.home.packages = [ intellij idea ];
 }

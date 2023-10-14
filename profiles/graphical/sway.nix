@@ -17,7 +17,8 @@ let
       --grace 2 \
       --fade-in 0.2
   '';
-in {
+in
+{
   imports = with profiles.graphical; [ common alacritty waybar wlogout ];
 
   hm.services.mako.enable = true;

@@ -1,5 +1,6 @@
 { pkgs, lib, ... }:
-pkgs.writers.writePython3 "/bin/activate-controller" {
+pkgs.writers.writePython3 "/bin/activate-controller"
+{
   libraries = with pkgs.python3Packages; [ pyusb ];
 } ''
   import usb.core

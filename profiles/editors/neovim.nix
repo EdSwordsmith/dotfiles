@@ -8,7 +8,8 @@ let
     vscode-langservers-extracted
     typescript-language-server
   ];
-in {
+in
+{
   hm.home.packages = with pkgs; [ nodePackages.typescript ];
   hm.programs.neovim = {
     enable = true;

@@ -10,8 +10,7 @@
   hm.programs.fish = {
     enable = true;
     shellAbbrs = {
-      rebuild =
-        "sudo nixos-rebuild switch --flake '/home/${user}/.config/nix#${config.networking.hostName}'";
+      rebuild = "sudo nixos-rebuild";
       cd = "z";
     };
 

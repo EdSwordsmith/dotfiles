@@ -98,7 +98,7 @@
             inputs.agenix.overlays.default
             (final: prev: { unstable = import inputs.nixpkgs-unstable args; })
             (mkPackages ./pkgs)
-          ] ++ mkOverlays ./overlays;
+          ];
         });
 
       # Imports every host defined in a directory.

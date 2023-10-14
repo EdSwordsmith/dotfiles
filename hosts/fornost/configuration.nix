@@ -4,8 +4,6 @@
   imports = with profiles; [
     dev
     shell.fish
-    shell.nushell
-    shell.joshuto
 
     graphical.games
     graphical.sway

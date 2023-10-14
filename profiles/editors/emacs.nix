@@ -31,5 +31,6 @@
     pandoc
     graphviz
     texlive.combined.scheme-full
+    metals
   ];
 }

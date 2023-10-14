@@ -37,12 +37,9 @@ in
       wdisplays
       wl-clipboard
       sway-contrib.grimshot
+      cinnamon.nemo-with-extensions
+      feh
     ];
-  };
-
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
   };
 
   security.polkit.enable = true;

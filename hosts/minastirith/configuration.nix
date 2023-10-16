@@ -23,10 +23,10 @@
           #   memory = "5G";
           #   jre = pkgs.jre8;
           # };
-          apo-calypse = {
-            memory = "5G";
-            jre = pkgs.jre;
-          };
+          # apo-calypse = {
+          #   memory = "5G";
+          #   jre = pkgs.jre;
+          # };
         };
       };
     };

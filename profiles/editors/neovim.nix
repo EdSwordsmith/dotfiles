@@ -88,7 +88,7 @@ in
         type = "lua";
         config = builtins.readFile "${configDir}/nvim/lua/lualine.lua";
       }
-    ];
+    ] ++ (with pkgs.unstable.vimPlugins; [ typst-vim ]);
 
     extraPackages = with pkgs;
       [

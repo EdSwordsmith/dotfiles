@@ -10,6 +10,8 @@
       material-design-icons
       roboto
       jetbrains-mono
+      fira-code
+      fira
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
   };
@@ -17,7 +19,7 @@
   hm.home.packages = with pkgs; [
     spotify
     brave
-    unstable.webcord
+    webcord
     mattermost-desktop
     slack
     evince

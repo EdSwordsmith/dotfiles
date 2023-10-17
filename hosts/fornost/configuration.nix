@@ -11,9 +11,7 @@
     graphical.sway
 
     editors.emacs
-    editors.intellij
     editors.neovim
-    editors.vscode
   ];
 
   edu = {

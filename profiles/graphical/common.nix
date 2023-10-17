@@ -1,7 +1,11 @@
-{ config, lib, pkgs, profiles, ... }:
-
 {
-  imports = with profiles.graphical; [ gtk programs ];
+  config,
+  lib,
+  pkgs,
+  profiles,
+  ...
+}: {
+  imports = with profiles.graphical; [gtk programs];
 
   xdg.portal.enable = true;
 

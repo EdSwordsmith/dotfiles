@@ -1,8 +1,15 @@
-{ config, options, pkgs, lib, ... }: {
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}: {
   services.emacs = {
     enable = true;
-    package = ((pkgs.emacsPackagesFor pkgs.emacs29-pgtk).emacsWithPackages
-      (epkgs: with epkgs; [ vterm org-roam ]));
+    package =
+      (pkgs.emacsPackagesFor pkgs.emacs29-pgtk).emacsWithPackages
+      (epkgs: with epkgs; [vterm org-roam]);
   };
 
   environment.systemPackages = with pkgs; [
@@ -23,7 +30,6 @@
     sumneko-lua-language-server
     rust-analyzer
     clang-tools_15
-    nixfmt
     nodePackages.typescript-language-server
     isort
     black

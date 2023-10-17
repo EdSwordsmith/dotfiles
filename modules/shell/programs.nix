@@ -1,6 +1,11 @@
-{ config, options, pkgs, lib, configDir, ... }:
-
 {
+  config,
+  options,
+  pkgs,
+  lib,
+  configDir,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     git
     fzf
@@ -13,10 +18,10 @@
     zip
     unzip
     agenix
-    nixpkgs-fmt
     tldr
     man-pages
     man-pages-posix
+    alejandra
   ];
 
   hm.programs.bat.enable = true;

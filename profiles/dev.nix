@@ -1,6 +1,11 @@
-{ config, options, pkgs, lib, ... }:
-
-let pythonPackages = p: with p; [ numpy requests bitstring jupyter ipython ];
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}: let
+  pythonPackages = p: with p; [numpy requests bitstring jupyter ipython];
 in {
   hm.home.packages = with pkgs; [
     (python3.withPackages pythonPackages)

@@ -1,6 +1,9 @@
-{ config, pkgs, profiles, ... }:
-
 {
+  config,
+  pkgs,
+  profiles,
+  ...
+}: {
   imports = with profiles; [
     dev
     shell.fish
@@ -38,7 +41,7 @@
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
-  environment.systemPackages = with pkgs; [ virt-manager vagrant ];
+  environment.systemPackages = with pkgs; [virt-manager vagrant];
 
   services.fprintd.enable = true;
 
@@ -48,7 +51,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
 
-  # Configure keymap 
+  # Configure keymap
   console.keyMap = "pt-latin1";
   services.xserver = {
     layout = "pt";
@@ -56,12 +59,14 @@
   };
 
   usr.shell = pkgs.fish;
-  usr.extraGroups = [ "dialout" "docker" "libvirtd" ];
+  usr.extraGroups = ["dialout" "docker" "libvirtd"];
 
-  networking.firewall.allowedTCPPortRanges = [{
-    from = 8000;
-    to = 8999;
-  }];
+  networking.firewall.allowedTCPPortRanges = [
+    {
+      from = 8000;
+      to = 8999;
+    }
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -70,5 +75,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
 }

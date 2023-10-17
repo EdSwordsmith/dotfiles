@@ -1,7 +1,10 @@
-{ config, lib, pkgs, ... }:
-
 {
-  hm.home.packages = with pkgs; [ wlogout ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  hm.home.packages = with pkgs; [wlogout];
 
   hm.xdg.configFile."wlogout/layout".text = ''
     {

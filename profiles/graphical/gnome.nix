@@ -1,7 +1,11 @@
-{ config, lib, pkgs, profiles, ... }:
-
 {
-  imports = with profiles.graphical; [ common ];
+  config,
+  lib,
+  pkgs,
+  profiles,
+  ...
+}: {
+  imports = with profiles.graphical; [common];
 
   services.xserver.desktopManager.gnome.enable = true;
 
@@ -12,7 +16,7 @@
     gnomeExtensions.dash-to-dock
   ];
 
-  hm.home.packages = with pkgs; [ blackbox-terminal ];
+  hm.home.packages = with pkgs; [blackbox-terminal];
 
   environment.gnome.excludePackages = with pkgs; [
     gnome-console

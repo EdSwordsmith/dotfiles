@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   fonts = {
     enableDefaultFonts = true;
 
@@ -12,7 +15,7 @@
       jetbrains-mono
       fira-code
       fira
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
   };
 

@@ -1,16 +1,19 @@
-{ config, configDir, lib, pkgs, user, ... }:
-
-with lib;
-
-let
+{
+  config,
+  configDir,
+  lib,
+  pkgs,
+  user,
+  ...
+}:
+with lib; let
   nodePkgs = with pkgs.nodePackages; [
     eslint
     vscode-langservers-extracted
     typescript-language-server
   ];
-in
-{
-  hm.home.packages = with pkgs; [ nodePackages.typescript ];
+in {
+  hm.home.packages = with pkgs; [nodePackages.typescript];
   hm.programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -19,76 +22,78 @@ in
     vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;
-    plugins = with pkgs.vimPlugins; [
-      plenary-nvim
-      nvim-treesitter
-      markdown-preview-nvim
-      vim-nix
-      lspkind-nvim
-      cmp-nvim-lsp
-      cmp-treesitter
-      cmp-git
-      nvim-lspconfig
-      molokai
-      {
-        plugin = Navigator-nvim;
-        type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/navigator.lua";
-      }
-      {
-        plugin = pkgs.edu.tokyo-night-nvim;
-        type = "lua";
-        config = ''
-          vim.cmd[[colorscheme tokyonight-night]]
-        '';
-      }
-      Coqtail
-      {
-        plugin = hop-nvim;
-        type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/hop-nvim.lua";
-      }
-      {
-        plugin = orgmode;
-        type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/orgmode.lua";
-      }
-      {
-        plugin = harpoon;
-        type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/harpoon.lua";
-      }
-      {
-        plugin = telescope-nvim;
-        type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/telescope.lua";
-      }
-      {
-        plugin = luasnip;
-        type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/luasnip.lua";
-      }
-      {
-        plugin = nvim-surround;
-        type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/surround.lua";
-      }
-      {
-        plugin = nvim-cmp;
-        type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/cmp.lua";
-      }
-      {
-        plugin = nvim-treesitter.withAllGrammars;
-        type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/treesitter.lua";
-      }
-      {
-        plugin = lualine-nvim;
-        type = "lua";
-        config = builtins.readFile "${configDir}/nvim/lua/lualine.lua";
-      }
-    ] ++ (with pkgs.unstable.vimPlugins; [ typst-vim ]);
+    plugins = with pkgs.vimPlugins;
+      [
+        plenary-nvim
+        nvim-treesitter
+        markdown-preview-nvim
+        vim-nix
+        lspkind-nvim
+        cmp-nvim-lsp
+        cmp-treesitter
+        cmp-git
+        nvim-lspconfig
+        molokai
+        {
+          plugin = Navigator-nvim;
+          type = "lua";
+          config = builtins.readFile "${configDir}/nvim/lua/navigator.lua";
+        }
+        {
+          plugin = pkgs.edu.tokyo-night-nvim;
+          type = "lua";
+          config = ''
+            vim.cmd[[colorscheme tokyonight-night]]
+          '';
+        }
+        Coqtail
+        {
+          plugin = hop-nvim;
+          type = "lua";
+          config = builtins.readFile "${configDir}/nvim/lua/hop-nvim.lua";
+        }
+        {
+          plugin = orgmode;
+          type = "lua";
+          config = builtins.readFile "${configDir}/nvim/lua/orgmode.lua";
+        }
+        {
+          plugin = harpoon;
+          type = "lua";
+          config = builtins.readFile "${configDir}/nvim/lua/harpoon.lua";
+        }
+        {
+          plugin = telescope-nvim;
+          type = "lua";
+          config = builtins.readFile "${configDir}/nvim/lua/telescope.lua";
+        }
+        {
+          plugin = luasnip;
+          type = "lua";
+          config = builtins.readFile "${configDir}/nvim/lua/luasnip.lua";
+        }
+        {
+          plugin = nvim-surround;
+          type = "lua";
+          config = builtins.readFile "${configDir}/nvim/lua/surround.lua";
+        }
+        {
+          plugin = nvim-cmp;
+          type = "lua";
+          config = builtins.readFile "${configDir}/nvim/lua/cmp.lua";
+        }
+        {
+          plugin = nvim-treesitter.withAllGrammars;
+          type = "lua";
+          config = builtins.readFile "${configDir}/nvim/lua/treesitter.lua";
+        }
+        {
+          plugin = lualine-nvim;
+          type = "lua";
+          config = builtins.readFile "${configDir}/nvim/lua/lualine.lua";
+        }
+      ]
+      ++ (with pkgs.unstable.vimPlugins; [typst-vim]);
 
     extraPackages = with pkgs;
       [
@@ -98,14 +103,14 @@ in
         rust-analyzer
         clang-tools_15
         gopls
-      ] ++ nodePkgs;
+      ]
+      ++ nodePkgs;
 
-    extraLuaPackages = (ps: with ps; [ lua-lsp ]);
+    extraLuaPackages = ps: with ps; [lua-lsp];
 
-    extraPython3Packages = (ps: with ps; [ ]);
+    extraPython3Packages = ps: with ps; [];
 
     extraConfig = builtins.readFile "${configDir}/nvim/init.vim";
-
   };
 
   hm.home.file."${

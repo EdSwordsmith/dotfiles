@@ -1,6 +1,13 @@
-{ config, options, pkgs, lib, inputs, configDir, secretsDir, ... }:
-
 {
+  config,
+  options,
+  pkgs,
+  lib,
+  inputs,
+  configDir,
+  secretsDir,
+  ...
+}: {
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_PT.UTF-8";
 

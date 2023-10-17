@@ -1,8 +1,13 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   hm.programs.alacritty = {
     enable = true;
     settings = {
-      env = { "TERM" = "xterm-256color"; };
+      env = {"TERM" = "xterm-256color";};
 
       window = {
         opacity = 0.97;

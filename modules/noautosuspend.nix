@@ -1,9 +1,13 @@
-{ config, options, pkgs, lib, ... }:
-let
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.edu.noautosuspend;
-in
-{
+in {
   options.edu.noautosuspend.enable = mkEnableOption "noautosuspend";
 
   config = mkIf cfg.enable {

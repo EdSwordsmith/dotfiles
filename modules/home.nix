@@ -1,10 +1,15 @@
-{ config, options, pkgs, lib, user, ... }:
-
-with lib;
 {
+  config,
+  options,
+  pkgs,
+  lib,
+  user,
+  ...
+}:
+with lib; {
   options = {
-    hm = mkOption { type = types.attrs; };
-    usr = mkOption { type = types.attrs; };
+    hm = mkOption {type = types.attrs;};
+    usr = mkOption {type = types.attrs;};
   };
 
   config = {
@@ -15,7 +20,7 @@ with lib;
     usr = {
       isNormalUser = true;
       description = "Eduardo Espadeiro";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = ["networkmanager" "wheel"];
     };
 
     # Home Manager needs a bit of information about you and the

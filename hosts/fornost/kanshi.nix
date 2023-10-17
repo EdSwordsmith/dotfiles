@@ -1,14 +1,23 @@
-{ config, options, pkgs, lib, inputs, configDir, secretsDir, ... }:
-
 {
+  config,
+  options,
+  pkgs,
+  lib,
+  inputs,
+  configDir,
+  secretsDir,
+  ...
+}: {
   hm.services.kanshi = {
     enable = true;
     profiles = {
       normal = {
-        outputs = [{
-          criteria = "eDP-1";
-          position = "0,0";
-        }];
+        outputs = [
+          {
+            criteria = "eDP-1";
+            position = "0,0";
+          }
+        ];
       };
 
       dei = {

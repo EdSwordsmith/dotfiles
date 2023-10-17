@@ -1,5 +1,13 @@
-{ config, options, pkgs, lib, configDir, profiles, wallpaper, ... }:
-let
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  configDir,
+  profiles,
+  wallpaper,
+  ...
+}: let
   lockCommand = pkgs.writeShellScriptBin "swaylock" ''
     ${pkgs.swaylock-effects}/bin/swaylock -f \
       --screenshots \
@@ -17,14 +25,13 @@ let
       --grace 2 \
       --fade-in 0.2
   '';
-in
-{
-  imports = with profiles.graphical; [ common alacritty waybar wlogout ];
+in {
+  imports = with profiles.graphical; [common alacritty waybar wlogout];
 
   hm.services.mako.enable = true;
 
   programs.light.enable = true;
-  usr.extraGroups = [ "video" ]; # For rootless light.
+  usr.extraGroups = ["video"]; # For rootless light.
 
   programs.sway = {
     enable = true;
@@ -77,11 +84,11 @@ in
       modifier = "Mod4";
       terminal = "alacritty";
       menu = "rofi -show drun -show-icons";
-      bars = [ ];
+      bars = [];
       window.titlebar = false;
 
       input = {
-        "type:keyboard" = { xkb_layout = "pt"; };
+        "type:keyboard" = {xkb_layout = "pt";};
 
         "type:touchpad" = {
           tap = "enabled";
@@ -96,9 +103,10 @@ in
         };
       };
 
-      keybindings =
-        let modifier = config.hm.wayland.windowManager.sway.config.modifier;
-        in lib.mkOptionDefault {
+      keybindings = let
+        modifier = config.hm.wayland.windowManager.sway.config.modifier;
+      in
+        lib.mkOptionDefault {
           "${modifier}+Escape" = "exec swaylock";
           "${modifier}+Shift+Escape" = "exec wlogout -p layer-shell";
 
@@ -113,30 +121,23 @@ in
           "${modifier}+Ctrl+l" = "move workspace to output right";
 
           # Screenshots
-          "Print+a" =
-            "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
-          "Shift+Print+a" =
-            "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
-          "Print+w" =
-            "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy window";
-          "Shift+Print+w" =
-            "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save window";
+          "Print+a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
+          "Shift+Print+a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
+          "Print+w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy window";
+          "Shift+Print+w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save window";
 
           # Brightness
           "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -T 0.72";
           "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -T 1.4";
 
           # Volume
-          "XF86AudioRaiseVolume" =
-            "exec '${pkgs.pamixer}/bin/pamixer --increase 5'";
-          "XF86AudioLowerVolume" =
-            "exec '${pkgs.pamixer}/bin/pamixer --decrease 5'";
+          "XF86AudioRaiseVolume" = "exec '${pkgs.pamixer}/bin/pamixer --increase 5'";
+          "XF86AudioLowerVolume" = "exec '${pkgs.pamixer}/bin/pamixer --decrease 5'";
           "XF86AudioMute" = "exec '${pkgs.pamixer}/bin/pamixer -t'";
-          "XF86AudioMicMute" =
-            "exec ${pkgs.pamixer}/bin/pamixer --default-source -t";
+          "XF86AudioMicMute" = "exec ${pkgs.pamixer}/bin/pamixer --default-source -t";
         };
 
-      output."*" = { bg = "${wallpaper} fill"; };
+      output."*" = {bg = "${wallpaper} fill";};
     };
 
     extraConfigEarly = ''

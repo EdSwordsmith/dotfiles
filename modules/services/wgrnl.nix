@@ -1,6 +1,10 @@
-{ config, lib, pkgs, ... }:
-
-let cfg = config.edu.services.wgrnl;
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  cfg = config.edu.services.wgrnl;
 in {
   options.edu.services.wgrnl = {
     enable = lib.mkEnableOption "Enable RNL Wireguard configuration.";
@@ -12,26 +16,27 @@ in {
 
   config = lib.mkIf cfg.enable {
     networking.firewall.checkReversePath = "loose";
-    systemd.network =
-      let wgrnlFwmark = 765;
-      in {
+    systemd.network = let
+      wgrnlFwmark = 765;
+    in {
+      enable = true;
+
+      config.routeTables.rnl = 765;
+
+      netdevs."10-wgrnl" = {
         enable = true;
-
-        config.routeTables.rnl = 765;
-
-        netdevs."10-wgrnl" = {
-          enable = true;
-          netdevConfig = {
-            Kind = "wireguard";
-            MTUBytes = "1300";
-            Name = "wgrnl";
-          };
-          wireguardConfig = {
-            PrivateKeyFile = cfg.privateKeyFile;
-            FirewallMark = wgrnlFwmark;
-            RouteTable = "rnl";
-          };
-          wireguardPeers = [{
+        netdevConfig = {
+          Kind = "wireguard";
+          MTUBytes = "1300";
+          Name = "wgrnl";
+        };
+        wireguardConfig = {
+          PrivateKeyFile = cfg.privateKeyFile;
+          FirewallMark = wgrnlFwmark;
+          RouteTable = "rnl";
+        };
+        wireguardPeers = [
+          {
             wireguardPeerConfig = {
               PublicKey = "g08PXxMmzC6HA+Jxd+hJU0zJdI6BaQJZMgUrv2FdLBY=";
               Endpoint = "193.136.164.211:34266";
@@ -60,47 +65,51 @@ in {
               ];
               PersistentKeepalive = 25;
             };
-          }];
+          }
+        ];
+      };
+      networks."40-rnl" = {
+        name = "wgrnl";
+
+        addresses = [
+          {addressConfig.Address = "192.168.20.65/24";}
+          {
+            addressConfig.Address = "fd92:3315:9e43:c490::65/64";
+            #addressConfig.DuplicateAddressDetection = "none";
+          }
+        ];
+
+        networkConfig = {
+          LinkLocalAddressing = "no";
+          IPv6AcceptRA = false;
+          #MulticastDNS = true;
         };
-        networks."40-rnl" = {
-          name = "wgrnl";
 
-          addresses = [
-            { addressConfig.Address = "192.168.20.65/24"; }
-            {
-              addressConfig.Address = "fd92:3315:9e43:c490::65/64";
-              #addressConfig.DuplicateAddressDetection = "none";
-            }
-          ];
+        linkConfig = {
+          Multicast = true;
+          #AllMulticast = true;
+        };
 
-          networkConfig = {
-            LinkLocalAddressing = "no";
-            IPv6AcceptRA = false;
-            #MulticastDNS = true;
-          };
-
-          linkConfig = {
-            Multicast = true;
-            #AllMulticast = true;
-          };
-
-          routingPolicyRules = [{
+        routingPolicyRules = [
+          {
             routingPolicyRuleConfig = {
               InvertRule = true;
               FirewallMark = wgrnlFwmark;
               Table = "rnl";
             };
-          }];
+          }
+        ];
 
-          ntp = [ "ntp.rnl.tecnico.ulisboa.pt" ];
+        ntp = ["ntp.rnl.tecnico.ulisboa.pt"];
 
-          dns = [
-            "2001:690:2100:80::1"
-            "193.136.164.2"
-            "2001:690:2100:80::2"
-            "193.136.164.1"
-          ];
-          domains = [
+        dns = [
+          "2001:690:2100:80::1"
+          "193.136.164.2"
+          "2001:690:2100:80::2"
+          "193.136.164.1"
+        ];
+        domains =
+          [
             # Main domain, with dns search
             "rnl.tecnico.ulisboa.pt"
 
@@ -119,13 +128,14 @@ in {
 
             # private range (Labs AMT)
             "~154.168.192.in-addr.arpa"
-          ] ++ (
+          ]
+          ++ (
             # private ranges (DSI-assigned)
             builtins.map
-              (octet: "~" + (builtins.toString octet) + ".16.10.in-addr.arpa")
-              (lib.range 64 127));
-        };
+            (octet: "~" + (builtins.toString octet) + ".16.10.in-addr.arpa")
+            (lib.range 64 127)
+          );
       };
-
+    };
   };
 }

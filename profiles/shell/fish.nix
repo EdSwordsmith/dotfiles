@@ -1,9 +1,15 @@
-{ config, options, pkgs, lib, user, profiles, ... }:
-
 {
-  imports = with profiles.shell; [ starship ];
+  config,
+  options,
+  pkgs,
+  lib,
+  user,
+  profiles,
+  ...
+}: {
+  imports = with profiles.shell; [starship];
 
-  environment.shells = with pkgs; [ fish ];
+  environment.shells = with pkgs; [fish];
 
   programs.fish.enable = true;
 
@@ -14,9 +20,11 @@
       cd = "z";
     };
 
-    plugins = [{
-      name = "fzf.fish";
-      src = pkgs.fishPlugins.fzf-fish.src;
-    }];
+    plugins = [
+      {
+        name = "fzf.fish";
+        src = pkgs.fishPlugins.fzf-fish.src;
+      }
+    ];
   };
 }

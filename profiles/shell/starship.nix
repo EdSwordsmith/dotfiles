@@ -1,6 +1,11 @@
-{ config, options, pkgs, lib, user, ... }:
-
 {
+  config,
+  options,
+  pkgs,
+  lib,
+  user,
+  ...
+}: {
   hm.programs.starship = {
     enable = true;
 
@@ -19,8 +24,7 @@
       };
 
       directory = {
-        format =
-          "[$path]($style)[$read_only]($read_only_style)[\\]](bold bright-red) ";
+        format = "[$path]($style)[$read_only]($read_only_style)[\\]](bold bright-red) ";
       };
     };
   };

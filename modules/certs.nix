@@ -1,11 +1,5 @@
 {
-  config,
-  options,
-  pkgs,
-  lib,
-  inputs,
   configDir,
-  secretsDir,
   ...
 }: {
   security.pki.certificateFiles = [

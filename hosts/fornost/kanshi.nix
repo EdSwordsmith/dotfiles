@@ -1,11 +1,4 @@
 {
-  config,
-  options,
-  pkgs,
-  lib,
-  inputs,
-  configDir,
-  secretsDir,
   ...
 }: {
   hm.services.kanshi = {

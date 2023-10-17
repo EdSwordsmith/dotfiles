@@ -1,9 +1,5 @@
 {
-  config,
-  options,
   pkgs,
-  lib,
-  user,
   profiles,
   ...
 }: {

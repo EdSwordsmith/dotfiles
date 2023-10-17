@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   ...
 }:
 pkgs.vimUtils.buildVimPluginFrom2Nix {

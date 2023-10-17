@@ -1,11 +1,4 @@
 {
-  config,
-  options,
-  pkgs,
-  lib,
-  inputs,
-  configDir,
-  secretsDir,
   ...
 }: {
   # Select internationalisation properties.

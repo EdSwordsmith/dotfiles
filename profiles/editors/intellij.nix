@@ -1,8 +1,5 @@
 {
-  config,
-  options,
   pkgs,
-  lib,
   ...
 }: let
   intellij = with pkgs.unstable.jetbrains;

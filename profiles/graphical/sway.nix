@@ -1,9 +1,7 @@
 {
   config,
-  options,
   pkgs,
   lib,
-  configDir,
   profiles,
   wallpaper,
   ...

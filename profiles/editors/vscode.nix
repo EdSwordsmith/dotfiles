@@ -1,8 +1,5 @@
 {
-  config,
-  options,
   pkgs,
-  lib,
   ...
 }: {
   hm.programs.vscode = {

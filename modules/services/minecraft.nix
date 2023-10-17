@@ -3,9 +3,6 @@
   options,
   pkgs,
   lib,
-  inputs,
-  configDir,
-  secretsDir,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf mkOption types;

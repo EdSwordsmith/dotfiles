@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   ...
 }:
 pkgs.writers.writePython3 "/bin/activate-controller"

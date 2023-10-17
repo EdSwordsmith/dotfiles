@@ -1,8 +1,5 @@
 {
-  config,
-  options,
   pkgs,
-  lib,
   ...
 }: let
   pythonPackages = p: with p; [numpy requests bitstring jupyter ipython];

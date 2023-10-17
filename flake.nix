@@ -11,6 +11,9 @@
     };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
+    pre-commit-hooks-nix = {
+      url = "github:cachix/pre-commit-hooks.nix";
+    };
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -33,7 +36,7 @@
     };
   };
 
-  outputs = inputs @ {self, ...}: let
+  outputs = inputs @ {...}: let
     inherit (inputs.nixpkgs) lib;
     inherit (lib) nixosSystem hasSuffix removeSuffix;
     inherit (lib.filesystem) listFilesRecursive;
@@ -73,9 +76,6 @@
     in
       mapAttrs' doMagic (builtins.readDir dir);
 
-    mkOverlays = path:
-      map (m: import m {inherit inputs lib;}) (mkModules path);
-
     mkPkgs = path: pkgs:
       mapAttrs'
       (name: value:
@@ -86,7 +86,7 @@
         ))
       (readDir path);
 
-    mkPkgsOverlay = path: final: prev: {
+    mkPkgsOverlay = path: _final: prev: {
       edu = mkPkgs path prev;
     };
 
@@ -100,7 +100,7 @@
         // {
           overlays = [
             inputs.agenix.overlays.default
-            (final: prev: {unstable = import inputs.nixpkgs-unstable args;})
+            (_final: _prev: {unstable = import inputs.nixpkgs-unstable args;})
             (mkPkgsOverlay ./pkgs)
           ];
         });
@@ -140,16 +140,29 @@
         (attrNames (readDir dir)));
   in
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [inputs.pre-commit-hooks-nix.flakeModule];
+
       systems = ["x86_64-linux"];
 
       perSystem = {
-        config,
-        self',
-        inputs',
         pkgs,
-        system,
+        config,
         ...
       }: {
+        pre-commit = {
+          check.enable = true;
+          settings.hooks = {
+            alejandra.enable = true;
+            deadnix.enable = true;
+          };
+        };
+
+        devShells.default = pkgs.mkShell {
+          shellHook = ''
+            ${config.pre-commit.installationScript}
+          '';
+        };
+
         packages = mkPkgs ./pkgs pkgs;
       };
 

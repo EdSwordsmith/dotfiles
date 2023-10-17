@@ -1,9 +1,4 @@
 {
-  config,
-  options,
-  pkgs,
-  lib,
-  user,
   ...
 }: {
   hm.programs.starship = {

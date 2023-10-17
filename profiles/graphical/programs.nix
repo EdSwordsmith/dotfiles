@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   fonts = {
     enableDefaultFonts = true;
 
@@ -24,7 +21,7 @@
     mattermost-desktop
     slack
     evince
-    unstable.thunderbird
+    thunderbird
     keepassxc
     pavucontrol
     gimp

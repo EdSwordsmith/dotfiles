@@ -101,39 +101,38 @@ in {
         };
       };
 
-      keybindings = let
-        modifier = config.hm.wayland.windowManager.sway.config.modifier;
-      in
-        lib.mkOptionDefault {
-          "${modifier}+Escape" = "exec swaylock";
-          "${modifier}+Shift+Escape" = "exec wlogout -p layer-shell";
+      keybindings = lib.mkOptionDefault {
+        "${modifier}+Escape" = "exec swaylock";
+        "${modifier}+Shift+Escape" = "exec wlogout -p layer-shell";
 
-          # Move to different monitor
-          "${modifier}+Ctrl+Left" = "move workspace to output left";
-          "${modifier}+Ctrl+Down" = "move workspace to output down";
-          "${modifier}+Ctrl+Up" = "move workspace to output up";
-          "${modifier}+Ctrl+Right" = "move workspace to output right";
-          "${modifier}+Ctrl+h" = "move workspace to output left";
-          "${modifier}+Ctrl+j" = "move workspace to output down";
-          "${modifier}+Ctrl+k" = "move workspace to output up";
-          "${modifier}+Ctrl+l" = "move workspace to output right";
+        # Move to different monitor
+        "${modifier}+Ctrl+Left" = "move workspace to output left";
+        "${modifier}+Ctrl+Down" = "move workspace to output down";
+        "${modifier}+Ctrl+Up" = "move workspace to output up";
+        "${modifier}+Ctrl+Right" = "move workspace to output right";
+        "${modifier}+Ctrl+h" = "move workspace to output left";
+        "${modifier}+Ctrl+j" = "move workspace to output down";
+        "${modifier}+Ctrl+k" = "move workspace to output up";
+        "${modifier}+Ctrl+l" = "move workspace to output right";
 
-          # Screenshots
-          "Print+a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
-          "Shift+Print+a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
-          "Print+w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy window";
-          "Shift+Print+w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save window";
+        # Screenshots
+        "Print+a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
+        "Shift+Print+a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
+        "Print+w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy window";
+        "Shift+Print+w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save window";
+        "Print+s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy output";
+        "Shift+Print+s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save output";
 
-          # Brightness
-          "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -T 0.72";
-          "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -T 1.4";
+        # Brightness
+        "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -T 0.72";
+        "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -T 1.4";
 
-          # Volume
-          "XF86AudioRaiseVolume" = "exec '${pkgs.pamixer}/bin/pamixer --increase 5'";
-          "XF86AudioLowerVolume" = "exec '${pkgs.pamixer}/bin/pamixer --decrease 5'";
-          "XF86AudioMute" = "exec '${pkgs.pamixer}/bin/pamixer -t'";
-          "XF86AudioMicMute" = "exec ${pkgs.pamixer}/bin/pamixer --default-source -t";
-        };
+        # Volume
+        "XF86AudioRaiseVolume" = "exec '${pkgs.pamixer}/bin/pamixer --increase 5'";
+        "XF86AudioLowerVolume" = "exec '${pkgs.pamixer}/bin/pamixer --decrease 5'";
+        "XF86AudioMute" = "exec '${pkgs.pamixer}/bin/pamixer -t'";
+        "XF86AudioMicMute" = "exec ${pkgs.pamixer}/bin/pamixer --default-source -t";
+      };
 
       output."*" = {bg = "${wallpaper} fill";};
     };

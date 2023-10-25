@@ -11,6 +11,7 @@
       fira-code
       fira
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
+      edu.ohxproto
     ];
   };
 

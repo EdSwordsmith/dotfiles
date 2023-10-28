@@ -26,7 +26,15 @@
 in {
   imports = with profiles.graphical; [common alacritty waybar wlogout];
 
-  hm.services.mako.enable = true;
+  hm.services.mako = {
+    enable = true;
+    font = "monospace 12";
+    layer = "overlay";
+    backgroundColor = "#383f4e";
+    textColor = "#f7f8f9";
+    borderSize = 0;
+    borderRadius = 12;
+  };
 
   programs.light.enable = true;
   usr.extraGroups = ["video"]; # For rootless light.

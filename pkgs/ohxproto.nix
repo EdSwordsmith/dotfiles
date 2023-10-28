@@ -12,12 +12,6 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "sha256-RanIMf9P2lFOF3kJS6jMlh/X6jttofbHSqFUJxWSqKk=";
   };
 
-  dontConfigure = true;
-  dontPatch = true;
-  dontBuild = true;
-  dontFixup = true;
-  doCheck = false;
-
   installPhase = ''
     runHook preInstall
     install -Dm644 -t $out/share/fonts/opentype/ *.otf

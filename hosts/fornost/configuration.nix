@@ -12,6 +12,8 @@
 
     editors.emacs
     editors.neovim
+
+    tailscale
   ];
 
   edu = {

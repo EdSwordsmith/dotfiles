@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-programs-sqlite = {
+      url = "github:wamserma/flake-programs-sqlite";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     pre-commit-hooks-nix = {
       url = "github:cachix/pre-commit-hooks.nix";
@@ -132,6 +137,7 @@
                 }
 
                 inputs.agenix.nixosModules.default
+                inputs.flake-programs-sqlite.nixosModules.programs-sqlite
               ]
               ++ mkModules ./modules
               ++ mkModules "${dir}/${name}";

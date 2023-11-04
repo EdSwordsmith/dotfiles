@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     git
     fzf
@@ -18,6 +15,7 @@
     man-pages
     man-pages-posix
     alejandra
+    libqalculate
   ];
 
   hm.programs.bat.enable = true;

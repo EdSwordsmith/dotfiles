@@ -2,8 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
+  config,
   pkgs,
   profiles,
+  secretsDir,
   ...
 }: {
   imports = with profiles; [
@@ -50,8 +52,19 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH9fsZ6NiBTcHQlT7GvX0gjMXkVB1FA4d0ryckaTIod2 eduardo@fornost"
   ];
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  age.secrets.cloudflare.file = "${secretsDir}/cloudflare.age";
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "self@espadeiro.pt";
+
+    certs."espadeiro.pt" = {
+      domain = "espadeiro.pt";
+      extraDomainNames = ["*.espadeiro.pt"];
+      dnsProvider = "cloudflare";
+      dnsPropagationCheck = true;
+      credentialsFile = config.age.secrets.cloudflare.path;
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

@@ -9,7 +9,9 @@
   imports = with profiles; [
     shell.fish
     editors.neovim
+    editors.emacs
     graphical.sway
+    tailscale
   ];
 
   edu.shell = {
@@ -45,7 +47,6 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIX4tRQIEAQiP2mesP0t0uCnw3micTnKxxSW22N5MhFw eduardo@iphone"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDi3n8aFv3+KeaRWbwXkiss9kWCfkNVPpoZ0gpC+QMYR eduardo@ipad"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDr6cqDPQKapijMfCxwXAFSniL5Tl1WMMcJ1dUcB3yhy eduardo@annuminas"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP0/hgrBsENtRhS2KxIsZrXiW5vVlkwxGCCQ14TUtGVd eduardo@dolamroth"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH9fsZ6NiBTcHQlT7GvX0gjMXkVB1FA4d0ryckaTIod2 eduardo@fornost"
   ];
 

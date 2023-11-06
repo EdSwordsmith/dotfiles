@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   pkgs,
@@ -52,6 +49,7 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH9fsZ6NiBTcHQlT7GvX0gjMXkVB1FA4d0ryckaTIod2 eduardo@fornost"
   ];
 
+  # ACME Certificates
   age.secrets.cloudflare.file = "${secretsDir}/cloudflare.age";
   security.acme = {
     acceptTerms = true;
@@ -66,11 +64,31 @@
     };
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  users.users.nginx.extraGroups = ["acme"];
+
+  # Nextcloud
+  age.secrets.ncdbpass = {
+    file = "${secretsDir}/ncdbpass.age";
+    owner = "nextcloud";
+    group = "nextcloud";
+  };
+
+  services.nextcloud = {
+    enable = true;
+    package = pkgs.nextcloud27;
+    hostName = "cloud.espadeiro.pt";
+    https = true;
+    config.adminpassFile = config.age.secrets.ncdbpass.path;
+  };
+
+  services.nginx.enable = true;
+  services.nginx.virtualHosts."cloud.espadeiro.pt" = {
+    forceSSL = true;
+    useACMEHost = "espadeiro.pt";
+    locations."/".proxyPass = "http://127.0.0.1:80";
+  };
+
+  networking.firewall.allowedTCPPorts = [80 443];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

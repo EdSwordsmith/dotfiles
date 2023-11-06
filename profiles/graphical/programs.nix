@@ -29,6 +29,11 @@
     libreoffice
   ];
 
+  hm.services.nextcloud-client = {
+    enable = true;
+    startInBackground = true;
+  };
+
   hm.programs.mpv.enable = true;
 
   services.flatpak.enable = true;

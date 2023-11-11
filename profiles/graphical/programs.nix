@@ -12,13 +12,16 @@
       fira
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
       edu.ohxproto
+      unstable.commit-mono
     ];
   };
 
   hm.home.packages = with pkgs; [
     spotify
     brave
-    webcord
+    (webcord.override {
+      electron_24 = pkgs.unstable.electron_27;
+    })
     mattermost-desktop
     slack
     evince

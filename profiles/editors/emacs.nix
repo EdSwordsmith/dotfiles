@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   services.emacs = {
     enable = true;
     package =
@@ -28,12 +25,14 @@
     rust-analyzer
     clang-tools_15
     nodePackages.typescript-language-server
+    nodePackages."@astrojs/language-server"
     isort
     black
     sqlite # org-roam
     pandoc
     graphviz
     texlive.combined.scheme-full
+    texlab
     metals
   ];
 }

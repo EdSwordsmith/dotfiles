@@ -11,6 +11,7 @@ with lib; let
     eslint
     vscode-langservers-extracted
     typescript-language-server
+    pkgs.nodePackages."@astrojs/language-server"
   ];
 in {
   hm.home.packages = with pkgs; [nodePackages.typescript];

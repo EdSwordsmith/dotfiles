@@ -13,9 +13,12 @@
     tailscale
   ];
 
-  edu.shell = {
-    git.enable = true;
-    gpg.enable = true;
+  edu = {
+    noautosuspend.enable = true;
+    shell = {
+      git.enable = true;
+      gpg.enable = true;
+    };
   };
 
   # Bootloader.

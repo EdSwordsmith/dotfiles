@@ -19,6 +19,7 @@
   hm.home.packages = with pkgs; [
     spotify
     brave
+    firefox
     (webcord.override {
       electron_24 = pkgs.unstable.electron_27;
     })

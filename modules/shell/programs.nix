@@ -16,6 +16,7 @@
     man-pages-posix
     alejandra
     libqalculate
+    gnumake
   ];
 
   hm.programs.bat.enable = true;

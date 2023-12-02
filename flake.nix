@@ -29,11 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    jmusicbot = {
-      url = "https://github.com/jagrosh/MusicBot/releases/download/0.3.9/JMusicBot-0.3.9.jar";
-      flake = false;
-    };
-
     wallpapers = {
       url = "git+ssh://git@github.com/EdSwordsmith/wallpapers";
       flake = false;

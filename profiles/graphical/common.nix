@@ -1,7 +1,4 @@
-{
-  profiles,
-  ...
-}: {
+{profiles, ...}: {
   imports = with profiles.graphical; [gtk programs];
 
   xdg.portal.enable = true;

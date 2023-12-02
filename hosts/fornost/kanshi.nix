@@ -1,6 +1,4 @@
-{
-  ...
-}: {
+{...}: {
   hm.services.kanshi = {
     enable = true;
     profiles = {

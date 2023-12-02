@@ -16,7 +16,7 @@
 
   edu = {
     services = {
-      djtobis.enable = true;
+      # djtobis.enable = true;
       pombobot.enable = true;
       minecraft = {
         enable = true;

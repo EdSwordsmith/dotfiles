@@ -1,6 +1,4 @@
-{
-  ...
-}: {
+{...}: {
   hm.programs.starship = {
     enable = true;
 

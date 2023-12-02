@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   hm.programs.waybar = {
     enable = true;
     systemd.enable = true;

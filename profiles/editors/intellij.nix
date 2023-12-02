@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   intellij = with pkgs.unstable.jetbrains;
     plugins.addPlugins idea-ultimate ["164" "17718"];
   idea =

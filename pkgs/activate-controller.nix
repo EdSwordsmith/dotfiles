@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{pkgs, ...}:
 pkgs.writers.writePython3 "/bin/activate-controller"
 {
   libraries = with pkgs.python3Packages; [pyusb];

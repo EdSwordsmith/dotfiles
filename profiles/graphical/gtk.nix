@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   hm.gtk = {
     enable = true;
     iconTheme = {

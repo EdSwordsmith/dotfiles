@@ -1,6 +1,4 @@
-{
-  ...
-}: {
+{...}: {
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_PT.UTF-8";
 

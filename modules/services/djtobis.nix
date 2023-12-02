@@ -1,37 +1,42 @@
 {
   config,
   options,
-  pkgs,
   lib,
-  inputs,
-  configDir,
   secretsDir,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.edu.services.djtobis;
-  inherit (inputs) jmusicbot;
-  botDir = "/etc/djtobis";
 in {
   options.edu.services.djtobis.enable = mkEnableOption "DJ Tóbis";
 
   config = mkIf cfg.enable {
-    age.secrets.djtobis.file = "${secretsDir}/djtobis.age";
-    age.secrets.djtobis.path = "${botDir}/config.txt";
-    age.secrets."NUNO.mp4".file = "${secretsDir}/NUNO.mp4.age";
-    age.secrets."NUNO.mp4".path = "${botDir}/NUNO.mp4";
-
-    environment.etc = {
-      "djtobis/Playlists".source = "${configDir}/djtobis/Playlists";
+    users.users.djtobis = {
+      home = "${config.services.jmusicbot.stateDir}";
+      group = "djtobis";
+      isSystemUser = true;
     };
 
-    systemd.services.djtobis = {
-      wantedBy = ["multi-user.target"];
-      after = ["network.target"];
-      serviceConfig = {
-        ExecStart = "${pkgs.jre8}/bin/java -Dnogui=true -jar ${jmusicbot}";
-        WorkingDirectory = botDir;
-      };
+    users.groups.djtobis.members = ["djtobis"];
+
+    age.secrets.djtobis = {
+      file = "${secretsDir}/djtobis.age";
+      path = "${config.services.jmusicbot.stateDir}/config.txt";
+      owner = "djtobis";
+      group = "djtobis";
+    };
+
+    age.secrets."NUNO.mp4" = {
+      file = "${secretsDir}/NUNO.mp4.age";
+      path = "${config.services.jmusicbot.stateDir}/NUNO.mp4";
+      owner = "djtobis";
+      group = "djtobis";
+    };
+
+    services.jmusicbot.enable = true;
+    systemd.services.jmusicbot.serviceConfig = {
+      DynamicUser = lib.mkForce false;
+      User = "djtobis";
     };
   };
 }

@@ -41,7 +41,7 @@ in {
           config = builtins.readFile "${configDir}/nvim/lua/navigator.lua";
         }
         {
-          plugin = pkgs.edu.tokyo-night-nvim;
+          plugin = tokyonight-nvim;
           type = "lua";
           config = ''
             vim.cmd[[colorscheme tokyonight-night]]

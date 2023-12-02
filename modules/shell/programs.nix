@@ -22,7 +22,7 @@
   hm.programs.bat.enable = true;
   hm.programs.zoxide.enable = true;
 
-  hm.programs.exa = {
+  hm.programs.eza = {
     enable = true;
     enableAliases = true;
   };

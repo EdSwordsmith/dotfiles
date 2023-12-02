@@ -14,6 +14,10 @@
   ];
 
   edu = {
+    services = {
+      djtobis.enable = true;
+      # pombobot.enable = true;
+    };
     noautosuspend.enable = true;
     shell = {
       git.enable = true;

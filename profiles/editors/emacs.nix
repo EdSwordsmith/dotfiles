@@ -34,5 +34,10 @@
     texlive.combined.scheme-full
     texlab
     metals
+    gopls
+    ocamlformat
+    ocamlPackages.ocaml-lsp
+    ocamlPackages.merlin
+    ocamlPackages.ocp-indent
   ];
 }

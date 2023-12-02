@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   fonts = {
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       symbola
       font-awesome
       material-design-icons
@@ -20,9 +20,7 @@
     spotify
     brave
     firefox
-    (webcord.override {
-      electron_24 = pkgs.unstable.electron_27;
-    })
+    webcord
     mattermost-desktop
     slack
     evince

@@ -240,18 +240,6 @@
         "type": "github"
       }
     },
-    "jmusicbot": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-BnFa1TrddU5AprrDRSETN40/DhutXoFelEWxYk+g1/I=",
-        "type": "file",
-        "url": "https://github.com/jagrosh/MusicBot/releases/download/0.3.9/JMusicBot-0.3.9.jar"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/jagrosh/MusicBot/releases/download/0.3.9/JMusicBot-0.3.9.jar"
-      }
-    },
     "mk-naked-shell": {
       "flake": false,
       "locked": {
@@ -501,7 +489,6 @@
         "flake-parts": "flake-parts",
         "flake-programs-sqlite": "flake-programs-sqlite",
         "home": "home",
-        "jmusicbot": "jmusicbot",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "pombobot": "pombobot",

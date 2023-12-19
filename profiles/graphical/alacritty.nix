@@ -1,4 +1,11 @@
-{...}: {
+{pkgs, ...}: let
+  theme = pkgs.fetchFromGitHub {
+    owner = "dracula";
+    repo = "alacritty";
+    rev = "18353e319fada1e33c20b3dae840f9ce6eeede5d";
+    sha256 = "sha256-VwP5iTQf3nFe2ZPVoc5adzoIMVYxfdHBdjVOfi6e5yA=";
+  };
+in {
   hm.programs.alacritty = {
     enable = true;
     settings = {
@@ -17,38 +24,8 @@
         bold.family = "JetBrainsMono Nerd Font Mono";
         italic.family = "JetBrainsMono Nerd Font Mono";
       };
-
-      colors = {
-        # Default colors
-        primary = {
-          background = "0x191E24";
-          foreground = "0xCBCCC6";
-        };
-
-        # Normal colors
-        normal = {
-          black = "0x191E2A";
-          red = "0xFF3333";
-          green = "0xBAE67E";
-          yellow = "0xFFA759";
-          blue = "0x73D0FF";
-          magenta = "0xFFD580";
-          cyan = "0x95E6CB";
-          white = "0xC7C7C7";
-        };
-
-        # bright colors
-        bright = {
-          black = "0x686868";
-          red = "0xF27983";
-          green = "0xA6CC70";
-          yellow = "0xFFCC66";
-          blue = "0x5CCFE6";
-          magenta = "0xFFEE99";
-          cyan = "0x95E6CB";
-          white = "0xFFFFFF";
-        };
-      };
     };
+
+    settings.import = ["${theme}/dracula.yml"];
   };
 }

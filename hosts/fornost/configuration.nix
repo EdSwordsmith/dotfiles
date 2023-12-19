@@ -6,12 +6,14 @@
   imports = with profiles; [
     dev
     shell.fish
+    shell.zsh
 
     graphical.games
     graphical.sway
 
     editors.emacs
     editors.neovim
+    editors.intellij
 
     tailscale
   ];
@@ -57,7 +59,7 @@
     xkbVariant = "";
   };
 
-  usr.shell = pkgs.fish;
+  usr.shell = pkgs.zsh;
   usr.extraGroups = ["dialout" "docker" "libvirtd"];
 
   networking.firewall.allowedTCPPortRanges = [

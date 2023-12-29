@@ -21,8 +21,15 @@
 
     shellAliases = {
       cd = "z";
-      open = "xdg-open";
     };
+
+    initExtra = ''
+      open() {
+        for file in $@; do
+          (xdg-open $file &)
+        done
+      }
+    '';
 
     oh-my-zsh = {
       enable = true;

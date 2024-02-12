@@ -12,6 +12,6 @@ in {
     (python3.withPackages pythonPackages)
     racket
     sbcl
-    julia-bin
+    julia_18-bin
   ];
 }

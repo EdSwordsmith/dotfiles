@@ -484,6 +484,18 @@
         "type": "github"
       }
     },
+    "rnl-ca": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-2esGMITA9cFmTIdBqb0kcWcKAtl38bw4q9EfHIIwtqQ=",
+        "type": "file",
+        "url": "https://rnl.tecnico.ulisboa.pt/ca/cacert/cacert.crt"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://rnl.tecnico.ulisboa.pt/ca/cacert/cacert.crt"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -494,6 +506,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "pombobot": "pombobot",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
+        "rnl-ca": "rnl-ca",
         "treefmt-nix": "treefmt-nix",
         "wallpapers": "wallpapers"
       }

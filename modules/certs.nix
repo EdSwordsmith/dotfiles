@@ -1,6 +1,10 @@
-{configDir, ...}: {
+{
+  configDir,
+  inputs,
+  ...
+}: {
   security.pki.certificateFiles = [
-    "${configDir}/certs/rnl.crt"
+    inputs.rnl-ca
     "${configDir}/certs/ist.crt"
   ];
 }

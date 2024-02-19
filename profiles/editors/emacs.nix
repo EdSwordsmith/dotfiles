@@ -39,5 +39,6 @@
     ocamlPackages.ocaml-lsp
     ocamlPackages.merlin
     ocamlPackages.ocp-indent
+    zls
   ];
 }

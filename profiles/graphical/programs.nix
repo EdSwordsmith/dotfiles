@@ -20,7 +20,7 @@
     spotify
     brave
     firefox
-    webcord
+    armcord
     mattermost-desktop
     slack
     evince

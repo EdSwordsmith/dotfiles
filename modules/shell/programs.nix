@@ -17,6 +17,7 @@
     alejandra
     libqalculate
     gnumake
+    rlwrap
   ];
 
   hm.programs.bat.enable = true;

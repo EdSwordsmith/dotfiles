@@ -7,8 +7,14 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.edu.shell.git;
+  signers = builtins.toFile "signers" ''
+    eduardo.espadeiro@tecnico.ulisboa.pt,eduardo.espadeiro@rnl.tecnico.ulisboa.pt ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAKa+VAFnzoQdVvK1LUJYQi3jVFhU9m0ziNuGdOs4dhN eduardo@fornost
+  '';
 in {
-  options.edu.shell.git.enable = mkEnableOption "git";
+  options.edu.shell.git = {
+    enable = mkEnableOption "git";
+    signing = mkEnableOption "signing";
+  };
 
   config = mkIf cfg.enable {
     hm.programs.git = {
@@ -23,12 +29,14 @@ in {
         commit.template = "${configDir}/gitmessage.txt";
         commit.verbose = true;
         core.editor = "nvim";
+
+        gpg.ssh.allowedSignersFile = signers;
+        gpg.format = "ssh";
       };
 
-      # Enable signing if the gpg module is enabled
-      signing = mkIf config.edu.shell.gpg.enable {
+      signing = mkIf cfg.signing {
         signByDefault = true;
-        key = "0CF1C5EAF76639CE034D9A5E686B41F974804CC1";
+        key = "~/.ssh/id_ed25519.signing";
       };
     };
   };

@@ -24,9 +24,9 @@
       privateKeyFile = "/etc/wireguard/privkey";
     };
 
-    shell = {
-      gpg.enable = true;
-      git.enable = true;
+    shell.git = {
+      enable = true;
+      signing = true;
     };
   };
 

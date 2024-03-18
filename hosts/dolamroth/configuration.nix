@@ -6,6 +6,7 @@
   ...
 }: {
   imports = with profiles; [
+    server
     shell.fish
     editors.neovim
     editors.emacs
@@ -15,7 +16,6 @@
   ];
 
   edu = {
-    noautosuspend.enable = true;
     shell = {
       git.enable = true;
       gpg.enable = true;

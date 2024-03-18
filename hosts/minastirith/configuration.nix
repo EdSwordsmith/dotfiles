@@ -4,6 +4,8 @@
   ...
 }: {
   imports = with profiles; [
+    server
+
     shell.fish
 
     editors.intellij
@@ -17,7 +19,7 @@
   edu = {
     services = {
       # djtobis.enable = true;
-      pombobot.enable = true;
+      # pombobot.enable = true;
       minecraft = {
         enable = true;
         servers = {
@@ -32,8 +34,6 @@
         };
       };
     };
-
-    noautosuspend.enable = true;
 
     shell = {
       gpg.enable = true;

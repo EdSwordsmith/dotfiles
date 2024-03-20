@@ -19,8 +19,8 @@
     editorconfig-core-c
     shfmt
     shellcheck
+    nil
     pyright
-    rnix-lsp
     sumneko-lua-language-server
     rust-analyzer
     clang-tools_15

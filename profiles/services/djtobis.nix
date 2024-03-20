@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   secretsDir,
@@ -26,7 +27,11 @@
     group = "djtobis";
   };
 
-  services.jmusicbot.enable = true;
+  services.jmusicbot = {
+    enable = true;
+    package = pkgs.unstable.jmusicbot;
+  };
+
   systemd.services.jmusicbot.serviceConfig = {
     DynamicUser = lib.mkForce false;
     User = "djtobis";

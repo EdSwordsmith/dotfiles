@@ -198,11 +198,6 @@ require('lspconfig')['pyright'].setup {
   on_attach = require 'generic_lsp'
 }
 
-require('lspconfig')['rnix'].setup {
-  capabilities = capabilities,
-  on_attach = require 'generic_lsp'
-}
-
 require('lspconfig')['gopls'].setup {
   capabilities = capabilities,
   on_attach = require 'generic_lsp'

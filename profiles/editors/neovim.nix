@@ -99,7 +99,6 @@ in {
     extraPackages = with pkgs;
       [
         pyright
-        rnix-lsp
         sumneko-lua-language-server
         rust-analyzer
         clang-tools_15

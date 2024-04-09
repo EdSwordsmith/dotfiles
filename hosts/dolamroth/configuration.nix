@@ -15,12 +15,7 @@
     services.djtobis
   ];
 
-  edu = {
-    shell = {
-      git.enable = true;
-      gpg.enable = true;
-    };
-  };
+  edu.shell.git.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

@@ -35,10 +35,7 @@
       };
     };
 
-    shell = {
-      gpg.enable = true;
-      git.enable = true;
-    };
+    shell.git.enable = true;
   };
 
   # Bootloader.

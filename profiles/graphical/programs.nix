@@ -28,7 +28,7 @@
     keepassxc
     pavucontrol
     gimp
-    libreoffice
+    onlyoffice-bin
   ];
 
   hm.services.nextcloud-client = {

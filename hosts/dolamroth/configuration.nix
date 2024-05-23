@@ -7,7 +7,7 @@
 }: {
   imports = with profiles; [
     server
-    shell.fish
+    shell.zsh
     editors.neovim
     editors.emacs
     graphical.sway
@@ -40,7 +40,7 @@
     settings.PasswordAuthentication = false;
   };
 
-  usr.shell = pkgs.fish;
+  usr.shell = pkgs.zsh;
   usr.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDr6cqDPQKapijMfCxwXAFSniL5Tl1WMMcJ1dUcB3yhy eduardo@annuminas"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH9fsZ6NiBTcHQlT7GvX0gjMXkVB1FA4d0ryckaTIod2 eduardo@fornost"

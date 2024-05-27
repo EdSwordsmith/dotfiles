@@ -41,5 +41,6 @@
     ocamlPackages.merlin
     ocamlPackages.ocp-indent
     zls
+    cmake-language-server
   ];
 }

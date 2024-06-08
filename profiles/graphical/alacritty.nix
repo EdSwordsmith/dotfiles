@@ -2,8 +2,8 @@
   theme = pkgs.fetchFromGitHub {
     owner = "dracula";
     repo = "alacritty";
-    rev = "18353e319fada1e33c20b3dae840f9ce6eeede5d";
-    sha256 = "sha256-VwP5iTQf3nFe2ZPVoc5adzoIMVYxfdHBdjVOfi6e5yA=";
+    rev = "9ae0fdedd423803f0401f6e7a23cd2bb88c175b2";
+    sha256 = "sha256-MgRH5Lc8wyZ6AQZweyL1QzO5eBzVdjbOPQeRs/Mf51M=";
   };
 in {
   hm.programs.alacritty = {
@@ -26,6 +26,6 @@ in {
       };
     };
 
-    settings.import = ["${theme}/dracula.yml"];
+    settings.import = ["${theme}/dracula.toml"];
   };
 }

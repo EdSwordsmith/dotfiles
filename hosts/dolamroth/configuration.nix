@@ -29,9 +29,9 @@
 
   # Configure keymap
   console.keyMap = "pt-latin1";
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "pt";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable the OpenSSH daemon.

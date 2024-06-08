@@ -1,11 +1,4 @@
-{pkgs, ...}: let
-  theme = pkgs.fetchFromGitHub {
-    owner = "dracula";
-    repo = "alacritty";
-    rev = "9ae0fdedd423803f0401f6e7a23cd2bb88c175b2";
-    sha256 = "sha256-MgRH5Lc8wyZ6AQZweyL1QzO5eBzVdjbOPQeRs/Mf51M=";
-  };
-in {
+{configDir, ...}: {
   hm.programs.alacritty = {
     enable = true;
     settings = {
@@ -26,6 +19,6 @@ in {
       };
     };
 
-    settings.import = ["${theme}/dracula.toml"];
+    settings.import = ["${configDir}/gruber_darker.toml"];
   };
 }

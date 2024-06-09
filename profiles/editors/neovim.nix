@@ -54,11 +54,6 @@ in {
           config = builtins.readFile "${configDir}/nvim/lua/hop-nvim.lua";
         }
         {
-          plugin = orgmode;
-          type = "lua";
-          config = builtins.readFile "${configDir}/nvim/lua/orgmode.lua";
-        }
-        {
           plugin = harpoon;
           type = "lua";
           config = builtins.readFile "${configDir}/nvim/lua/harpoon.lua";

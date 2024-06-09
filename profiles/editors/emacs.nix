@@ -19,14 +19,12 @@
     editorconfig-core-c
     shfmt
     shellcheck
-    nil
     pyright
     sumneko-lua-language-server
     rust-analyzer
     clang-tools_15
     nodePackages.typescript-language-server
     nodePackages."@astrojs/language-server"
-    nodePackages.volar
     isort
     black
     sqlite # org-roam

@@ -10,9 +10,9 @@
       jetbrains-mono
       fira-code
       fira
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
-      unstable._0xproto
-      unstable.commit-mono
+      _0xproto
+      iosevka
+      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka"];})
     ];
   };
 

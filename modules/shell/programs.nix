@@ -20,6 +20,8 @@
     rlwrap
   ];
 
+  programs.nix-ld.enable = true;
+
   hm.programs.bat.enable = true;
   hm.programs.zoxide.enable = true;
   hm.programs.eza.enable = true;

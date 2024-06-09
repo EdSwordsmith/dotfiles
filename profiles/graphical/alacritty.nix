@@ -1,4 +1,11 @@
-{configDir, ...}: {
+{pkgs, ...}: let
+  themes = pkgs.fetchFromGitHub {
+    owner = "alacritty";
+    repo = "alacritty-theme";
+    rev = "94e1dc0b9511969a426208fbba24bd7448493785";
+    sha256 = "sha256-bPup3AKFGVuUC8CzVhWJPKphHdx0GAc62GxWsUWQ7Xk=";
+  };
+in {
   hm.programs.alacritty = {
     enable = true;
     settings = {
@@ -12,13 +19,13 @@
       };
 
       font = {
-        size = 14.0;
-        normal.family = "JetBrainsMono Nerd Font Mono";
-        bold.family = "JetBrainsMono Nerd Font Mono";
-        italic.family = "JetBrainsMono Nerd Font Mono";
+        size = 16.0;
+        normal.family = "Iosevka Nerd Font Mono";
+        bold.family = "Iosevka Nerd Font Mono";
+        italic.family = "Iosevka Nerd Font Mono";
       };
     };
 
-    settings.import = ["${configDir}/gruber_darker.toml"];
+    settings.import = ["${themes}/themes/horizon-dark.toml"];
   };
 }

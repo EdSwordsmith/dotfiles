@@ -21,4 +21,3 @@ set completeopt=menu,menuone,noselect
 tnoremap <Esc> <C-\><C-n>
 vnoremap < <gv
 vnoremap > >gv
-autocmd BufWritePre <buffer> lua vim.lsp.buf.format()

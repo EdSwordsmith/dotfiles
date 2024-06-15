@@ -13,7 +13,6 @@
 
     editors.emacs
     editors.neovim
-    editors.intellij
 
     tailscale
   ];

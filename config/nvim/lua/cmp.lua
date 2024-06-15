@@ -1,6 +1,4 @@
-local nvim_lsp = require('lspconfig')
 local luasnip = require('luasnip')
-local lspkind = require('lspkind')
 local cmp = require 'cmp'
 local function has_words_before()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -44,26 +42,6 @@ cmp.setup({
       end
       luasnip.lsp_expand(args.body)
     end,
-  },
-
-  formatting = {
-    -- format = function(_, vim_item)
-    --   vim_item.kind = (cmp_kinds[vim_item.kind] or "") .. vim_item.kind
-    --   return vim_item
-    -- end,
-    format = lspkind.cmp_format({
-      mode = "symbol_text",
-      menu = ({
-        nvim_lsp = "[LSP]",
-        ultisnips = "[US]",
-        nvim_lua = "[Lua]",
-        path = "[Path]",
-        buffer = "[Buffer]",
-        emoji = "[Emoji]",
-        omni = "[Omni]",
-      }),
-    }),
-
   },
 
   mapping = {
@@ -113,12 +91,7 @@ cmp.setup({
   },
 
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    -- { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'orgmode' },
     { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
   }, {
     { name = 'buffer' },
     { name = 'orgmode' },
@@ -149,63 +122,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
--- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-
-require('lspconfig')['lua_ls'].setup {
-  capabilities = capabilities,
-  on_attach = require 'generic_lsp'
-}
-
-
-require('lspconfig')['eslint'].setup {
-  capabilities = capabilities,
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "jsx",
-    "html"
-  },
-  on_attach = require 'generic_lsp'
-}
-require('lspconfig')['clangd'].setup {
-  capabilities = capabilities,
-  on_attach = require 'generic_lsp'
-}
-
-require('lspconfig')['java_language_server'].setup {
-  capabilities = capabilities,
-  on_attach = require 'generic_lsp',
-  cmd = { 'java-language-server' }
-}
-
-require 'lspconfig'.kotlin_language_server.setup {
-  capabilities = capabilities,
-  on_attach = require 'generic_lsp'
-}
-
-require 'lspconfig'.tsserver.setup {
-  capabilities = capabilities,
-  on_attach = require 'generic_lsp'
-}
-
-require('lspconfig')['pyright'].setup {
-  capabilities = capabilities,
-  on_attach = require 'generic_lsp'
-}
-
-require('lspconfig')['gopls'].setup {
-  capabilities = capabilities,
-  on_attach = require 'generic_lsp'
-}
-
-require('lspconfig')['rust_analyzer'].setup {
-  capabilities = capabilities,
-  on_attach = require 'generic_lsp'
-}
-
-require('lspconfig').astro.setup {}

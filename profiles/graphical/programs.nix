@@ -20,9 +20,6 @@
     spotify
     brave
     firefox
-    armcord
-    mattermost-desktop
-    slack
     evince
     thunderbird
     keepassxc

@@ -9,7 +9,6 @@ with lib; {
   hm.home.packages = with pkgs; [nodePackages.typescript];
   hm.programs.neovim = {
     enable = true;
-    defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;

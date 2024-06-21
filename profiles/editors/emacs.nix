@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   services.emacs = {
     enable = true;
+    defaultEditor = true;
     package =
       (pkgs.emacsPackagesFor pkgs.emacs29-pgtk).emacsWithPackages
       (epkgs: with epkgs; [vterm org-roam]);

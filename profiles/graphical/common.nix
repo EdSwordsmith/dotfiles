@@ -9,7 +9,10 @@
   # Enable the GNOME Display Manager.
   services.xserver.displayManager.gdm.enable = true;
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    NIXPKGS_ALLOW_UNFREE = "1";
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

@@ -21,6 +21,7 @@
     brave
     firefox
     evince
+    okular
     thunderbird
     keepassxc
     pavucontrol

@@ -9,9 +9,9 @@
         height = 30;
         spacing = 6;
 
-        modules-left = ["sway/workspaces"];
+        modules-left = ["hyprland/workspaces" "sway/workspaces"];
 
-        modules-center = ["sway/window"];
+        modules-center = ["hyprland/window" "sway/window"];
 
         modules-right = ["pulseaudio" "backlight" "network" "battery" "clock" "tray"];
 

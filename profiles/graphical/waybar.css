@@ -81,7 +81,7 @@ button.flat {
     font-size: 1em;
 }
 
-#workspaces button.focused {
+#workspaces button.focused, #workspaces button.active {
     background: @bg;
     color: @fg;
     opacity: 1;

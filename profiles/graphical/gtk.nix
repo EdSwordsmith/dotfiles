@@ -10,4 +10,9 @@
       name = "Adwaita-dark";
     };
   };
+
+  hm.qt = {
+    enable = true;
+    platformTheme.name = "gtk3";
+  };
 }

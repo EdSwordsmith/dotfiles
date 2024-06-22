@@ -10,6 +10,7 @@
 
     graphical.games
     graphical.sway
+    graphical.hyprland
 
     editors.emacs
     editors.neovim

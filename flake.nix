@@ -16,8 +16,6 @@
     };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-    pre-commit-hooks-nix.url = "github:cachix/pre-commit-hooks.nix";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -145,11 +143,6 @@
         (attrNames (readDir dir)));
   in
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [
-        inputs.pre-commit-hooks-nix.flakeModule
-        inputs.treefmt-nix.flakeModule
-      ];
-
       systems = ["x86_64-linux"];
 
       perSystem = {
@@ -157,26 +150,6 @@
         config,
         ...
       }: {
-        pre-commit = {
-          check.enable = true;
-          settings.hooks = {
-            alejandra.enable = true;
-            deadnix.enable = true;
-          };
-        };
-
-        treefmt.config = {
-          projectRootFile = ./flake.nix;
-          programs.alejandra.enable = true;
-          programs.deadnix.enable = true;
-        };
-
-        devShells.default = pkgs.mkShell {
-          shellHook = ''
-            ${config.pre-commit.installationScript}
-          '';
-        };
-
         packages = mkPkgs ./pkgs pkgs;
       };
 

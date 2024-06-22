@@ -4,6 +4,7 @@
   lib,
   profiles,
   wallpaper,
+  configDir,
   ...
 }: let
   lockCommand = pkgs.writeShellScriptBin "swaylock" ''
@@ -75,7 +76,7 @@ in {
     enable = true;
     package = pkgs.rofi-wayland;
     terminal = "${pkgs.alacritty}/bin/alacritty";
-    theme = ./theme.rasi;
+    theme = "${configDir}/theme.rasi";
   };
 
   hm.wayland.windowManager.sway = {

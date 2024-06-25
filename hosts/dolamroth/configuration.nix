@@ -73,7 +73,7 @@
 
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud27;
+    package = pkgs.nextcloud29;
     hostName = "cloud.espadeiro.pt";
     https = true;
     config.adminpassFile = config.age.secrets.ncdbpass.path;

@@ -18,6 +18,7 @@
     libqalculate
     gnumake
     rlwrap
+    mcrcon
   ];
 
   programs.nix-ld.enable = true;

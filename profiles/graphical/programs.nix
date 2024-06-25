@@ -27,6 +27,7 @@
     pavucontrol
     gimp
     onlyoffice-bin
+    armcord
   ];
 
   hm.services.nextcloud-client = {

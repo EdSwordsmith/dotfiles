@@ -21,10 +21,14 @@
       --fade-in 0.2
   '';
 in {
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = pkgs.unstable.hyprland;
+  };
 
   hm.wayland.windowManager.hyprland = {
     enable = true;
+    package = pkgs.unstable.hyprland;
     systemd = {
       enable = true;
       variables = ["--all"];
@@ -45,7 +49,7 @@ in {
 
       $terminal = alacritty
       $menu = rofi -show drun -show-icons
-      $screenshot = ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area
+      $screenshot = ${pkgs.sway-contrib.grimshot}/bin/grimshot save anything - | ${pkgs.satty}/bin/satty -f - --fullscreen --copy-command ${pkgs.wl-clipboard}/bin/wl-copy --early-exit
       $logout = wlogout -p layer-shell
       $lock = ${lockCommand}/bin/swaylock
 
@@ -216,6 +220,16 @@ in {
       bind = $mainMod SHIFT, 9, movetoworkspacesilent, 9
       bind = $mainMod SHIFT, 0, movetoworkspacesilent, 10
 
+      # Move to different monitor
+      bind = $mainMod CTRL, left, movecurrentworkspacetomonitor, l
+      bind = $mainMod CTRL, down, movecurrentworkspacetomonitor, d
+      bind = $mainMod CTRL, up, movecurrentworkspacetomonitor, u
+      bind = $mainMod CTRL, right, movecurrentworkspacetomonitor, r
+      bind = $mainMod CTRL, H, movecurrentworkspacetomonitor, l
+      bind = $mainMod CTRL, J, movecurrentworkspacetomonitor, d
+      bind = $mainMod CTRL, K, movecurrentworkspacetomonitor, u
+      bind = $mainMod CTRL, L, movecurrentworkspacetomonitor, r
+
       # Example special workspace (scratchpad)
       bind = $mainMod, S, togglespecialworkspace, magic
       bind = $mainMod SHIFT, S, movetoworkspacesilent, special:magic
@@ -225,7 +239,7 @@ in {
       bindm = $mainMod, mouse:273, resizewindow
 
       # Screenshots
-      bind = $mainMod, Print, exec, $screenshot
+      bind =, Print, exec, $screenshot
 
       # Sound
       bindel =, XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer --increase 5

@@ -1,8 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  configDir,
+  ...
+}: {
   hm.programs.waybar = {
     enable = true;
     systemd.enable = true;
-    style = ./waybar.css;
+    style = configDir + "/waybar.css";
 
     settings = [
       {

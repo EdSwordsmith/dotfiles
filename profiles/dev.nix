@@ -13,7 +13,5 @@ in {
     racket
     (sbcl.withPackages (p: [p.agnostic-lizard]))
     unstable.julia-bin
-    unstable.odin
-    unstable.ols
   ];
 }

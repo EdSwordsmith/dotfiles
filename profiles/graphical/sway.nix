@@ -93,6 +93,7 @@ in {
       menu = "rofi -show drun -show-icons";
       bars = [];
       window.titlebar = false;
+      defaultWorkspace = "workspace number 1";
 
       input = {
         "type:keyboard" = {xkb_layout = "pt";};

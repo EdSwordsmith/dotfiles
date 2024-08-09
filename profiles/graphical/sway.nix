@@ -126,12 +126,13 @@ in {
         "${modifier}+Ctrl+l" = "move workspace to output right";
 
         # Screenshots
-        "Print+a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
-        "Shift+Print+a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
-        "Print+w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy window";
-        "Shift+Print+w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save window";
-        "Print+s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy output";
-        "Shift+Print+s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save output";
+        "Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save anything - | ${pkgs.satty}/bin/satty -f - --fullscreen --copy-command ${pkgs.wl-clipboard}/bin/wl-copy --early-exit";
+        # "Print+a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
+        # "Shift+Print+a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
+        # "Print+w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy window";
+        # "Shift+Print+w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save window";
+        # "Print+s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy output";
+        # "Shift+Print+s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save output";
 
         # Brightness
         "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -T 0.72";

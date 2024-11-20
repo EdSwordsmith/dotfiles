@@ -12,6 +12,6 @@ in {
     (python3.withPackages pythonPackages)
     racket
     (sbcl.withPackages (p: [p.agnostic-lizard]))
-    unstable.julia-bin
+    julia-bin
   ];
 }

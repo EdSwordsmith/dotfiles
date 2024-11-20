@@ -37,9 +37,6 @@ in {
     borderRadius = 12;
   };
 
-  programs.light.enable = true;
-  usr.extraGroups = ["video"]; # For rootless light.
-
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -155,31 +152,31 @@ in {
     '';
   };
 
-  hm.services.swayidle = {
-    enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = "${lockCommand}/bin/swaylock";
-      }
-      {
-        event = "lock";
-        command = "${lockCommand}/bin/swaylock";
-      }
-    ];
-    timeouts = [
-      # {
-      #   timeout = 300;
-      #   command = "${lockCommand}/bin/swaylock";
-      # }
-      {
-        timeout = 60;
-        command = ''
-          if ${pkgs.procps}/bin/pgrep swaylock; then ${pkgs.sway}/bin/swaymsg "output * dpms off"; fi'';
-        resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * dpms on"'';
-      }
-    ];
-  };
+  # hm.services.swayidle = {
+  #   enable = true;
+  #   events = [
+  #     {
+  #       event = "before-sleep";
+  #       command = "${lockCommand}/bin/swaylock";
+  #     }
+  #     {
+  #       event = "lock";
+  #       command = "${lockCommand}/bin/swaylock";
+  #     }
+  #   ];
+  #   timeouts = [
+  #     # {
+  #     #   timeout = 300;
+  #     #   command = "${lockCommand}/bin/swaylock";
+  #     # }
+  #     {
+  #       timeout = 60;
+  #       command = ''
+  #         if ${pkgs.procps}/bin/pgrep swaylock; then ${pkgs.sway}/bin/swaymsg "output * dpms off"; fi'';
+  #       resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * dpms on"'';
+  #     }
+  #   ];
+  # };
 
   hm.services.gammastep = {
     enable = true;

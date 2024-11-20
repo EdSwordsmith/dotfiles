@@ -27,6 +27,8 @@
     pavucontrol
     gimp
     onlyoffice-bin
+    webcord
+    obs-studio
   ];
 
   hm.services.nextcloud-client = {

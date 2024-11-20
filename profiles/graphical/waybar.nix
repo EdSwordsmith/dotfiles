@@ -17,7 +17,7 @@
 
         modules-center = ["hyprland/window" "sway/window"];
 
-        modules-right = ["pulseaudio" "backlight" "network" "battery" "clock" "tray"];
+        modules-right = ["pulseaudio" "backlight" "network" "battery" "clock" "tray" "custom/notifs"];
 
         "sway/workspaces".disable-scroll = true;
 
@@ -63,6 +63,27 @@
           format-icons = {default = ["󰕿" "󰖀" "󰕾"];};
           on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           tooltip = false;
+        };
+
+        "custom/notifs" = {
+          tooltip = false;
+          format = "{} {icon}";
+          "format-icons" = {
+            notification = "󱅫";
+            none = "";
+            "dnd-notification" = " ";
+            "dnd-none" = "󰂛";
+            "inhibited-notification" = " ";
+            "inhibited-none" = "";
+            "dnd-inhibited-notification" = " ";
+            "dnd-inhibited-none" = " ";
+          };
+          "return-type" = "json";
+          "exec-if" = "which swaync-client";
+          exec = "swaync-client -swb";
+          "on-click" = "sleep 0.1 && swaync-client -t -sw";
+          "on-click-right" = "sleep 0.1 && swaync-client -d -sw";
+          escape = true;
         };
       }
     ];

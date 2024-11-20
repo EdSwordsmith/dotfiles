@@ -27,4 +27,12 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
+  programs.light.enable = true;
+  usr.extraGroups = ["video"]; # For rootless light.
 }

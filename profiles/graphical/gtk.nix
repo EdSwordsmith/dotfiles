@@ -15,4 +15,15 @@
     enable = true;
     platformTheme.name = "gtk3";
   };
+
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+
+  programs.dconf = {
+    enable = true;
+    profiles.user.databases = [
+      {
+        settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+      }
+    ];
+  };
 }

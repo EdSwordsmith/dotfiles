@@ -1,34 +1,58 @@
 {
+  profiles,
   pkgs,
   wallpaper,
+  configDir,
   ...
-}: let
-  lockCommand = pkgs.writeShellScriptBin "swaylock" ''
-    ${pkgs.swaylock-effects}/bin/swaylock -f \
-      --screenshots \
-      --clock \
-      --indicator \
-      --indicator-radius 100 \
-      --indicator-thickness 7 \
-      --effect-blur 7x5 \
-      --effect-vignette 0.5:0.5 \
-      --ring-color bb00cc \
-      --key-hl-color 880033 \
-      --line-color 00000000 \
-      --inside-color 00000088 \
-      --separator-color 00000000 \
-      --grace 2 \
-      --fade-in 0.2
-  '';
-in {
-  programs.hyprland = {
+}: {
+  imports = with profiles.graphical; [
+    common
+    alacritty
+    waybar
+    wlogout
+    hypridle
+    hyprlock
+  ];
+
+  programs.hyprland.enable = true;
+
+  hm.services.swaync.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    blueberry
+    wdisplays
+    wl-clipboard
+    sway-contrib.grimshot
+    gnome.nautilus
+    feh
+  ];
+
+  programs.nm-applet.enable = true;
+
+  security.polkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+
+  hm.programs.rofi = {
     enable = true;
-    package = pkgs.unstable.hyprland;
+    package = pkgs.rofi-wayland;
+    terminal = "${pkgs.alacritty}/bin/alacritty";
+    theme = "${configDir}/theme.rasi";
+  };
+
+  hm.services.gammastep = {
+    enable = true;
+    tray = true;
+    provider = "manual";
+    latitude = 38.7;
+    longitude = -9.14;
+    temperature = {
+      day = 5700;
+      night = 2700;
+    };
   };
 
   hm.wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.unstable.hyprland;
     systemd = {
       enable = true;
       variables = ["--all"];
@@ -41,7 +65,6 @@ in {
 
       monitor = eDP-1, 1920x1080, 0x0, 1
       monitor = ,preferred, auto, auto
-      exec-once = swaybg -m fill -i ${wallpaper}
 
       ###################
       ### MY PROGRAMS ###
@@ -51,7 +74,6 @@ in {
       $menu = rofi -show drun -show-icons
       $screenshot = ${pkgs.sway-contrib.grimshot}/bin/grimshot save anything - | ${pkgs.satty}/bin/satty -f - --fullscreen --copy-command ${pkgs.wl-clipboard}/bin/wl-copy --early-exit
       $logout = wlogout -p layer-shell
-      $lock = ${lockCommand}/bin/swaylock
 
       #####################
       ### LOOK AND FEEL ###
@@ -161,7 +183,7 @@ in {
 
       bind = $mainMod, Return, exec, $terminal
       bind = $mainMod SHIFT, Q, killactive,
-      bind = $mainMod, Escape, exec, $lock
+      bind = $mainMod, Escape, exec, loginctl lock-session
       bind = $mainMod SHIFT, Escape, exec, $logout
       bind = $mainMod, F, fullscreen
       bind = $mainMod, W, togglegroup
@@ -257,5 +279,13 @@ in {
 
       windowrulev2 = suppressevent maximize, class:.*
     '';
+  };
+
+  hm.services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = "${wallpaper}";
+      wallpaper = ", ${wallpaper}";
+    };
   };
 }

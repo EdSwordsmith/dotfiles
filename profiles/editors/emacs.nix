@@ -22,7 +22,7 @@
     shellcheck
     pyright
     sumneko-lua-language-server
-    rust-analyzer
+    unstable.rust-analyzer
     clang-tools_15
     nodePackages.typescript-language-server
     nodePackages."@astrojs/language-server"

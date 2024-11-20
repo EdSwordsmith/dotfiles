@@ -9,7 +9,6 @@
     shell.zsh
 
     graphical.games
-    graphical.sway
     graphical.hyprland
 
     editors.emacs
@@ -30,7 +29,7 @@
     };
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   hardware.bluetooth.enable = true;
 
@@ -41,7 +40,6 @@
 
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
-  programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [virt-manager vagrant];
 
   services.fprintd.enable = true;

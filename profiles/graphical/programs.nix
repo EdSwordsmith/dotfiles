@@ -27,7 +27,6 @@
     pavucontrol
     gimp
     onlyoffice-bin
-    webcord
     obs-studio
   ];
 

@@ -23,14 +23,27 @@
     wdisplays
     wl-clipboard
     sway-contrib.grimshot
-    gnome.nautilus
-    feh
+    nautilus
+    qview
   ];
 
   programs.nm-applet.enable = true;
 
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
+
+  # Solves small cursor on HiDPI.
+  hm.home.pointerCursor = {
+    gtk.enable = true;
+
+    name = "Bibata-Modern-Classic";
+    package = pkgs.bibata-cursors;
+    size = 24;
+    x11 = {
+      enable = true;
+      defaultCursor = "Bibata-Modern-Classic";
+    };
+  };
 
   hm.programs.rofi = {
     enable = true;
@@ -93,21 +106,22 @@
       }
 
       decoration {
-          rounding = 8
+          rounding = 4
 
           active_opacity = 1.0
           inactive_opacity = 1.0
 
-          drop_shadow = true
-          shadow_range = 4
-          shadow_render_power = 3
-          col.shadow = rgba(1a1a1aee)
+          shadow {
+            enabled = true
+            range = 4
+            render_power = 3
+            color = rgba(1a1a1aee)
+          }
 
           blur {
               enabled = true
               size = 3
               passes = 1
-
               vibrancy = 0.1696
           }
       }
@@ -127,11 +141,18 @@
 
       dwindle {
           preserve_split = true
-          no_gaps_when_only = 2
+          workspace = w[tv1] s[false], gapsout:0, gapsin:0
+          workspace = f[1] s[false], gapsout:0, gapsin:0
+          windowrulev2 = bordersize 0, floating:0, onworkspace:w[tv1] s[false]
+          windowrulev2 = rounding 0, floating:0, onworkspace:w[tv1] s[false]
+          windowrulev2 = bordersize 0, floating:0, onworkspace:f[1] s[false]
+          windowrulev2 = rounding 0, floating:0, onworkspace:f[1] s[false]
       }
 
       misc {
           disable_hyprland_logo = true
+          enable_swallow = true
+          swallow_regex = Alacritty
       }
 
       group {
@@ -141,10 +162,11 @@
           col.border_locked_inactive = rgba(000000ff)
 
           groupbar {
-              font_size = 12
-              col.active = rgba(222222ff)
+              render_titles = false
+              height = 8
+              col.active = rgba(ffffffff)
               col.inactive = rgba(111111ff)
-              col.locked_active = rgba(222222ff)
+              col.locked_active = rgba(ffffffff)
               col.locked_inactive = rgba(111111ff)
           }
       }

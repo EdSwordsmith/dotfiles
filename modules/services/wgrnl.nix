@@ -36,34 +36,32 @@ in {
         };
         wireguardPeers = [
           {
-            wireguardPeerConfig = {
-              PublicKey = "g08PXxMmzC6HA+Jxd+hJU0zJdI6BaQJZMgUrv2FdLBY=";
-              Endpoint = "193.136.164.211:34266";
-              AllowedIPs = [
-                # public RNL-operated ranges
-                "193.136.164.0/24"
-                "193.136.154.0/24"
-                "2001:690:2100:80::/58"
+            PublicKey = "g08PXxMmzC6HA+Jxd+hJU0zJdI6BaQJZMgUrv2FdLBY=";
+            Endpoint = "193.136.164.211:34266";
+            AllowedIPs = [
+              # public RNL-operated ranges
+              "193.136.164.0/24"
+              "193.136.154.0/24"
+              "2001:690:2100:80::/58"
 
-                # public 3rd-party ranges
-                "193.136.128.24/29" # DSI-RNL peering
-                "146.193.33.81/32" # INESC watergate
+              # public 3rd-party ranges
+              "193.136.128.24/29" # DSI-RNL peering
+              "146.193.33.81/32" # INESC watergate
 
-                # private RNL-operated ranges
-                "10.16.64.0/18"
-                "192.168.154.0/24" # Labs AMT
-                "192.168.20.0/24" # wgrnl VPN
-                "fd92:3315:9e43:c490::/64" # wgrnl VPN
+              # private RNL-operated ranges
+              "10.16.64.0/18"
+              "192.168.154.0/24" # Labs AMT
+              "192.168.20.0/24" # wgrnl VPN
+              "fd92:3315:9e43:c490::/64" # wgrnl VPN
 
-                # multicast
-                "224.0.0.0/24"
-                "ff02::/16"
-                "239.255.255.250/32"
-                "239.255.255.253/32"
-                "fe80::/10"
-              ];
-              PersistentKeepalive = 25;
-            };
+              # multicast
+              "224.0.0.0/24"
+              "ff02::/16"
+              "239.255.255.250/32"
+              "239.255.255.253/32"
+              "fe80::/10"
+            ];
+            PersistentKeepalive = 25;
           }
         ];
       };
@@ -71,10 +69,10 @@ in {
         name = "wgrnl";
 
         addresses = [
-          {addressConfig.Address = "192.168.20.65/24";}
+          {Address = "192.168.20.65/24";}
           {
-            addressConfig.Address = "fd92:3315:9e43:c490::65/64";
-            #addressConfig.DuplicateAddressDetection = "none";
+            Address = "fd92:3315:9e43:c490::65/64";
+            #DuplicateAddressDetection = "none";
           }
         ];
 
@@ -91,11 +89,9 @@ in {
 
         routingPolicyRules = [
           {
-            routingPolicyRuleConfig = {
-              InvertRule = true;
-              FirewallMark = wgrnlFwmark;
-              Table = "rnl";
-            };
+            InvertRule = true;
+            FirewallMark = wgrnlFwmark;
+            Table = "rnl";
           }
         ];
 

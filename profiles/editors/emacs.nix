@@ -41,5 +41,6 @@
     ocamlPackages.ocp-indent
     zls
     cmake-language-server
+    elixir-ls
   ];
 }

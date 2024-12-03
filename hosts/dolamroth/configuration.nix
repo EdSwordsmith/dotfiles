@@ -10,7 +10,7 @@
     shell.zsh
     editors.neovim
     editors.emacs
-    graphical.sway
+    graphical.hyprland
     tailscale
     services.djtobis
   ];
@@ -97,13 +97,23 @@
   #   };
   # };
 
-  systemd.services.e2e = {
-    path = with pkgs; [jre8 bash];
+  # systemd.services.e2e = {
+  #   path = with pkgs; [jre8 bash];
+  #   wantedBy = ["multi-user.target"];
+  #   after = ["network.target"];
+  #   serviceConfig = {
+  #     ExecStart = "/home/eduardo/minecraft/e2e/ServerStartLinux.sh";
+  #     WorkingDirectory = "/home/eduardo/minecraft/e2e";
+  #   };
+  # };
+
+  systemd.services.atm9 = {
+    path = with pkgs; [jdk17];
     wantedBy = ["multi-user.target"];
     after = ["network.target"];
     serviceConfig = {
-      ExecStart = "/home/eduardo/minecraft/e2e/ServerStartLinux.sh";
-      WorkingDirectory = "/home/eduardo/minecraft/e2e";
+      ExecStart = "/home/eduardo/minecraft/atm9/startserver.sh";
+      WorkingDirectory = "/home/eduardo/minecraft/atm9";
     };
   };
 

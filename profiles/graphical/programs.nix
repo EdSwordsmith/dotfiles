@@ -28,6 +28,7 @@
     gimp
     onlyoffice-bin
     obs-studio
+    discord-canary # TODO: replace with discord once screen sharing on Wayland is supported
   ];
 
   hm.services.nextcloud-client = {

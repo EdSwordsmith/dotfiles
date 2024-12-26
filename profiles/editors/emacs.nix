@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  profiles,
+  ...
+}: {
+  imports = with profiles; [dev];
+
   services.emacs = {
     enable = true;
     defaultEditor = true;
@@ -16,31 +22,9 @@
     clang
 
     # Module dependencies
-    nodejs
     editorconfig-core-c
-    shfmt
-    shellcheck
-    pyright
-    sumneko-lua-language-server
-    unstable.rust-analyzer
-    clang-tools_15
-    nodePackages.typescript-language-server
-    nodePackages."@astrojs/language-server"
-    isort
-    black
     sqlite # org-roam
     pandoc
     graphviz
-    texlive.combined.scheme-full
-    texlab
-    metals
-    gopls
-    ocamlformat
-    ocamlPackages.ocaml-lsp
-    ocamlPackages.merlin
-    ocamlPackages.ocp-indent
-    zls
-    cmake-language-server
-    elixir-ls
   ];
 }

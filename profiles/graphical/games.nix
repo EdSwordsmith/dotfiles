@@ -5,7 +5,10 @@
     edu.activate-controller
   ];
 
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
 
   # services.udev.extraRules = ''
   #   ENV{DEVTYPE}=="usb_device", ATTRS{idProduct]=="028e", ATTRS{idVendor}=="045e", ACTION=="add", RUN+="${pkgs.edu.activate-controller}/bin/activate-controller"

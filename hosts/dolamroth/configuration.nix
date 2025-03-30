@@ -107,13 +107,23 @@
   #   };
   # };
 
-  systemd.services.atm9 = {
+  # systemd.services.atm9 = {
+  #   path = with pkgs; [jdk17];
+  #   wantedBy = ["multi-user.target"];
+  #   after = ["network.target"];
+  #   serviceConfig = {
+  #     ExecStart = "/home/eduardo/minecraft/atm9/startserver.sh";
+  #     WorkingDirectory = "/home/eduardo/minecraft/atm9";
+  #   };
+  # };
+
+  systemd.services.pa2 = {
     path = with pkgs; [jdk17];
     wantedBy = ["multi-user.target"];
     after = ["network.target"];
     serviceConfig = {
-      ExecStart = "/home/eduardo/minecraft/atm9/startserver.sh";
-      WorkingDirectory = "/home/eduardo/minecraft/atm9";
+      ExecStart = "/home/eduardo/minecraft/pa2/startserver.sh";
+      WorkingDirectory = "/home/eduardo/minecraft/pa2";
     };
   };
 

@@ -9,7 +9,7 @@
     enable = true;
     defaultEditor = true;
     package =
-      (pkgs.emacsPackagesFor pkgs.emacs29-pgtk).emacsWithPackages
+      (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages
       (epkgs: with epkgs; [vterm org-roam]);
   };
 

@@ -18,7 +18,6 @@
 
   hm.home.packages = with pkgs; [
     spotify
-    brave
     firefox
     evince
     okular

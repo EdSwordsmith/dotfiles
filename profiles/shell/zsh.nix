@@ -23,7 +23,7 @@
       cd = "z";
     };
 
-    initExtra = ''
+    initContent = ''
       open() {
         for file in $@; do
           (xdg-open $file &)

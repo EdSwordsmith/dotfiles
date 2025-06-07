@@ -12,7 +12,8 @@
       fira
       _0xproto
       iosevka
-      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka"];})
+      nerd-fonts.iosevka
+      nerd-fonts.jetbrains-mono
     ];
   };
 
@@ -20,7 +21,6 @@
     spotify
     firefox
     evince
-    okular
     thunderbird
     keepassxc
     pavucontrol

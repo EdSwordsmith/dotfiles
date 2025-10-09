@@ -1,6 +1,13 @@
 {pkgs, ...}: {
   hm.home.packages = with pkgs; [
-    prismlauncher
+    (prismlauncher.override {
+      jdks = [
+        jdk8
+        jdk17
+        jdk21
+        unstable.jdk25
+      ];
+    })
     superTux
     edu.activate-controller
   ];

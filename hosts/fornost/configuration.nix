@@ -29,7 +29,9 @@
     };
   };
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  hm.home.packages = with pkgs; [
+    unstable.jetbrains.idea-community-bin
+  ];
 
   hardware.bluetooth.enable = true;
 

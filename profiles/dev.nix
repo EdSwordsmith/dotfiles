@@ -9,6 +9,7 @@
     # Elixir
     elixir-ls
     # Go
+    go
     gopls
     # JS/TS
     nodejs
@@ -35,6 +36,8 @@
     racket
     # Rust
     unstable.rust-analyzer
+    unstable.rustc
+    unstable.cargo
     # Scala
     metals
     # Shell

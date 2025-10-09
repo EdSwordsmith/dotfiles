@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   fonts = {
     enableDefaultPackages = true;
 
@@ -20,6 +24,7 @@
   hm.home.packages = with pkgs; [
     spotify
     firefox
+    inputs.zen-browser.packages.${pkgs.system}.default
     evince
     thunderbird
     keepassxc

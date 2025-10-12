@@ -90,16 +90,6 @@
     # locations."/".proxyPass = "http://127.0.0.1:80";
   };
 
-  # systemd.services.gtnh = {
-  #   path = with pkgs; [jre];
-  #   wantedBy = ["multi-user.target"];
-  #   after = ["network.target"];
-  #   serviceConfig = {
-  #     ExecStart = "/home/eduardo/minecraft/gtnh/startserver-java9.sh";
-  #     WorkingDirectory = "/home/eduardo/minecraft/gtnh";
-  #   };
-  # };
-
   # systemd.services.e2e = {
   #   path = with pkgs; [jre8 bash];
   #   wantedBy = ["multi-user.target"];
@@ -129,6 +119,16 @@
   #     WorkingDirectory = "/home/eduardo/minecraft/pa2";
   #   };
   # };
+
+  systemd.services.gtnh = {
+    path = with pkgs; [unstable.jdk25];
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
+    serviceConfig = {
+      ExecStart = "/home/eduardo/minecraft/gtnh/startserver-java9.sh";
+      WorkingDirectory = "/home/eduardo/minecraft/gtnh";
+    };
+  };
 
   networking.firewall.allowedTCPPorts = [80 443 25565];
 

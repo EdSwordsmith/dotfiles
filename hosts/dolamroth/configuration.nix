@@ -83,11 +83,54 @@
     };
   };
 
-  services.nginx.enable = true;
+  services.nginx = {
+    enable = true;
+    recommendedProxySettings = true;
+  };
+
   services.nginx.virtualHosts."cloud.espadeiro.pt" = {
     forceSSL = true;
     useACMEHost = "espadeiro.pt";
-    # locations."/".proxyPass = "http://127.0.0.1:80";
+  };
+
+  services.grafana = {
+    enable = true;
+    settings = {
+      server = {
+        http_port = 2342;
+        http_addr = "127.0.0.1";
+        domain = "grafana.espadeiro.pt";
+      };
+    };
+  };
+
+  services.prometheus = {
+    enable = true;
+    port = 9001;
+    exporters.node = {
+      enable = true;
+      enabledCollectors = ["systemd"];
+      port = 9002;
+    };
+    scrapeConfigs = [
+      {
+        job_name = "dolamroth";
+        static_configs = [
+          {
+            targets = ["127.0.0.1:${toString config.services.prometheus.exporters.node.port}"];
+          }
+        ];
+      }
+    ];
+  };
+
+  services.nginx.virtualHosts.${config.services.grafana.settings.server.domain} = {
+    forceSSL = true;
+    useACMEHost = "espadeiro.pt";
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:${toString config.services.grafana.settings.server.http_port}";
+      proxyWebsockets = true;
+    };
   };
 
   # systemd.services.e2e = {
@@ -107,16 +150,6 @@
   #   serviceConfig = {
   #     ExecStart = "/home/eduardo/minecraft/atm9/startserver.sh";
   #     WorkingDirectory = "/home/eduardo/minecraft/atm9";
-  #   };
-  # };
-
-  # systemd.services.pa2 = {
-  #   path = with pkgs; [jdk17];
-  #   wantedBy = ["multi-user.target"];
-  #   after = ["network.target"];
-  #   serviceConfig = {
-  #     ExecStart = "/home/eduardo/minecraft/pa2/startserver.sh";
-  #     WorkingDirectory = "/home/eduardo/minecraft/pa2";
   #   };
   # };
 

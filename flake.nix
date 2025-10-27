@@ -27,11 +27,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     wallpapers = {
       url = "git+ssh://git@github.com/EdSwordsmith/wallpapers";
       flake = false;
@@ -150,16 +145,10 @@
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
 
-      perSystem = {
-        pkgs,
-        config,
-        ...
-      }: {
+      perSystem = {pkgs, ...}: {
         packages = mkPkgs ./pkgs pkgs;
       };
 
-      flake = {
-        nixosConfigurations = mkHosts ./hosts;
-      };
+      flake.nixosConfigurations = mkHosts ./hosts;
     };
 }

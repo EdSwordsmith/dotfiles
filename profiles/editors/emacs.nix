@@ -3,7 +3,7 @@
   profiles,
   ...
 }: {
-  imports = with profiles; [dev];
+  imports = with profiles; [dev.common];
 
   services.emacs = {
     enable = true;

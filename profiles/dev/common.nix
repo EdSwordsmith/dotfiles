@@ -4,10 +4,6 @@
     clang
     clang-tools
     cmake-language-server
-    # Common Lisp
-    (sbcl.withPackages (p: [p.agnostic-lizard]))
-    # Elixir
-    elixir-ls
     # Go
     go
     gopls
@@ -15,11 +11,6 @@
     nodejs
     nodePackages.typescript-language-server
     nodePackages."@astrojs/language-server"
-    # Julia
-    julia-bin
-    # LaTeX
-    texlive.combined.scheme-full
-    texlab
     # OCaml
     ocamlformat
     ocamlPackages.ocaml-lsp
@@ -32,18 +23,16 @@
     pyright
     isort
     black
-    # Racket
-    racket
     # Rust
     unstable.rust-analyzer
     unstable.rustc
     unstable.cargo
-    # Scala
-    metals
     # Shell
     shfmt
     shellcheck
     # Zig
     zls
+    # Flutter
+    flutter
   ];
 }

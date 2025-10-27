@@ -4,7 +4,8 @@
   ...
 }: {
   imports = with profiles; [
-    dev
+    dev.common
+    dev.thesis
     shell.fish
     shell.zsh
 
@@ -13,6 +14,7 @@
 
     editors.emacs
     editors.neovim
+    editors.vscode
 
     tailscale
   ];
@@ -61,7 +63,7 @@
   };
 
   usr.shell = pkgs.zsh;
-  usr.extraGroups = ["dialout" "docker" "libvirtd"];
+  usr.extraGroups = ["dialout" "docker" "libvirtd" "kvm"];
 
   networking.firewall.allowedTCPPortRanges = [
     {

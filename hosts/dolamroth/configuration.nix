@@ -75,7 +75,7 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud31;
-    hostName = "cloud.espadeiro.pt";
+    hostName = "nextcloud.espadeiro.pt";
     https = true;
     config = {
       adminpassFile = config.age.secrets.ncdbpass.path;
@@ -88,7 +88,7 @@
     recommendedProxySettings = true;
   };
 
-  services.nginx.virtualHosts."cloud.espadeiro.pt" = {
+  services.nginx.virtualHosts."nextcloud.espadeiro.pt" = {
     forceSSL = true;
     useACMEHost = "espadeiro.pt";
   };

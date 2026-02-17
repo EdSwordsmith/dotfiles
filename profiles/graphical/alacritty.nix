@@ -19,6 +19,7 @@
       };
     };
 
-    settings.general.import = ["${configDir}/gruber_darker.toml"];
+    # settings.general.import = ["${configDir}/gruber_darker.toml"];
+    theme = "ayu_dark";
   };
 }

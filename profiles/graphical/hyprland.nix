@@ -45,11 +45,21 @@
     };
   };
 
-  hm.programs.rofi = {
+  hm.programs.vicinae = {
     enable = true;
-    package = pkgs.rofi-wayland;
-    terminal = "${pkgs.alacritty}/bin/alacritty";
-    theme = "${configDir}/theme.rasi";
+    systemd.enable = true;
+    settings = {
+      faviconService = "google";
+      font.size = 14;
+      popToRootOnClose = false;
+      rootSearch.searchFiles = true;
+      theme.name = "ayu-dark";
+      window = {
+        csd = true;
+        opacity = 0.98;
+        rounding = 10;
+      };
+    };
   };
 
   hm.services.gammastep = {
@@ -84,7 +94,7 @@
       ###################
 
       $terminal = alacritty
-      $menu = rofi -show drun -show-icons
+      $menu = vicinae toggle
       $screenshot = ${pkgs.sway-contrib.grimshot}/bin/grimshot save anything - | ${pkgs.satty}/bin/satty -f - --fullscreen --copy-command ${pkgs.wl-clipboard}/bin/wl-copy --early-exit
       $logout = wlogout -p layer-shell
 
@@ -191,10 +201,6 @@
               clickfinger_behavior = true
               tap-to-click = true
           }
-      }
-
-      gestures {
-          workspace_swipe = false
       }
 
       ####################

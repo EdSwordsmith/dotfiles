@@ -14,7 +14,6 @@
 
     editors.emacs
     editors.neovim
-    editors.vscode
 
     tailscale
   ];
@@ -30,10 +29,6 @@
       signing = true;
     };
   };
-
-  hm.home.packages = with pkgs; [
-    unstable.jetbrains.idea-community-bin
-  ];
 
   hardware.bluetooth.enable = true;
 

@@ -29,7 +29,7 @@
     keepassxc
     pavucontrol
     gimp
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     obs-studio
     discord
   ];

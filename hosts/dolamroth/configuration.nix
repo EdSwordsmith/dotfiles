@@ -153,15 +153,15 @@
   #   };
   # };
 
-  systemd.services.gtnh = {
-    path = with pkgs; [unstable.jdk25];
-    wantedBy = ["multi-user.target"];
-    after = ["network.target"];
-    serviceConfig = {
-      ExecStart = "/home/eduardo/minecraft/gtnh/startserver-java9.sh";
-      WorkingDirectory = "/home/eduardo/minecraft/gtnh";
-    };
-  };
+  # systemd.services.gtnh = {
+  #   path = with pkgs; [unstable.jdk25];
+  #   wantedBy = ["multi-user.target"];
+  #   after = ["network.target"];
+  #   serviceConfig = {
+  #     ExecStart = "/home/eduardo/minecraft/gtnh/startserver-java9.sh";
+  #     WorkingDirectory = "/home/eduardo/minecraft/gtnh";
+  #   };
+  # };
 
   networking.firewall.allowedTCPPorts = [80 443 25565];
 

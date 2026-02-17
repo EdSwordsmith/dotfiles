@@ -27,6 +27,8 @@
     unstable.rust-analyzer
     unstable.rustc
     unstable.cargo
+    unstable.rustfmt
+    unstable.clippy
     # Shell
     shfmt
     shellcheck

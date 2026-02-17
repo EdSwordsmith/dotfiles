@@ -19,9 +19,13 @@ in {
   config = mkIf cfg.enable {
     hm.programs.git = {
       enable = true;
-      userName = "Eduardo Espadeiro";
-      userEmail = "eduardo.espadeiro@tecnico.ulisboa.pt";
-      extraConfig = {
+
+      settings = {
+        user = {
+          name = "Eduardo Espadeiro";
+          email = "eduardo.espadeiro@tecnico.ulisboa.pt";
+        };
+
         color.ui = true;
         pull.rebase = true;
         init.defaultBranch = "main";

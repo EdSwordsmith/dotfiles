@@ -186,6 +186,26 @@
         "type": "github"
       }
     },
+    "meadhal": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771456196,
+        "narHash": "sha256-Ktr2ps2bKYKaVNFPJMmICUZJVz9zxI/fNyIW0Om8xr8=",
+        "ref": "refs/heads/main",
+        "rev": "0d2827da1cee6cf2b5bc880d5133c0b63908375a",
+        "revCount": 16,
+        "type": "git",
+        "url": "ssh://git@github.com/PombosMalvados/meadhal"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/PombosMalvados/meadhal"
+      }
+    },
     "mk-naked-shell": {
       "flake": false,
       "locked": {
@@ -374,6 +394,7 @@
         "flake-parts": "flake-parts",
         "flake-programs-sqlite": "flake-programs-sqlite",
         "home": "home",
+        "meadhal": "meadhal",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "pombobot": "pombobot",

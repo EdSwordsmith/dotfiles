@@ -27,6 +27,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    meadhal = {
+      url = "git+ssh://git@github.com/PombosMalvados/meadhal";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wallpapers = {
       url = "git+ssh://git@github.com/EdSwordsmith/wallpapers";
       flake = false;
@@ -135,6 +140,7 @@
 
                 inputs.agenix.nixosModules.default
                 inputs.flake-programs-sqlite.nixosModules.programs-sqlite
+                inputs.meadhal.nixosModules.default
               ]
               ++ mkModules ./modules
               ++ mkModules "${dir}/${name}";

@@ -14,4 +14,5 @@ in {
   "NUNO.mp4.age".publicKeys = users ++ systems;
   "cloudflare.age".publicKeys = users ++ systems;
   "ncdbpass.age".publicKeys = users ++ systems;
+  "cftunnel.age".publicKeys = users ++ systems;
 }

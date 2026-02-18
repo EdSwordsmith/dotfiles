@@ -133,26 +133,6 @@
     };
   };
 
-  # systemd.services.e2e = {
-  #   path = with pkgs; [jre8 bash];
-  #   wantedBy = ["multi-user.target"];
-  #   after = ["network.target"];
-  #   serviceConfig = {
-  #     ExecStart = "/home/eduardo/minecraft/e2e/ServerStartLinux.sh";
-  #     WorkingDirectory = "/home/eduardo/minecraft/e2e";
-  #   };
-  # };
-
-  # systemd.services.atm9 = {
-  #   path = with pkgs; [jdk17];
-  #   wantedBy = ["multi-user.target"];
-  #   after = ["network.target"];
-  #   serviceConfig = {
-  #     ExecStart = "/home/eduardo/minecraft/atm9/startserver.sh";
-  #     WorkingDirectory = "/home/eduardo/minecraft/atm9";
-  #   };
-  # };
-
   # systemd.services.gtnh = {
   #   path = with pkgs; [unstable.jdk25];
   #   wantedBy = ["multi-user.target"];
@@ -163,7 +143,23 @@
   #   };
   # };
 
-  networking.firewall.allowedTCPPorts = [80 443 25565];
+  services.meadhal = {
+    enable = true;
+    host = "mead.espadeiro.pt";
+  };
+
+  age.secrets.cftunnel.file = "${secretsDir}/cftunnel.age";
+  services.cloudflared = {
+    enable = true;
+    tunnels = {
+      "85aa279b-8295-4c80-8f37-0e5b5182e854" = {
+        credentialsFile = "${config.age.secrets.cftunnel.path}";
+        default = "http_status:404";
+      };
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [80 443 8080 25565];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

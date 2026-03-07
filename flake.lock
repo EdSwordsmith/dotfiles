@@ -23,6 +23,26 @@
         "type": "github"
       }
     },
+    "comboios": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772898059,
+        "narHash": "sha256-6NxBr8a3YtCakWhEZkomThuB4xeWCr1UKB/Eofq3KPg=",
+        "ref": "refs/heads/main",
+        "rev": "a249c6540ffc6498e2f2658a4c8c5a3527fd7502",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/EdSwordsmith/comboios"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/EdSwordsmith/comboios"
+      }
+    },
     "crane": {
       "flake": false,
       "locked": {
@@ -391,6 +411,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "comboios": "comboios",
         "flake-parts": "flake-parts",
         "flake-programs-sqlite": "flake-programs-sqlite",
         "home": "home",

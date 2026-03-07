@@ -148,6 +148,8 @@
     host = "mead.espadeiro.pt";
   };
 
+  services.comboios-proxy.enable = true;
+
   age.secrets.cftunnel.file = "${secretsDir}/cftunnel.age";
   services.cloudflared = {
     enable = true;

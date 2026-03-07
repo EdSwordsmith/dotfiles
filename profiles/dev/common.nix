@@ -19,7 +19,7 @@
     # Odin
     unstable.ols
     # Python
-    (python3.withPackages (p: with p; [numpy requests jupyter ipython flake8]))
+    (python3.withPackages (p: with p; [numpy requests jupyter ipython flake8 discordpy]))
     pyright
     isort
     black

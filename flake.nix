@@ -32,6 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    comboios = {
+      url = "git+ssh://git@github.com/EdSwordsmith/comboios";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wallpapers = {
       url = "git+ssh://git@github.com/EdSwordsmith/wallpapers";
       flake = false;
@@ -141,6 +146,7 @@
                 inputs.agenix.nixosModules.default
                 inputs.flake-programs-sqlite.nixosModules.programs-sqlite
                 inputs.meadhal.nixosModules.default
+                inputs.comboios.nixosModules.default
               ]
               ++ mkModules ./modules
               ++ mkModules "${dir}/${name}";

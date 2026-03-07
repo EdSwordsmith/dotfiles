@@ -30,11 +30,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772898059,
-        "narHash": "sha256-6NxBr8a3YtCakWhEZkomThuB4xeWCr1UKB/Eofq3KPg=",
+        "lastModified": 1772899066,
+        "narHash": "sha256-x18uTXzhM0CAKypYqD9cBo6ZA40IMoXwElHYu8K5IJ0=",
         "ref": "refs/heads/main",
-        "rev": "a249c6540ffc6498e2f2658a4c8c5a3527fd7502",
-        "revCount": 4,
+        "rev": "a8e2e6132a436e0baac909b32949ff48cc176aef",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/EdSwordsmith/comboios"
       },
@@ -213,11 +213,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771456196,
-        "narHash": "sha256-Ktr2ps2bKYKaVNFPJMmICUZJVz9zxI/fNyIW0Om8xr8=",
+        "lastModified": 1772493551,
+        "narHash": "sha256-TU1LCTEG9rbFumRWqT0bjHiVcdlUOk6ggfzJmfD3tmM=",
         "ref": "refs/heads/main",
-        "rev": "0d2827da1cee6cf2b5bc880d5133c0b63908375a",
-        "revCount": 16,
+        "rev": "fc6d38cc5f6dff8c008141f86e7f4cac57e10bb4",
+        "revCount": 19,
         "type": "git",
         "url": "ssh://git@github.com/PombosMalvados/meadhal"
       },

@@ -22,11 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    pombobot = {
-      url = "git+ssh://git@github.com/PombosMalvados/pombo_bot";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     meadhal = {
       url = "git+ssh://git@github.com/PombosMalvados/meadhal";
       inputs.nixpkgs.follows = "nixpkgs";

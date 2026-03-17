@@ -12,7 +12,6 @@
     editors.emacs
     graphical.hyprland
     tailscale
-    services.djtobis
   ];
 
   edu.shell.git.enable = true;

@@ -18,16 +18,9 @@
     tailscale
   ];
 
-  edu = {
-    services.wgrnl = {
-      enable = true;
-      privateKeyFile = "/etc/wireguard/privkey";
-    };
-
-    shell.git = {
-      enable = true;
-      signing = true;
-    };
+  edu.shell.git = {
+    enable = true;
+    signing = true;
   };
 
   hardware.bluetooth.enable = true;

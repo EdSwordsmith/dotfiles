@@ -103,8 +103,8 @@
       #####################
 
       general {
-          gaps_in = 4
-          gaps_out = 8
+          gaps_in = 0
+          gaps_out = 0
           border_size = 2
 
           col.active_border = rgba(ffffffff)
@@ -116,8 +116,6 @@
       }
 
       decoration {
-          rounding = 4
-
           active_opacity = 1.0
           inactive_opacity = 1.0
 
@@ -153,10 +151,11 @@
           preserve_split = true
           workspace = w[tv1] s[false], gapsout:0, gapsin:0
           workspace = f[1] s[false], gapsout:0, gapsin:0
-          windowrulev2 = bordersize 0, floating:0, onworkspace:w[tv1] s[false]
-          windowrulev2 = rounding 0, floating:0, onworkspace:w[tv1] s[false]
-          windowrulev2 = bordersize 0, floating:0, onworkspace:f[1] s[false]
-          windowrulev2 = rounding 0, floating:0, onworkspace:f[1] s[false]
+          windowrule = bordersize 0, floating:0, onworkspace:w[tv1] s[false]
+          windowrule = rounding 0, floating:0, onworkspace:w[tv1] s[false]
+          windowrule = bordersize 0, floating:0, onworkspace:f[1] s[false]
+          windowrule = rounding 0, floating:0, onworkspace:f[1] s[false]
+          windowrule = animation popin 100%, group:1
       }
 
       misc {

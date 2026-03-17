@@ -35,4 +35,10 @@
     dates = "weekly";
     randomizedDelaySec = "15min";
   };
+
+  age.identityPaths = [
+    "/home/eduardo/.ssh/id_ed25519"
+    "/etc/ssh/ssh_host_ed25519_key"
+    "/etc/ssh/ssh_host_rsa_key"
+  ];
 }

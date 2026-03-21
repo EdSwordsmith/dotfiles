@@ -64,41 +64,17 @@
 
   users.users.nginx.extraGroups = ["acme"];
 
-  # Nextcloud
-  age.secrets.ncdbpass = {
-    file = "${secretsDir}/ncdbpass.age";
-    owner = "nextcloud";
-    group = "nextcloud";
-  };
-
-  services.nextcloud = {
-    enable = true;
-    package = pkgs.nextcloud31;
-    hostName = "nextcloud.espadeiro.pt";
-    https = true;
-    config = {
-      adminpassFile = config.age.secrets.ncdbpass.path;
-      dbtype = "sqlite";
-    };
-  };
-
-  services.nginx = {
-    enable = true;
-    recommendedProxySettings = true;
-  };
-
-  services.nginx.virtualHosts."nextcloud.espadeiro.pt" = {
-    forceSSL = true;
-    useACMEHost = "espadeiro.pt";
-  };
-
   services.grafana = {
     enable = true;
     settings = {
-      server = {
-        http_port = 2342;
-        http_addr = "127.0.0.1";
-        domain = "grafana.espadeiro.pt";
+      server.http_port = 2342;
+      "auth.jwt" = {
+        enabled = true;
+        header_name = "Cf-Access-Jwt-Assertion";
+        email_claim = "email";
+        username_claim = "email";
+        jwk_set_url = "https://edswordsmith.cloudflareaccess.com/cdn-cgi/access/certs";
+        auto_sign_up = true;
       };
     };
   };
@@ -123,15 +99,6 @@
     ];
   };
 
-  services.nginx.virtualHosts.${config.services.grafana.settings.server.domain} = {
-    forceSSL = true;
-    useACMEHost = "espadeiro.pt";
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:${toString config.services.grafana.settings.server.http_port}";
-      proxyWebsockets = true;
-    };
-  };
-
   # systemd.services.gtnh = {
   #   path = with pkgs; [unstable.jdk25];
   #   wantedBy = ["multi-user.target"];
@@ -141,6 +108,11 @@
   #     WorkingDirectory = "/home/eduardo/minecraft/gtnh";
   #   };
   # };
+
+  services.nginx = {
+    enable = true;
+    recommendedProxySettings = true;
+  };
 
   services.meadhal = {
     enable = true;
@@ -160,7 +132,7 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [80 443 8080 25565];
+  networking.firewall.allowedTCPPorts = [80 443 25565];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

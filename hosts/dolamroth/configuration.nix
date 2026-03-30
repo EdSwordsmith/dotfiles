@@ -7,14 +7,13 @@
 }: {
   imports = with profiles; [
     server
+    shell.git.common
     shell.zsh
     editors.neovim
     editors.emacs
     graphical.hyprland
     tailscale
   ];
-
-  edu.shell.git.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

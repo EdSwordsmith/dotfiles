@@ -12,6 +12,7 @@ let
     "cloudflare.age"
     "ncdbpass.age"
     "cftunnel.age"
+    "git-signing.age"
   ];
 in
   builtins.listToAttrs (map (secret: {

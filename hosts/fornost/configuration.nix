@@ -6,6 +6,8 @@
   imports = with profiles; [
     dev.common
     dev.thesis
+    shell.git.common
+    shell.git.signing
     shell.fish
     shell.zsh
 
@@ -17,11 +19,6 @@
 
     tailscale
   ];
-
-  edu.shell.git = {
-    enable = true;
-    signing = true;
-  };
 
   hardware.bluetooth.enable = true;
 
@@ -52,6 +49,10 @@
 
   usr.shell = pkgs.zsh;
   usr.extraGroups = ["dialout" "docker" "libvirtd" "kvm"];
+
+  age.identityPaths = [
+    "/home/eduardo/.ssh/id_ed25519"
+  ];
 
   networking.firewall.allowedTCPPortRanges = [
     {

@@ -15,8 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,7 +43,7 @@
 
   outputs = inputs @ {...}: let
     inherit (inputs.nixpkgs) lib;
-    inherit (lib) nixosSystem hasSuffix removeSuffix;
+    inherit (lib) nixosSystem hasSuffix;
     inherit (lib.filesystem) listFilesRecursive;
     inherit (builtins) readDir listToAttrs attrNames filter map;
     inherit (lib.attrsets) mapAttrs' nameValuePair;
@@ -148,14 +146,18 @@
           };
         })
         (attrNames (readDir dir)));
-  in
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
+  in {
+    packages.${system} = mkPkgs ./pkgs pkgs;
+    # https://github.com/NixOS/nix/pull/11438#issuecomment-2343378813
+    formatter.${system} = pkgs.writeShellScriptBin "formatter" ''
+      if [[ $# -eq 0 ]]; then
+        prj_root=$(git rev-parse --show-toplevel 2>/dev/null || echo .)
+        set -- "$prj_root"
+      fi
 
-      perSystem = {pkgs, ...}: {
-        packages = mkPkgs ./pkgs pkgs;
-      };
-
-      flake.nixosConfigurations = mkHosts ./hosts;
-    };
+      ${lib.getExe pkgs.deadnix} --hidden --edit "$@"
+      ${lib.getExe pkgs.alejandra} "$@"
+    '';
+    nixosConfigurations = mkHosts ./hosts;
+  };
 }

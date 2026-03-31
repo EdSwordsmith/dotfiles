@@ -1,4 +1,4 @@
-{configDir, ...}: {
+{...}: {
   hm.programs.alacritty = {
     enable = true;
     settings = {

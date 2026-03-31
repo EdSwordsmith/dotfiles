@@ -1,8 +1,4 @@
-{
-  pkgs,
-  wallpaper,
-  ...
-}: {
+{wallpaper, ...}: {
   programs.hyprlock.enable = true;
   hm.programs.hyprlock = {
     enable = true;

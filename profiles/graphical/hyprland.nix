@@ -2,7 +2,6 @@
   profiles,
   pkgs,
   wallpaper,
-  configDir,
   ...
 }: {
   imports = with profiles.graphical; [

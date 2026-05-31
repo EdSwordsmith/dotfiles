@@ -8,7 +8,7 @@
         unstable.jdk25
       ];
     })
-    superTux
+    supertux
     edu.activate-controller
   ];
 

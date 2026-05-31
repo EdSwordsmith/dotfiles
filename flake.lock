@@ -23,26 +23,6 @@
         "type": "github"
       }
     },
-    "comboios": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1772899066,
-        "narHash": "sha256-x18uTXzhM0CAKypYqD9cBo6ZA40IMoXwElHYu8K5IJ0=",
-        "ref": "refs/heads/main",
-        "rev": "a8e2e6132a436e0baac909b32949ff48cc176aef",
-        "revCount": 5,
-        "type": "git",
-        "url": "ssh://git@github.com/EdSwordsmith/comboios"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/EdSwordsmith/comboios"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -73,11 +53,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1775308525,
-        "narHash": "sha256-s7wDNnHd+26wz1DsCZKjbipDZ2wMel+U7/DwCHM8690=",
+        "lastModified": 1780231382,
+        "narHash": "sha256-WuLU+u//u6P1rFgMtofZ1LpfvHRywUz4f+V+2K4Enhg=",
         "owner": "wamserma",
         "repo": "flake-programs-sqlite",
-        "rev": "12386a637f146fd3598e6d555946d66f2613bafe",
+        "rev": "6cc2b6c8ddd2f3a530ea3736701b98a877f20357",
         "type": "github"
       },
       "original": {
@@ -93,16 +73,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1775077333,
-        "narHash": "sha256-OXcxobt7lBkh1B8AjwreU+24myhtKpqeLfAeIyNLFY8=",
+        "lastModified": 1779726825,
+        "narHash": "sha256-RUkMrREjKDQrA+dA9+xZviGAxM5W1aVdyOr/bSYpHrE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "49ca96b2714c5931e17401eff87f3edd42d2b0f2",
+        "rev": "b179bde238977f7d4454fc770b1a727eaf55111c",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-25.11",
+        "ref": "release-26.05",
         "repo": "home-manager",
         "type": "github"
       }
@@ -150,27 +130,27 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1775002709,
-        "narHash": "sha256-d3Yx83vSrN+2z/loBh4mJpyRqr9aAJqlke4TkpFmRJA=",
+        "lastModified": 1780051219,
+        "narHash": "sha256-WnxzG4x47uCgjz+uD+vOzbF+Qid+hKyYdJWbduA9w7g=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "bcd464ccd2a1a7cd09aa2f8d4ffba83b761b1d0e",
+        "rev": "e8e446a361172fe838243958325845d0b845c5e5",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-25.11",
+        "ref": "nixos-26.05",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1775036866,
-        "narHash": "sha256-ZojAnPuCdy657PbTq5V0Y+AHKhZAIwSIT2cb8UgAz/U=",
+        "lastModified": 1779560665,
+        "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6201e203d09599479a3b3450ed24fa81537ebc4e",
+        "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
         "type": "github"
       },
       "original": {
@@ -183,7 +163,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "comboios": "comboios",
         "flake-programs-sqlite": "flake-programs-sqlite",
         "home": "home",
         "meadhal": "meadhal",

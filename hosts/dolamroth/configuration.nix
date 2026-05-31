@@ -9,9 +9,8 @@
     server
     shell.git.common
     shell.zsh
-    editors.neovim
     editors.emacs
-    graphical.hyprland
+    graphical.niri
     tailscale
   ];
 
@@ -46,58 +45,6 @@
     "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDfATrcDeEWGJrjyfJcQwaUqgPTuN2LRPmtephSAKwL/MfaNw/t7PUDqctarnJsWxYG84GXobG63vt/jEjMSKPo= eduardo@ipad"
   ];
 
-  # ACME Certificates
-  age.secrets.cloudflare.file = "${secretsDir}/cloudflare.age";
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "self@espadeiro.pt";
-
-    certs."espadeiro.pt" = {
-      domain = "espadeiro.pt";
-      extraDomainNames = ["*.espadeiro.pt"];
-      dnsProvider = "cloudflare";
-      dnsPropagationCheck = true;
-      credentialsFile = config.age.secrets.cloudflare.path;
-    };
-  };
-
-  users.users.nginx.extraGroups = ["acme"];
-
-  services.grafana = {
-    enable = true;
-    settings = {
-      server.http_port = 2342;
-      "auth.jwt" = {
-        enabled = true;
-        header_name = "Cf-Access-Jwt-Assertion";
-        email_claim = "email";
-        username_claim = "email";
-        jwk_set_url = "https://edswordsmith.cloudflareaccess.com/cdn-cgi/access/certs";
-        auto_sign_up = true;
-      };
-    };
-  };
-
-  services.prometheus = {
-    enable = true;
-    port = 9001;
-    exporters.node = {
-      enable = true;
-      enabledCollectors = ["systemd"];
-      port = 9002;
-    };
-    scrapeConfigs = [
-      {
-        job_name = "dolamroth";
-        static_configs = [
-          {
-            targets = ["127.0.0.1:${toString config.services.prometheus.exporters.node.port}"];
-          }
-        ];
-      }
-    ];
-  };
-
   # systemd.services.gtnh = {
   #   path = with pkgs; [unstable.jdk25];
   #   wantedBy = ["multi-user.target"];
@@ -117,8 +64,6 @@
     enable = true;
     host = "mead.espadeiro.pt";
   };
-
-  services.comboios-proxy.enable = true;
 
   age.secrets.cftunnel.file = "${secretsDir}/cftunnel.age";
   services.cloudflared = {

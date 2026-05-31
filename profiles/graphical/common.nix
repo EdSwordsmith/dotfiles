@@ -1,4 +1,8 @@
-{profiles, ...}: {
+{
+  configDir,
+  profiles,
+  ...
+}: {
   imports = with profiles.graphical; [gtk programs];
 
   xdg.portal.enable = true;
@@ -6,8 +10,14 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Display Manager.
-  services.displayManager.gdm.enable = true;
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      animation = "dur_file";
+      dur_file_path = "${configDir}/blackhole.dur";
+      full_color = true;
+    };
+  };
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -31,6 +41,5 @@
     binfmt = true;
   };
 
-  programs.light.enable = true;
-  usr.extraGroups = ["video"]; # For rootless light.
+  usr.extraGroups = ["video"]; # For backlight control.
 }

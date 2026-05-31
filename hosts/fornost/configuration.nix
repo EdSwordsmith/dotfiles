@@ -5,17 +5,15 @@
 }: {
   imports = with profiles; [
     dev.common
-    dev.thesis
     shell.git.common
     shell.git.signing
     shell.fish
     shell.zsh
 
     graphical.games
-    graphical.hyprland
+    graphical.niri
 
     editors.emacs
-    editors.neovim
 
     tailscale
   ];
@@ -28,10 +26,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
-  environment.systemPackages = with pkgs; [virt-manager];
 
   services.fprintd.enable = true;
 
@@ -50,7 +44,9 @@
   };
 
   usr.shell = pkgs.fish;
-  usr.extraGroups = ["dialout" "docker" "libvirtd" "kvm"];
+  usr.extraGroups = ["dialout" "libvirtd" "kvm"];
+
+  virtualisation.podman.enable = true;
 
   age.identityPaths = [
     "/home/eduardo/.ssh/id_ed25519"

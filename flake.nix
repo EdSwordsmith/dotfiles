@@ -2,11 +2,11 @@
   description = "My NixOS Config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,11 +22,6 @@
 
     meadhal = {
       url = "git+ssh://git@github.com/PombosMalvados/meadhal";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    comboios = {
-      url = "git+ssh://git@github.com/EdSwordsmith/comboios";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -134,7 +129,6 @@
                 inputs.agenix.nixosModules.default
                 inputs.flake-programs-sqlite.nixosModules.programs-sqlite
                 inputs.meadhal.nixosModules.default
-                inputs.comboios.nixosModules.default
               ]
               ++ mkModules ./modules
               ++ mkModules "${dir}/${name}";

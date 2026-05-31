@@ -19,6 +19,7 @@
     gnumake
     rlwrap
     mcrcon
+    neovim
   ];
 
   programs.nix-ld.enable = true;

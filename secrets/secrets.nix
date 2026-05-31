@@ -9,7 +9,6 @@ let
 
   keys = users ++ systems;
   secrets = [
-    "cloudflare.age"
     "ncdbpass.age"
     "cftunnel.age"
     "git-signing.age"

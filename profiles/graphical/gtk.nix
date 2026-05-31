@@ -9,6 +9,10 @@
       package = pkgs.gnome-themes-extra;
       name = "Adwaita-dark";
     };
+    gtk4.theme = {
+      package = pkgs.gnome-themes-extra;
+      name = "Adwaita-dark";
+    };
   };
 
   hm.qt = {

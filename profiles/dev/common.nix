@@ -9,8 +9,6 @@
     gopls
     # JS/TS
     nodejs
-    nodePackages.typescript-language-server
-    nodePackages."@astrojs/language-server"
     # OCaml
     ocamlformat
     ocamlPackages.ocaml-lsp

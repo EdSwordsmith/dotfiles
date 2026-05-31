@@ -34,11 +34,6 @@
       url = "git+ssh://git@github.com/EdSwordsmith/wallpapers";
       flake = false;
     };
-
-    rnl-ca = {
-      url = "https://rnl.tecnico.ulisboa.pt/ca/cacert/cacert.crt";
-      flake = false;
-    };
   };
 
   outputs = inputs @ {...}: let

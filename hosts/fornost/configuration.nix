@@ -21,6 +21,8 @@
   ];
 
   hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+  hm.services.blueman-applet.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -47,7 +49,7 @@
     variant = "";
   };
 
-  usr.shell = pkgs.zsh;
+  usr.shell = pkgs.fish;
   usr.extraGroups = ["dialout" "docker" "libvirtd" "kvm"];
 
   age.identityPaths = [

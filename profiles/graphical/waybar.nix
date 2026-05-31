@@ -24,6 +24,7 @@
         tray.spacing = 10;
 
         clock = {
+          locale = "C";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';

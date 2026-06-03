@@ -23,6 +23,30 @@
         "type": "github"
       }
     },
+    "cloudflare-ips-v4": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-V4dThTb8iw02hjngubVtSJbEeWgOS1e/ODt1fLjLZvk=",
+        "type": "file",
+        "url": "https://www.cloudflare.com/ips-v4"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://www.cloudflare.com/ips-v4"
+      }
+    },
+    "cloudflare-ips-v6": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-BgpkXCAh/MmK3GTAElKiGJctCYUN+/UgvpuawqGmitE=",
+        "type": "file",
+        "url": "https://www.cloudflare.com/ips-v6"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://www.cloudflare.com/ips-v6"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -43,6 +67,25 @@
         "ref": "master",
         "repo": "nix-darwin",
         "type": "github"
+      }
+    },
+    "dunedain": {
+      "inputs": {
+        "cloudflare-ips-v4": "cloudflare-ips-v4",
+        "cloudflare-ips-v6": "cloudflare-ips-v6"
+      },
+      "locked": {
+        "lastModified": 1780499410,
+        "narHash": "sha256-WsOopfmfkOHqhZ57NjA5TGhV9v9i/+bc6KPZ9MAYmI8=",
+        "ref": "refs/heads/main",
+        "rev": "ff5a89ed448365f71a8461b6308ff6075cfce3c8",
+        "revCount": 5,
+        "type": "git",
+        "url": "ssh://git@github.com/EdSwordsmith/dunedain"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/EdSwordsmith/dunedain"
       }
     },
     "flake-programs-sqlite": {
@@ -163,12 +206,12 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "dunedain": "dunedain",
         "flake-programs-sqlite": "flake-programs-sqlite",
         "home": "home",
         "meadhal": "meadhal",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable",
-        "wallpapers": "wallpapers"
+        "nixpkgs-unstable": "nixpkgs-unstable"
       }
     },
     "systems": {
@@ -217,22 +260,6 @@
         "owner": "numtide",
         "repo": "flake-utils",
         "type": "github"
-      }
-    },
-    "wallpapers": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1696090371,
-        "narHash": "sha256-CMQHOwPW12gWWshhoZnUSQqHibpehUFZfbcB5TaDZNo=",
-        "ref": "refs/heads/main",
-        "rev": "003377f267fc3d24ec81208814f612c1af3afb2b",
-        "revCount": 3,
-        "type": "git",
-        "url": "ssh://git@github.com/EdSwordsmith/wallpapers"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/EdSwordsmith/wallpapers"
       }
     }
   },

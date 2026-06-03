@@ -16,6 +16,8 @@
     editors.emacs
 
     tailscale
+
+    private.elessar
   ];
 
   hardware.bluetooth.enable = true;

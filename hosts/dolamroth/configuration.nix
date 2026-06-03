@@ -12,6 +12,7 @@
     editors.emacs
     graphical.niri
     tailscale
+    private.imhrahil
   ];
 
   # Bootloader.
@@ -75,8 +76,6 @@
       };
     };
   };
-
-  networking.firewall.allowedTCPPorts = [80 443 25565];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

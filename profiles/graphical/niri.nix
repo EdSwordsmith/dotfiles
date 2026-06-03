@@ -15,8 +15,10 @@
 
   hm.services.mako = {
     enable = true;
-    font = "monospace 12";
-    layer = "overlay";
+    settings = {
+      font = "monospace 12";
+      layer = "overlay";
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -164,12 +166,12 @@
         Mod+Period { expel-window-from-column; }
 
         Mod+Left  { focus-column-left; }
-        Mod+Down  { focus-window-down; }
-        Mod+Up    { focus-window-up; }
+        Mod+Down  { focus-window-or-workspace-down; }
+        Mod+Up    { focus-window-or-workspace-up; }
         Mod+Right { focus-column-right; }
         Mod+H     { focus-column-left; }
-        Mod+J     { focus-window-down; }
-        Mod+K     { focus-window-up; }
+        Mod+J     { focus-window-or-workspace-down; }
+        Mod+K     { focus-window-or-workspace-up; }
         Mod+L     { focus-column-right; }
 
         Mod+Shift+Left  { move-column-left; }

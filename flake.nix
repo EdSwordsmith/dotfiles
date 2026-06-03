@@ -25,10 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    wallpapers = {
-      url = "git+ssh://git@github.com/EdSwordsmith/wallpapers";
-      flake = false;
-    };
+    dunedain.url = "git+ssh://git@github.com/EdSwordsmith/dunedain";
   };
 
   outputs = inputs @ {...}: let
@@ -47,11 +44,12 @@
       extensions = [".jpg" ".jpeg" ".png"];
       isImage = name: builtins.any (ext: lib.hasSuffix ext name) extensions;
       removeExts = name: builtins.foldl' (file: ext: lib.removeSuffix ext file) name extensions;
-      files = filter isImage (attrNames (readDir inputs.wallpapers));
+      wallpaperDir = "${inputs.dunedain}/wallpapers";
+      files = filter isImage (attrNames (readDir wallpaperDir));
     in
       listToAttrs (map (file: {
           name = removeExts file;
-          value = "${inputs.wallpapers}/${file}";
+          value = "${wallpaperDir}/${file}";
         })
         files);
 
@@ -110,7 +108,7 @@
 
             specialArgs = {
               inherit user inputs configDir secretsDir;
-              profiles = mkProfiles ./profiles;
+              profiles = (mkProfiles ./profiles) // {private = inputs.dunedain.nixosModules;};
               wallpaper = wallpapers."${name}";
             };
 

@@ -46,16 +46,6 @@
     "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDfATrcDeEWGJrjyfJcQwaUqgPTuN2LRPmtephSAKwL/MfaNw/t7PUDqctarnJsWxYG84GXobG63vt/jEjMSKPo= eduardo@ipad"
   ];
 
-  # systemd.services.gtnh = {
-  #   path = with pkgs; [unstable.jdk25];
-  #   wantedBy = ["multi-user.target"];
-  #   after = ["network.target"];
-  #   serviceConfig = {
-  #     ExecStart = "/home/eduardo/minecraft/gtnh/startserver-java9.sh";
-  #     WorkingDirectory = "/home/eduardo/minecraft/gtnh";
-  #   };
-  # };
-
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;

@@ -9,7 +9,6 @@ let
 
   keys = users ++ systems;
   secrets = [
-    "ncdbpass.age"
     "cftunnel.age"
     "git-signing.age"
   ];

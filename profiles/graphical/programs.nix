@@ -18,13 +18,13 @@
   };
 
   hm.home.packages = with pkgs; [
-    spotify
     firefox
+    spotify
     evince
-    thunderbird
     keepassxc
     pavucontrol
     gimp
+    pinta
     onlyoffice-desktopeditors
     obs-studio
     discord

@@ -150,14 +150,14 @@
         Mod+Shift+Return { show-hotkey-overlay; }
 
         Mod+Return repeat=false { spawn "${pkgs.alacritty}/bin/alacritty"; }
-        Mod+D { spawn "${pkgs.j4-dmenu-desktop}/bin/j4-dmenu-desktop" "--dmenu=${pkgs.bemenu}/bin/bemenu -i --fn 'JetBrains Mono 12' --nb '#0A0E14' --nf '#B3B1AD' --sb '#F9AF4F' --sf '#0A0E14' --hb '#F9AF4F' --hf '#0A0E14' --tf '#F9AF4F' -H 30 --hp 12" "--term=${pkgs.alacritty}/bin/alacritty"; }
+        Mod+D repeat=false { spawn "${pkgs.j4-dmenu-desktop}/bin/j4-dmenu-desktop" "--dmenu=${pkgs.bemenu}/bin/bemenu -i --fn 'JetBrains Mono 12' --nb '#0A0E14' --nf '#B3B1AD' --sb '#F9AF4F' --sf '#0A0E14' --hb '#F9AF4F' --hf '#0A0E14' --tf '#F9AF4F' -H 30 --hp 12" "--term=${pkgs.alacritty}/bin/alacritty"; }
         Mod+Escape { spawn "${pkgs.swaylock}/bin/swaylock" "--color" "000000"; }
-        Mod+Shift+Escape { spawn "wleave"; }
+        Mod+Shift+Escape repeat=false { spawn "wleave"; }
         Mod+Shift+Q { close-window; }
-        Mod+Tab { toggle-overview; }
+        Mod+Tab repeat=false { toggle-overview; }
 
-        Mod+F { maximize-column; }
-        Mod+Shift+F { fullscreen-window; }
+        Mod+F repeat=false { maximize-column; }
+        Mod+Shift+F repeat=false { fullscreen-window; }
         Mod+V { toggle-window-floating; }
         Mod+W { toggle-column-tabbed-display; }
         Mod+R { switch-preset-column-width; }

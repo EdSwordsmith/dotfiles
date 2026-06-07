@@ -108,7 +108,19 @@
 
             specialArgs = {
               inherit user inputs configDir secretsDir;
-              profiles = (mkProfiles ./profiles) // {private = inputs.dunedain.nixosModules;};
+              profiles =
+                (mkProfiles ./profiles)
+                // {
+                  private = lib.mapAttrs (_name: module: {
+                    config,
+                    lib,
+                    options,
+                    pkgs,
+                    ...
+                  } @ moduleArgs:
+                    module moduleArgs)
+                  inputs.dunedain.nixosModules;
+                };
               wallpaper = wallpapers."${name}";
             };
 

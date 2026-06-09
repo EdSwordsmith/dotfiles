@@ -51,10 +51,7 @@
     recommendedProxySettings = true;
   };
 
-  services.meadhal = {
-    enable = true;
-    host = "mead.espadeiro.pt";
-  };
+  services.meadhal.enable = true;
 
   age.secrets.cftunnel.file = "${secretsDir}/cftunnel.age";
   services.cloudflared = {

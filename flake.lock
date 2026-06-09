@@ -75,11 +75,11 @@
         "cloudflare-ips-v6": "cloudflare-ips-v6"
       },
       "locked": {
-        "lastModified": 1780499410,
-        "narHash": "sha256-WsOopfmfkOHqhZ57NjA5TGhV9v9i/+bc6KPZ9MAYmI8=",
+        "lastModified": 1781020085,
+        "narHash": "sha256-s1Jow8mG8x4jZ+1OJJEv/9esqZ5856+2j+HJmbQ8Ciw=",
         "ref": "refs/heads/main",
-        "rev": "ff5a89ed448365f71a8461b6308ff6075cfce3c8",
-        "revCount": 5,
+        "rev": "1d32db2b8a3bb5cd934af002661fa3947cf6b976",
+        "revCount": 7,
         "type": "git",
         "url": "ssh://git@github.com/EdSwordsmith/dunedain"
       },

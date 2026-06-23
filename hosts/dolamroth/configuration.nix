@@ -38,11 +38,14 @@
     settings.PasswordAuthentication = false;
   };
 
+  programs.mosh.enable = true;
+
   usr.shell = pkgs.zsh;
   usr.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDr6cqDPQKapijMfCxwXAFSniL5Tl1WMMcJ1dUcB3yhy eduardo@annuminas"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH9fsZ6NiBTcHQlT7GvX0gjMXkVB1FA4d0ryckaTIod2 eduardo@fornost"
     "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMtO8MwCwyNu8DN1bcX1cdswh6iYkB5yRpGaPed6RwrsM99DPwBb3qE38jK9v76gd4iIjD1f2KdYkQtkCOEI3Zk= eduardo@iphone"
+    "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBF/7hUUe8QHicMOhw4i7y+0O+CdKJ6WQ03FL4sYKOCdTefl5NnmcXVqWmbE7jxyVv1TBocU96o+VdPNMv3ts9Nw= eduardo@iphoneii"
     "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDfATrcDeEWGJrjyfJcQwaUqgPTuN2LRPmtephSAKwL/MfaNw/t7PUDqctarnJsWxYG84GXobG63vt/jEjMSKPo= eduardo@ipad"
   ];
 

@@ -111,14 +111,8 @@
               profiles =
                 (mkProfiles ./profiles)
                 // {
-                  private = lib.mapAttrs (_name: module: {
-                    config,
-                    lib,
-                    options,
-                    pkgs,
-                    ...
-                  } @ moduleArgs:
-                    module moduleArgs)
+                  private = lib.mapAttrs (_name: module: {...} @ moduleArgs:
+                    module ({inherit pkgs;} // moduleArgs))
                   inputs.dunedain.nixosModules;
                 };
               wallpaper = wallpapers."${name}";

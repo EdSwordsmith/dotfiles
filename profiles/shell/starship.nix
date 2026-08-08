@@ -3,6 +3,7 @@
     enable = true;
 
     settings = {
+      scan_timeout = 1000;
       format = "$username[@](bold green)$hostname$directory$all";
 
       username = {

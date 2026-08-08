@@ -30,6 +30,7 @@
     nautilus
     qview
     swaybg
+    playerctl
     xwayland-satellite
   ];
 
@@ -100,6 +101,10 @@
             natural-scroll
         }
 
+        touch {
+            map-to-output "eDP-1"
+        }
+
         focus-follows-mouse
     }
 
@@ -146,6 +151,10 @@
         open-floating true
     }
 
+    hotkey-overlay {
+        skip-at-startup
+    }
+
     binds {
         Mod+Shift+Return { show-hotkey-overlay; }
 
@@ -160,8 +169,10 @@
         Mod+Shift+F repeat=false { fullscreen-window; }
         Mod+V { toggle-window-floating; }
         Mod+W { toggle-column-tabbed-display; }
+        Mod+Space { switch-focus-between-floating-and-tiling; }
         Mod+R { switch-preset-column-width; }
         Mod+Shift+R { switch-preset-column-width-back; }
+        Mod+A { focus-column-first; }
         Mod+Comma { consume-window-into-column; }
         Mod+Period { expel-window-from-column; }
 
@@ -175,22 +186,27 @@
         Mod+L     { focus-column-right; }
 
         Mod+Shift+Left  { move-column-left; }
-        Mod+Shift+Down  { move-window-down; }
-        Mod+Shift+Up    { move-window-up; }
+        Mod+Shift+Down  { move-window-down-or-to-workspace-down; }
+        Mod+Shift+Up    { move-window-up-or-to-workspace-up; }
         Mod+Shift+Right { move-column-right; }
         Mod+Shift+H     { move-column-left; }
-        Mod+Shift+J     { move-window-down; }
-        Mod+Shift+K     { move-window-up; }
+        Mod+Shift+J     { move-window-down-or-to-workspace-down; }
+        Mod+Shift+K     { move-window-up-or-to-workspace-up; }
         Mod+Shift+L     { move-column-right; }
 
-        Mod+Ctrl+Left  { move-column-to-monitor-left; }
-        Mod+Ctrl+Down  { move-column-to-monitor-down; }
-        Mod+Ctrl+Up    { move-column-to-monitor-up; }
-        Mod+Ctrl+Right { move-column-to-monitor-right; }
-        Mod+Ctrl+H     { move-column-to-monitor-left; }
-        Mod+Ctrl+J     { move-column-to-monitor-down; }
-        Mod+Ctrl+K     { move-column-to-monitor-up; }
-        Mod+Ctrl+L     { move-column-to-monitor-right; }
+        Mod+Alt+Left  { focus-monitor-left; }
+        Mod+Alt+Down  { focus-monitor-down; }
+        Mod+Alt+Up    { focus-monitor-up; }
+        Mod+Alt+Right { focus-monitor-right; }
+
+        Mod+Ctrl+Left  { move-workspace-to-monitor-left; }
+        Mod+Ctrl+Down  { move-workspace-to-monitor-down; }
+        Mod+Ctrl+Up    { move-workspace-to-monitor-up; }
+        Mod+Ctrl+Right { move-workspace-to-monitor-right; }
+        Mod+Ctrl+H     { move-workspace-to-monitor-left; }
+        Mod+Ctrl+J     { move-workspace-to-monitor-down; }
+        Mod+Ctrl+K     { move-workspace-to-monitor-up; }
+        Mod+Ctrl+L     { move-workspace-to-monitor-right; }
 
         Mod+1 { focus-workspace 1; }
         Mod+2 { focus-workspace 2; }
@@ -203,14 +219,10 @@
         Mod+9 { focus-workspace 9; }
         Mod+0 { focus-workspace 10; }
 
-        Mod+Alt+Down { focus-workspace-down; }
-        Mod+Alt+Up   { focus-workspace-up; }
-        Mod+Alt+J    { focus-workspace-down; }
-        Mod+Alt+K    { focus-workspace-up; }
-        Mod+Alt+Shift+Down { move-column-to-workspace-down; }
-        Mod+Alt+Shift+Up   { move-column-to-workspace-up; }
-        Mod+Alt+Shift+J    { move-column-to-workspace-down; }
-        Mod+Alt+Shift+K    { move-column-to-workspace-up; }
+        Mod+WheelScrollDown { focus-workspace-down; }
+        Mod+WheelScrollUp   { focus-workspace-up; }
+        Mod+Shift+WheelScrollDown { move-column-to-workspace-down; }
+        Mod+Shift+WheelScrollUp   { move-column-to-workspace-up; }
 
         Mod+Shift+1 { move-column-to-workspace 1; }
         Mod+Shift+2 { move-column-to-workspace 2; }
@@ -229,6 +241,10 @@
         XF86AudioLowerVolume allow-when-locked=true { spawn "${pkgs.pamixer}/bin/pamixer" "--decrease" "5"; }
         XF86AudioMute allow-when-locked=true { spawn "${pkgs.pamixer}/bin/pamixer" "-t"; }
         XF86AudioMicMute allow-when-locked=true { spawn "${pkgs.pamixer}/bin/pamixer" "--default-source" "-t"; }
+        XF86AudioNext allow-when-locked=true { spawn "${pkgs.playerctl}/bin/playerctl" "next"; }
+        XF86AudioPause allow-when-locked=true { spawn "${pkgs.playerctl}/bin/playerctl" "play-pause"; }
+        XF86AudioPlay allow-when-locked=true { spawn "${pkgs.playerctl}/bin/playerctl" "play-pause"; }
+        XF86AudioPrev allow-when-locked=true { spawn "${pkgs.playerctl}/bin/playerctl" "previous"; }
 
         XF86MonBrightnessDown allow-when-locked=true { spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%-"; }
         XF86MonBrightnessUp allow-when-locked=true { spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "+5%"; }

@@ -7,6 +7,8 @@
         jdk21
         unstable.jdk25
       ];
+      additionalPrograms = [vlc];
+      additionalLibs = [vlc];
     })
     supertux
     edu.activate-controller

@@ -27,7 +27,8 @@
     pinta
     onlyoffice-desktopeditors
     obs-studio
-    discord
+    unstable.discord
+    vlc
   ];
 
   hm.programs.mpv.enable = true;

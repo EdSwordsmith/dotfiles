@@ -9,7 +9,6 @@
     server
     shell.git.common
     shell.zsh
-    editors.emacs
     graphical.niri
     tailscale
     private.imhrahil

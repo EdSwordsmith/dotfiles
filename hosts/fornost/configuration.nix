@@ -7,6 +7,7 @@
     dev.common
     shell.git.common
     shell.git.signing
+    shell.git.jujutsu
     shell.fish
     shell.zsh
 

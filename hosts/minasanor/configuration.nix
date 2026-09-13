@@ -18,6 +18,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+  hm.services.blueman-applet.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
 

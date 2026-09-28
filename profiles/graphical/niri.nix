@@ -91,7 +91,7 @@
     input {
         keyboard {
             xkb {
-                layout "pt"
+                layout "pt,us"
             }
         }
 
@@ -169,7 +169,8 @@
         Mod+Shift+F repeat=false { fullscreen-window; }
         Mod+V { toggle-window-floating; }
         Mod+W { toggle-column-tabbed-display; }
-        Mod+Space { switch-focus-between-floating-and-tiling; }
+        Mod+Space { switch-layout "next"; }
+        Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
         Mod+R { switch-preset-column-width; }
         Mod+Shift+R { switch-preset-column-width-back; }
         Mod+A { focus-column-first; }

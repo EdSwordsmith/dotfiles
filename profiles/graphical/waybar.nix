@@ -14,7 +14,7 @@
         spacing = 6;
 
         modules-left = ["niri/window"];
-        modules-right = ["pulseaudio" "backlight" "network" "battery" "clock" "tray"];
+        modules-right = ["pulseaudio" "backlight" "niri/language" "network" "battery" "clock" "tray"];
 
         tray.spacing = 10;
 
@@ -51,6 +51,10 @@
         backlight = {
           format = "{percent}% {icon}";
           format-icons = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
+        };
+
+        "niri/language" = {
+          format = "{short}";
         };
 
         pulseaudio = {

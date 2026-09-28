@@ -48,10 +48,16 @@
 #battery,
 #clock,
 #network,
+#language,
 #pulseaudio,
 #tray {
     padding-left: 0.4em;
     padding-right: 0.4em;
+}
+
+#language {
+    background-color: #2878D0;
+    color: #FFFFFF;
 }
 
 #battery.warning:not(.charging) {

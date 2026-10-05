@@ -9,6 +9,7 @@
     editors.emacs
     graphical.niri
     graphical.games
+    keyboard.us
   ];
 
   # Bootloader.
@@ -25,8 +26,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
 
-  # Configure keymap
-  console.keyMap = "pt-latin1";
   services.xserver.xkb = {
     layout = "pt";
     variant = "";

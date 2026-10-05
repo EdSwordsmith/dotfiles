@@ -13,6 +13,7 @@
 
     graphical.games
     graphical.niri
+    keyboard.both
 
     editors.emacs
 
@@ -39,8 +40,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
 
-  # Configure keymap
-  console.keyMap = "pt-latin1";
   services.xserver.xkb = {
     layout = "pt";
     variant = "";

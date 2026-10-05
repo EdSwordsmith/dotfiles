@@ -89,12 +89,6 @@
 
   hm.xdg.configFile."niri/config.kdl".text = ''
     input {
-        keyboard {
-            xkb {
-                layout "pt,us"
-            }
-        }
-
         touchpad {
             tap
             click-method "clickfinger"
@@ -169,7 +163,6 @@
         Mod+Shift+F repeat=false { fullscreen-window; }
         Mod+V { toggle-window-floating; }
         Mod+W { toggle-column-tabbed-display; }
-        Mod+Space { switch-layout "next"; }
         Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
         Mod+R { switch-preset-column-width; }
         Mod+Shift+R { switch-preset-column-width-back; }
@@ -250,5 +243,7 @@
         XF86MonBrightnessDown allow-when-locked=true { spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%-"; }
         XF86MonBrightnessUp allow-when-locked=true { spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "+5%"; }
     }
+
+    include "keyboard.kdl"
   '';
 }

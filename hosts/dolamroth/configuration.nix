@@ -10,6 +10,7 @@
     shell.git.common
     shell.zsh
     graphical.niri
+    keyboard.pt
     tailscale
     private.imhrahil
   ];
@@ -24,8 +25,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
 
-  # Configure keymap
-  console.keyMap = "pt-latin1";
   services.xserver.xkb = {
     layout = "pt";
     variant = "";
